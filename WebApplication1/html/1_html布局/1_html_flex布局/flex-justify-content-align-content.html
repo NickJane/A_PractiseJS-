@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        #dleft .box { display: -webkit-flex; display: flex; width: 400px; height: 100px; margin: 0; padding: 0; border-radius: 5px; 
+                      list-style: none; background-color: #eee; }
+            #dleft .box li { margin: 5px; padding: 10px; border-radius: 5px; background: #aaa; text-align: center; }
+        #dleft #box { -webkit-justify-content: flex-start; justify-content: flex-start; }
+        #dleft #box2 { -webkit-justify-content: flex-end; justify-content: flex-end; }
+        #dleft #box3 { -webkit-justify-content: center; justify-content: center; }
+        #dleft #box4 { -webkit-justify-content: space-between; justify-content: space-between; }
+        #dleft #box5 { -webkit-justify-content: space-around; justify-content: space-around; }
+
+        #dright .box { display: -webkit-flex; display: flex; 
+                       /*-webkit-flex-wrap: wrap; flex-wrap:wrap;*/
+                       width: 200px; height: 200px; 
+                       margin: 0; padding: 0; border-radius: 5px; list-style: none; background-color: #eee; }
+            #dright .box li { margin: 5px; padding: 10px; border-radius: 5px; background: #aaa; text-align: center; }
+        #dright #box { -webkit-align-content: flex-start; align-content: flex-start; }
+        #dright #box2 { -webkit-align-content: flex-end; align-content: flex-end; }
+        #dright #box3 { -webkit-align-content: center; align-content: center; }
+        #dright #box4 { -webkit-align-content: space-between; align-content: space-between; }
+        #dright #box5 { -webkit-align-content: space-around; align-content: space-around; }
+        #dright #box6 { -webkit-align-content: strecth; align-content: strecth; }
+    </style>
+</head>
+<body>
+
+    <pre contenteditable="true" style="font-style: normal; font-variant: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; margin: 15px 0px; font-weight: 100; font-stretch: normal; font-size: 12px; line-height: 18px; font-family: monaco, 'andale mono', 'courier new'; padding: 10px 12px; border-color: rgb(204, 204, 204); border-width: 1px 1px 1px 4px; border-style: solid; box-shadow: rgb(238, 238, 238) 0px 0px 4px; word-break: break-all; word-wrap: break-word; color: rgb(68, 68, 68); background-color: rgb(254, 254, 254);"><span style="color: rgb(17, 119, 0);">
+justify-content</span>: <span style="color: rgb(17, 119, 0);">flex-start</span> <span style="color: rgb(17, 119, 0);">|</span> <span style="color: rgb(17, 119, 0);">flex-end</span> <span style="color: rgb(17, 119, 0);">|</span> <span style="color: rgb(17, 119, 0);">center</span> <span style="color: rgb(17, 119, 0);">|</span> <span style="color: rgb(17, 119, 0);">space-between</span> <span style="color: rgb(17, 119, 0);">|</span> <span style="color: rgb(17, 119, 0);">space-around</span></pre>
+    <ul style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.2000007629395px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+        <br class="Apple-interchange-newline" />
+    </ul>
+    <div id="dleft" style="width: 46%; float: left;">
+        设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。
+        <ul id="box" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h2>justify-content:flex-end</h2>
+        <ul id="box2" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h2>justify-content:center</h2>
+        <ul id="box3" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h2>justify-content:space-between</h2>
+        <ul id="box4" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h2>justify-content:space-around</h2>
+        弹性盒子元素会平均地分布在行里，两端保留子元素与子元素之间间距大小的一半。如果最左边的剩余空间是负数，或该行只有一个伸缩盒项目，则该值等效于'center'。在其它情况下，伸缩盒项目则平均分布，并确保两两之间的空白空间相等，同时第一个元素前的空间以及最后一个元素后的空间为其他空白空间的一半。
+    <ul id="box5" class="box">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+    </ul>
+    </div>
+    <div id="dright" style="width: 46%; float: right;">
+        设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式。
+        <h2>align-content:flex-start</h2>
+        <ul id="box" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+            <li>e</li>
+            <li>f</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+        <h2>align-content:flex-end</h2>
+        <ul id="box2" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+        <h2>align-content:center</h2>
+        <ul id="box3" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+        <h2>align-content:space-between</h2>
+        <ul id="box4" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+        <h2>align-content:space-around</h2>
+        <ul id="box5" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+        如果指定侧轴大小的属性值为'auto'，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照'min/max-width/height'属性的限制。
+        <h2>align-content:strecth</h2>
+        <ul id="box6" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+    </div>
+</body>
+</html>

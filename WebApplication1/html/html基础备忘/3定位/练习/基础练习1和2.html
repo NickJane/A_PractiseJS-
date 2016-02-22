@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .u1 ul { position:relative; width:100%; overflow:hidden; margin:0px;}
+        .u1 li { float:left; list-style:none;
+             height:50px; line-height:50px; width:100px; text-align:center;
+             border:1px solid black;
+             position:relative; 
+             margin-left:-1px; /*关键代码-让边框重合*/
+        }
+        .u1 li:hover { border:1px solid red; z-index:1;}
+
+
+
+        .u2 { border-bottom:1px solid black; 
+               width:100%; margin:0px; height:51px; clear:both;*zoom:1;
+        }
+        .u2 li { float:left; list-style:none;
+             height:50px; line-height:50px; width:100px; text-align:center;
+             border:1px solid blue;
+             position:relative; 
+             margin-left:-1px;/*关键代码-让边框重合*/
+               background-color:white;
+        }
+            .u2 li:hover { border:1px solid red;z-index:1;
+                           border-bottom:none; padding-bottom:1px; 
+            }
+
+        #l1 {border:1px solid red;z-index:1; 
+                           border-bottom:none; padding-bottom:1px;/*关键代码-让边框重合*/ }
+    </style>
+</head>
+<body>
+    <ul class="u1">
+        <li >妙味</li>
+        <li id="l2">欢迎你</li>
+        <li id="l3">妙味课堂</li>
+        <li>欢迎大家</li>
+        <li>妙味</li>
+    </ul>
+
+    <br /><br /><br />
+    <div>
+        <ul class="u2">
+            <li id="l1">妙味</li>
+            <li id="l2">欢迎你</li>
+            <li id="l3">妙味课堂</li>
+            <li>欢迎大家</li>
+            <li>妙味</li>
+        </ul>
+    </div>
+    <br />
+</body>
+</html>

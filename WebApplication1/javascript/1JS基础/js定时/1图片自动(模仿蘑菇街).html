@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="timeAnimation.js"></script>
+    <style type="text/css">
+        body, p, h1, h2, h3, h4, h5, h6, dl, dd { margin: 0; font-size: 12px; /* font-family:XX; */ }
+        ol, ul { list-style: none; padding: 0; margin: 0; }
+        a { text-decoration: none; }
+        img { border: none; vertical-align: top; }
+
+
+        .picbanner { border: 1px solid lightgray; margin: 50px auto; position: relative; height: 400px; width: 500px; overflow: hidden; }
+        .container { overflow: hidden; zoom: 1; position:relative;  height: 400px; width: 500px;  }
+
+        .container_pics { position: absolute; top:0; left:0; }
+
+        .picNav { width: 500px;  margin: 0px auto; zoom:1; overflow:hidden;}
+        .picNav li { background-color:lightblue; margin:5px 10px; text-indent:25px; float:left; height:25px; width:100px; cursor:pointer; }
+        .picNav li.current { background-color:blue; }
+    </style>
+    <script type="text/javascript">
+        function Slider(parms) {
+            var config = {
+                picCount: 0,
+                picWidth: 0,
+                piclist: null,
+                picNav: document.getElementById('picNav')
+                , globalTimer: null //全局控制器, 每两秒切片
+                , picTimer: null//切图的时候控制器
+                , moveTimer:null
+                , CurrentPic: { obj: null, index: 0 }
+                , isMoving:false
+            }
+            config.piclist = document.getElementById('container').getElementsByTagName("div");
+
+            for (var k in (parms || {})) {
+                config[k] = parms[k];
+            }
+
+            this.start = function () {
+                config.CurrentPic = { obj: config.piclist[0], index: 0 };//初始化
+                config.globalTimer = window.setTimeout(goPics, 2000);
+                bindMouseOver(); //bingMouseOut();
+            }
+            var bindMouseOver = function () {
+                var li = config.picNav.getElementsByTagName('li');
+                for (var i = 0; i < li.length; i++) {
+                    li[i].onmouseover = (function (j) {
+                        return function () {
+                            moveToIndex(j);
+                        }
+                    })(i, this);
+                }
+            }
+            var bingMouseOut = function () {
+                var navUl = config.picNav;
+                navUl.onmouseout = function () {
+                    config.globalTimer = window.setTimeout(goPics, 4000);
+                }
+            }
+            var removeMouseOver = function () {
+                var li = config.picNav.getElementsByTagName('li');
+                for (var i = 0; i < li.length; i++) {
+                    li[i].onmouseover = null;
+                }
+            }
+
+            var move = function (obj, callback) {
+                config.isMoving = true;
+                var g_i = 0, _opac = 100;
+                clearInterval(config.picTimer); clearTimeout(config.globalTimer);
+                config.picTimer = window.setInterval(function () {
+                    g_i += 30; _opac = _opac - 10;
+                    obj.style.left = "-" + Math.abs(g_i) + 'px';
+
+                    if (obj.style['opacity'] != undefined)
+                        obj.style.opacity = "0." + _opac;
+                    else {
+                        obj.style.filter = "alpha(opacity=" + _opac + ")";
+                    }
+
+                    if (_opac <= 0) {
+                        clearInterval(config.picTimer); clearTimeout(config.globalTimer);  
+                        obj.style.zIndex = 0;
+                        if (obj.style['opacity'] != undefined)
+                            obj.style.opacity = "1";
+                        else {
+                            obj.style.filter = "alpha(opacity=100)";
+                        }
+                        obj.style.left = "0";
+
+                        config.isMoving = false;
+                        callback();
+                    }
+                }, 20);
+            }
+
+            //图片轮播
+            var goPics = function () {
+                //将所有的图片都放到底部
+                for (var j = 0; j < config.piclist.length; j++) {
+                    config.piclist[j].style.zIndex = 0;
+                }
+                var obj = config.CurrentPic.obj;//得到当前的obj
+                var nextIndex = (config.CurrentPic.index + 1) == config.picCount ? 0 : config.CurrentPic.index + 1;//下一个
+                obj.style.zIndex = 2;//当前的obj置顶
+                config.piclist[nextIndex].style.zIndex = 1; //下一个obj置为第二位    
+                config.CurrentPic = { obj: config.piclist[nextIndex], index: nextIndex };//注册好下一个轮播的图片
+
+                (function setNav() {
+                    var li = picNav.getElementsByTagName('li');
+                    for (var i = 0; i < li.length; i++) {
+                        li[i].className = '';
+                    }
+                    li[config.CurrentPic.index].className = 'current';
+                })();//轮动导航
+
+                //把当前的obj移除, 这样就显示出第二个obj
+                move(obj, function () { config.globalTimer = window.setTimeout(goPics, 2000); });
+            }
+
+            var moveToIndex = function (idx) {
+                //if (config.isMoving) return;
+                //清除所有定时
+                clearTimeout(config.globalTimer); clearTimeout(config.moveTimer); clearInterval(config.picTimer);
+                //给当前的li赋予current类
+                var li = config.picNav.getElementsByTagName('li');
+                for (var j = 0; j < li.length; j++) { li[j].className = ""; }
+                li[idx].className = "current";
+
+
+                for (var j = 0; j < config.piclist.length; j++) {
+                    config.piclist[j].style.zIndex = 0;
+                }
+                var obj = config.CurrentPic.obj;//当前显示的pic, 即为需要动画消失的pic
+                var nextIndex = idx;//下一个就是鼠标所指的那个, 需要显示出来, 将zindex提高为1即可
+                obj.style.zIndex = 2;
+                config.piclist[nextIndex].style.zIndex = 1;
+                config.CurrentPic = { obj: config.piclist[nextIndex], index: nextIndex };//注册好下一个轮播的图片
+                
+                config.moveTimer= setTimeout(function () { move(obj); }, 20);
+            }
+
+        }
+
+        window.onload = function () {
+            var s = new Slider({ picCount: 5, picWidth: 500 });
+            s.start();
+            
+        }
+    </script>
+
+</head>
+<body>
+    <div id="log">1</div>
+    <div>
+        <div class="picbanner">
+            <div style="position: absolute; left: 0; top: 50%; margin-top: -6px; background-color: white; z-index: 1; width:50px; height:20px;">上一页</div>
+            <div id="gonext" style="position: absolute; right: 0; top: 50%; margin-top: -6px; background-color: white; z-index: 1; width:50px; height:20px;">下一页</div>
+            <div class="container" id="container">
+                <div class="container_pics" style="z-index:1;"><img src="1图片自动切换/1.jpg" /></div>
+                <div class="container_pics"><img src="1图片自动切换/2.jpg" /></div>
+                <div class="container_pics"><img src="1图片自动切换/3.jpg" /></div>
+                <div class="container_pics"><img src="1图片自动切换/4.jpg" /></div>
+                <div class="container_pics"><img src="1图片自动切换/5.jpg" /></div>
+            </div>
+        </div>
+        <div class="picNav" id="picNav">
+            <ul>
+                <li class="current">第一个</li>
+                <li>第二个</li>
+                <li>第三个</li>
+                <li>第4个</li>
+                <li>第5个</li>
+                <!--<li>第6个</li>
+                <li>第7个</li>
+                <li>第8个</li>-->
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

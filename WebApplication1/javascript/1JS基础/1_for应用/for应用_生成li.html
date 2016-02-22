@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var c = document.getElementById("container");
+            for (var i = 0; i < 100; i++) {
+                var x_px = (i % 10) * 50 + i%10;
+                var y_px = parseInt((i / 10)) * 50 + parseInt((i / 10));
+                var div = '<div id="div_' + i +
+                            '" style="position:absolute; top:' + y_px + 'px; left:' + x_px +
+                                        'px; width:50px; height:50px; background:url(for应用_生成li.jpg) no-repeat ' +
+                                        '-' + x_px + 'px -' + y_px + 'px;opacity: 0;">' + i
+                           + '</div>';
+                c.innerHTML = c.innerHTML + div;
+            }
+            var divs = c.getElementsByTagName('div');
+            for (var i = 0; i < div.length; i++) {
+                divs[i].onmouseover = function () {
+                    this.style.opacity = 1;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="container" style="position:relative; width:510px; height:510px; background-color:#f1f1f1;">
+
+    </div>
+    <div id="container2">
+
+    </div>
+</body>
+</html>

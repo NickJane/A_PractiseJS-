@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="timeAnimation.js"></script>
+    <style type="text/css">
+        body, p, h1, h2, h3, h4, h5, h6, dl, dd { margin: 0; font-size: 12px; /* font-family:XX; */ }
+        ol, ul { list-style: none; padding: 0; margin: 0; }
+        a { text-decoration: none; }
+        img { border: none; vertical-align: top; }
+
+
+        .picbanner { border: 1px solid lightgray; margin: 50px auto; position: relative; height: 400px; width: 500px; overflow: hidden; }
+        .container { position: relative; overflow: hidden; zoom: 1; width: 20000px; }
+
+        .container_pics { position: relative; overflow: hidden; zoom: 1; float: left; }
+            .container_pics li { position: relative; vertical-align: top; float: left; }
+
+        .picNav { width: 500px;  margin: 0px auto; zoom:1; overflow:hidden;}
+        .picNav li { background-color:lightblue; margin:5px 10px; text-indent:25px; float:left; height:25px; width:100px; cursor:pointer; }
+        .picNav li.current { background-color:blue; }
+    </style>
+    <script type="text/javascript">
+        function Slider(parms) {
+            var config = {
+                picCount: 0,
+                picWidth: 0,
+                picContainer: document.getElementById('container_pics'),
+                picNav: document.getElementById('picNav')
+                , globalTimer: null //全局控制器, 每两秒切片
+                , picTimer: null//切图的时候控制器
+            }
+            for (var k in (parms || {})) {
+                config[k] = parms[k];
+            }
+            
+            this.start = function () {
+                config.globalTimer = window.setTimeout(goPics, 2000);
+                var li = config.picNav.getElementsByTagName('li');
+                for (var i = 0; i < li.length; i++) {
+                    li[i].onmouseover = (function (j) {
+                        return function () {
+                            moveToIndex(j);
+                        }
+                    })(i, this);
+                    li[i].onmouseout = (function (j, obj) {
+                        return function () {
+                            config.globalTimer = window.setTimeout(goPics, 2000);
+                        }
+                    })(i);
+                }
+            }
+
+            //图片轮播
+            var goPics = function () {
+                var c = config.picContainer;//图片轮播的容器
+                var g_i = 0;//初始化轮播的值
+                if (!c.style.left || c.style.left == '0px')
+                    c.style.left = "0px";
+                else
+                    g_i = parseInt(c.style.left);
+
+                (function setNav() {
+                    var li = picNav.getElementsByTagName('li');
+                    for (var i = 0; i < li.length; i++) {
+                        li[i].className = '';
+                    }
+                    var j = Math.abs((parseInt(c.style.left) - (parseInt(c.style.left) % config.picWidth)) / config.picWidth) + 1;
+                    li[j == li.length ? 0 : j].className = 'current';
+                })();//轮动导航
+
+                if (g_i == -((config.picCount - 1) * config.picWidth)) {//如果是最后一个展示项目, 则列表动画到原是位置
+                    config.picTimer = window.setInterval(function () {
+                        g_i += 100;
+                        c.style.left = g_i + 'px';
+                        if (g_i == 0) {
+                            clearInterval(config.picTimer); clearTimeout(config.globalTimer); 
+                            config.globalTimer = window.setTimeout(goPics, 2000);
+                        }
+                    }, 20);
+                    return;//跳出
+                }
+
+                config.picTimer = window.setInterval(function () {
+                    g_i -= 20;
+                    c.style.left = "-" + Math.abs(g_i) + 'px';
+                    if (g_i % config.picWidth == 0) {
+                        clearInterval(config.picTimer); clearTimeout(config.globalTimer); 
+                        config.globalTimer = window.setTimeout(goPics, 2000);
+                    }
+                }, 20);
+            }
+
+            var moveToIndex = function (idx) {
+                var c = config.picContainer;//图片轮播的容器
+                if (!c.style.left || c.style.left == '0px')
+                    c.style.left = "0px";
+
+                clearTimeout(config.globalTimer); clearInterval(config.picTimer);
+
+                var li = config.picNav.getElementsByTagName('li');
+                for (var j = 0; j < li.length; j++) { li[j].className = ""; }
+                li[idx].className = "current";
+
+                var targetLeft = 0 - idx * config.picWidth;
+                var nowLeft = parseInt(c.style.left) - (parseInt(c.style.left) % 100);//必须是一百的整数倍
+
+                config.picTimer = window.setInterval(function () {
+                    nowLeft = (nowLeft < targetLeft) ? nowLeft + 100 : nowLeft - 100;
+                    c.style.left = "-" + Math.abs(nowLeft) + 'px';
+                    if (nowLeft == targetLeft)
+                        clearInterval(config.picTimer);
+                }, 20);
+            }
+
+        }
+
+        window.onload = function () {
+            var s = new Slider({ picCount: 8, picWidth: 500 });
+
+            s.start();
+
+        }
+    </script>
+</head>
+<body>
+    <div id="log"></div>
+    <div>
+        <div class="picbanner">
+            <div style="position: absolute; left: 0; top: 50%; margin-top: -6px; background-color: white; z-index: 1; width:50px; height:20px;">上一页</div>
+            <div id="gonext" style="position: absolute; right: 0; top: 50%; margin-top: -6px; background-color: white; z-index: 1; width:50px; height:20px;">下一页</div>
+            <div class="container">
+                <ul class="container_pics" id="container_pics">
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/1.jpg" /></li>
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/2.jpg" /></li>
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/3.jpg" /></li>
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/4.jpg" /></li>
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/5.jpg" /></li>
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/6.jpg" /></li>
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/7.jpg" /></li>
+                    <li style="position: relative;">
+                        <img src="1图片自动切换/8.jpg" /></li>
+                </ul>
+            </div>
+        </div>
+        <div class="picNav" id="picNav">
+            <ul>
+                <li class="current">第一个</li>
+                <li>第二个</li>
+                <li>第三个</li>
+                <li>第4个</li>
+                <li>第5个</li>
+                <li>第6个</li>
+                <li>第7个</li>
+                <li>第8个</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

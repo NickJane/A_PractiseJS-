@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .w1 { padding:20px; margin:20px; background-color:black;  width:900px; overflow:hidden;}
+            .w1 div { float:left}
+        .w1 .btn{ background:url(img/3/1/boxbg.png) repeat-x; margin-left:15px; }
+        .w1 .btnL { background:url(img/3/1/boxl.png) no-repeat; position:relative; left:-5px;}
+        .w1 .btnR{ background:url(img/3/1/boxr.png) no-repeat right top; position:relative; right:-10px;
+                font-size:13px;height:23px; line-height:23px; padding:0 35px 0 25px;
+        }
+            .w1 .btnR a.current, .w1 .btnR a:hover
+            {  background:url(img/3/1/current.png) no-repeat 48% 17px; display:block; color:red;}
+
+        .w2 { padding:20px; margin:20px; background-color:black;  width:900px; overflow:hidden;}
+            .w2 .box { height:100px; background-color:gray; position:relative;}
+            .w2 .irregular { position:absolute; background-color:red; height:130px; width:100px; left:200px;}
+
+        .w3 { padding: 20px; margin: 20px; background-color: black; width: 900px; }
+            .w3 .box { background:url(img/3/11/boxbg.png) repeat-x; width:700px;}
+            .w3 .boxL{ background:url(img/3/11/boxL.png) no-repeat; position:relative; left:-7px;}
+            .w3 .boxR{ background:url(img/3/11/boxr.png) no-repeat right 0; height:33px; position:relative; right:-14px;}
+        
+            ul { padding:0;  margin:0 0 0 0; *zoom:1;}
+                ul:after { content:""; clear:both; display:block;}
+       
+                这里有一个兼容问题.
+                在IE6下. 浮动元素假如需要内容撑开宽度的话. 恰好内容是block, 择会占满整行,导致换行.
+                所以滑动门的li里面所有的子元素都需要浮动才可以兼容ie6
+        li { list-style:none; float:left; margin-left:12px;  }
+        .inbox { float:left;background:url(img/3/11/inboxbg.png) repeat-x; margin-top:5px;}
+        .inboxL {float:left; background:url(img/3/11/inboxL.png) no-repeat;position:relative; left:-5px;}
+        .inboxR {float:left; background:url(img/3/11/inboxr.png) no-repeat right 0;height:21px; position:relative; right:-9px;}
+            .inboxR a { text-decoration:none; color:gray; padding:0 35px 0 25px; display:block; font-size:12px; 
+                        line-height:21px;}
+        .wenhao { background:url(img/3/11/wenhao.png) no-repeat; width:35px; height:52px;position:relative; top:-11px;}
+    </style>
+</head>
+<body>
+    <div class="w1">
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR">
+                    <a class="current">homedddddddddddddd</a> 
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR">
+                    <a href="#">home</a>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR">
+                    <a href="#">home</a>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR">
+                    <a href="#">home</a>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR">
+                    <a href="#">home</a>
+                </div>
+            </div>
+        </div>
+        <div >
+            <input style="border:1px solid white; width:150px; border-radius:5px; background:url(img/3/1/nonebg.png) repeat-x;"  />
+            <input style="border:1px solid white; width:150px; border-radius:5px; background-color:transparent"  />
+        </div>
+    </div>
+
+    <div class="w2">
+        <div class="box">
+            <div class="irregular">不规则存放处</div>
+        </div>
+    </div>
+
+    <div class="w3">
+        <div class="box">
+            <div class="boxL">
+                <div class="boxR">
+                    <!--<ul>
+                        <li>1</li>
+                        <li>1</li>
+                        <li>1</li>
+                    </ul>-->
+                    <ul>
+                        <li>
+                            <div class="inbox">
+                                <div class="inboxL">
+                                    <div class="inboxR">
+                                        <a>home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="inbox">
+                                <div class="inboxL">
+                                    <div class="inboxR">
+                                        <a>home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="inbox">
+                                <div class="inboxL">
+                                    <div class="inboxR">
+                                        <a>home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="inbox">
+                                <div class="inboxL">
+                                    <div class="inboxR">
+                                        <a>home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="wenhao"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        #div1,#div1_bg { zoom:1; height:50px;  border:1px solid gray; position:relative; top:200px; float:left}
+            #div1 li { list-style:none;  font-size:14px; font-weight:bold; width:60px; text-align:center;
+                       position:relative; top:0; left:0; float:left;
+            }
+        #div1_bg { position:absolute; border:none; background-color:red; width:100px; height:100%; 
+                   top:0; left:0;
+        }   
+
+    </style>
+    <script src="timeAnimation.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var lis = document.getElementById('div1').getElementsByTagName('li');
+            var log = document.getElementById('log');
+
+            var div1_bg = document.getElementById('div1_bg');
+            var fatherwidth = getStyle(document.getElementById('div1'), 'width');
+
+            var go = function () {
+                //alert(1);
+                //div1_bg.style.width = '10px';
+                //return;
+                //this.style.opacity = 0.3;
+                var i = 0;
+                var timer = null;
+                clearInterval(timer);
+                var temobj = this;
+                timer = window.setInterval(function () {
+                    move(lis[i], 50, -200, 'top', (function (j, obj) {
+                                                    return function () {
+                                                            if (j == (lis.length - 1)) {
+                                                                obj.onclick = go;
+                                                                log.innerHTML += 'this' + j;
+                                                                for (var k = 0; k < lis.length; k++) {
+                                                                    lis[k].style.top = '0px';
+                                                                    lis[k].style.left = '0px';
+                                                                    //
+                                                                    if (lis[k].style['opacity'] != undefined)
+                                                                        lis[k].style.opacity = 1;
+                                                                    else
+                                                                        lis[k].style.filter = "alpha(opacity=100)";
+                                                                }
+                                                            }
+                                                        }
+                                                    })(i,temobj)
+                    );
+                    opacity(lis[i], 40, 0, function () { log.innerHTML += "opacity"; });
+
+
+                    i++;
+                    if(i==lis.length)
+                        clearInterval(timer);
+                }, 200);
+                
+
+                
+                var backgroundTimer = null;
+                div1_bg.style.width = '0px';
+                if (div1_bg.style['opacity'] != undefined)
+                    div1_bg.style.opacity = 1;
+                else
+                    div1_bg.style.filter = "alpha(opacity=100)";
+                log.innerHTML = '2222';
+                var width=parseInt( getStyle(div1,'width'));
+                backgroundTimer = window.setInterval(
+                    function () {
+                        div1_bg.style.width = (parseInt(div1_bg.style.width) + 1) + 'px';
+                        if (parseInt(div1_bg.style.width) == parseInt(fatherwidth)) {
+                            clearInterval(backgroundTimer);
+                            opacity(div1_bg, 40, 0, function () { log.innerHTML += "opacity"; });
+
+                        }
+                    }, 1);;
+                this.onclick = null;
+            }
+            document.getElementById('div1').onclick = go;
+
+        }
+    </script>
+</head>
+<body>
+    <div style="height:100px; width:100px; background-color:blue; position:relative;">
+        <span style="width:50%; height:50%; position:absolute; 
+top: 0; left: 0; bottom: 0; right: 0;margin:auto;/*overflow:auto;*/ background-color:red;
+display:block; width:40px; line-height:20px; height:40px;
+">
+            立 即订 购
+        </span>
+    </div>
+    <div id="log" style="background-clip">1:</div>
+    <div id="div1">
+        <div id="div1_bg"></div>
+        <!--<div>+1</div>-->
+        <ul>
+            <li>+1</li><li>+1</li><li>+1</li><li>+1</li><li>+1</li>
+            <li>+1</li><li>+1</li><li>+1</li>
+        </ul>
+    </div>
+</body>
+</html>

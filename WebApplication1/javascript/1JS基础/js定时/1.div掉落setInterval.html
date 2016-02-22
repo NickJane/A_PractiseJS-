@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function getStyle(dom,attr) {
+            return dom.currentStyle ? dom.currentStyle[attr] : getComputedStyle(dom)[attr];
+        }
+        
+        function move(dom, speed,distance, direction, callback) {
+            var step = 20;
+
+            var control = window.setInterval(function () {
+                if (distance > 0) {
+                    dom.style[direction] = (parseInt(getStyle(dom, direction), 10) + 20) + 'px';
+                    if (parseInt(getStyle(dom, direction), 10) > distance) {
+                        clearInterval(control);
+                    }
+                }
+                else {
+                    dom.style[direction] = (parseInt(getStyle(dom, direction), 10) - 20) + 'px';
+                    if (i<0)
+                        clearInterval(control);
+                }
+                if (!control)
+                    callback();
+            }, speed);
+        }
+        window.onload = function () {
+            var dom = document.getElementById('ball');
+            var btns = document.getElementsByTagName('input');
+            btns[0].onclick = function () {
+                dom.style.left = '50px'; dom.style.top = '50px';
+                move(dom, 10, 500, 'left', null);
+            }
+            btns[1].onclick = function () {
+                dom.style.left = '50px'; dom.style.top = '50px';
+                move(dom, 10, 500, 'top', null);
+            }
+            btns[2].onclick = function () {
+                var callback = function () {
+                    move(dom, 10, 500, 'top', callback);
+                }
+                move(dom, 10, 500, 'left', callback);
+            }
+            btns[3].onclick = function () {
+                var str='';
+                for (var i = 0; i < 10; i++) {
+                    str += '<div onclick="drop()" style="position:absolute; left:'+(((i+1)*50) +(i)*10)+'px; top:50px; width:50px; height:50px; background-color:lightblue;">'+i+'</div>';
+                }
+                document.getElementById('dropcontainer').innerHTML += str;
+            }
+        }
+        function drop() {
+            var dropcontainer = document.getElementById('dropcontainer');
+            var divs = dropcontainer.getElementsByTagName('div');
+
+            var timecontrol;
+            var i = 0;
+            timecontrol = window.setInterval(function () {
+                move(divs[i], 20, 300, 'top', null);
+                i++;
+                if(i==divs.length)
+                    clearInterval(timecontrol);
+            }, 100);
+            
+            //for (var i=0; i < divs.length; i++) {
+            //    document.getElementById('log').innerHTML += i + ';';
+            //    var timeout = i * 500;
+            //    (function (i, timeout) {
+            //        window.setTimeout(
+            //            (function (j) {
+            //                return move(divs[j], 20, 300, 'top', null)
+            //            })(i),
+            //            timeout
+            //        );
+            //    })(i,timeout);
+            //}
+            //window.setTimeout(function () {
+            //    move(divs[0], 20, 300, 'top', null)
+            //}, 0 * 500);
+            //window.setTimeout(function () {
+            //    move(divs[1], 20, 300, 'top', null)
+            //}, 1 * 500);
+            //window.setTimeout(function () {
+            //    move(divs[2], 20, 300, 'top', null)
+            //}, 2 * 500);
+        }
+    </script>
+</head>
+<body>
+    <div id="log">1e:</div>
+    <input type="button" value="go right" />
+    <input type="button" value="go down" />
+    <input type="button" value="go around" />
+    <input type="button" value="生成一排div点击掉下去" />
+    <div id="ball" style="position:relative; left:50px; top:50px; width:50px; height:50px; background-color:lightblue;"></div>
+
+    <div id="dropcontainer" style="position:relative; top:150px; border:1px solid red; width:800px; height:600px;"></div>
+</body>
+</html>

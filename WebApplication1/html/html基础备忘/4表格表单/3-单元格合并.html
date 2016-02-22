@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+th,td{padding:0;}
+table{border-collapse:collapse;}
+
+/* table css reset */
+th,td{border:1px solid black; height:50px; width:100px;}
+table{width:500px;}
+/
+
+/* 
+colspan  属性规定单元格可横跨的列数。
+rowspan  属性规定单元格可横跨的行数。
+ */
+
+</style>
+</head>
+<body>
+
+<table><!-- 表格 -->
+	<tbody>
+  	<tr><!-- 行 -->
+    	<th colspan="2">表格标题</th>
+      <th>表格标题</th>
+      <th>表格标题</th>
+      <th>表格标题</th>
+    </tr>
+  	<tr>
+    	<td rowspan="2">单元格</td>
+      <td>单元格</td>
+      <td>单元格</td>
+      <td>单元格</td>
+      <td>单元格</td>
+    </tr>
+    <tr>
+      <td>单元格</td>
+      <td>单元格</td>
+      <td colspan="2" rowspan="3">单元格</td>
+    </tr>
+    <tr>
+    	<td>单元格</td>
+      <td>单元格</td>
+      <td>单元格</td>
+    </tr>
+  	<tr>
+    	<td>单元格</td>
+      <td>单元格</td>
+      <td>单元格</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+</body>
+</html>

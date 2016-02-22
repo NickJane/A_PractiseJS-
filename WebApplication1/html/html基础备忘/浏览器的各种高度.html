@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>aaa</title>
+    <style type="text/css">
+        html, body { margin: 0; padding: 50px; }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            showlog();
+        }
+        window.onresize=function(){
+            showlog();
+        }
+        function showlog() {
+            var str = [];
+            str.push("document.documentElement.clientWidth     " + document.documentElement.clientWidth); str.push("<br>");
+            str.push("document.documentElement.offsetWidth     " + document.documentElement.offsetWidth); str.push("<br>");
+            str.push("document.documentElement.clientHeight     " + document.documentElement.clientHeight); str.push("<br>");
+            str.push("document.documentElement.offsetHeight     " + document.documentElement.offsetHeight); str.push("<br>");
+            str.push("document.body.clientWidth     " + document.body.clientWidth); str.push("<br>");
+            str.push("document.body.clientHeight     " + document.body.clientHeight); str.push("<br>");
+            str.push("document.body.offsetWidth     " + document.body.offsetWidth); str.push("<br>");
+            str.push("document.body.offsetHeight     " + document.body.offsetHeight); str.push("<br>");
+
+            str.push("document.body.scrollWidth     " + document.body.scrollWidth); str.push("<br>");
+            str.push("document.body.scrollHeight     " + document.body.scrollHeight); str.push("<br>");
+
+            str.push("document.body.scrollTop     " + document.body.scrollTop); str.push("<br>");
+            str.push("document.body.scrollLeft     " + document.body.scrollLeft); str.push("<br>");
+            str.push("window.screenTop     " + window.screenTop); str.push("<br>");
+            str.push("window.screenLeft     " + window.screenLeft); str.push("<br>");
+            str.push("window.screen.height     " + window.screen.height); str.push("<br>");
+            str.push("window.screen.width     " + window.screen.width); str.push("<br>");
+            str.push("window.screen.availHeight     " + window.screen.availHeight); str.push("<br>");
+            str.push("window.screen.availWidth     " + window.screen.availWidth); str.push("<br>");
+            document.getElementById("log").innerHTML = str.join("");
+        }
+    </script>
+</head>
+<body style="border:1px solid red;">
+    offsetWidth是可视宽度, 这个宽度包括元素的边框(border)，水平padding，垂直滚动条宽度，元素本身宽度等
+
+    http://my.oschina.net/sunshinewyf/blog/480722
+    <br />
+    http://www.cnblogs.com/fullhouse/archive/2012/01/16/2324131.html
+    <div id="log">
+
+    </div>
+    <h1>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaa</h1>
+    <p>Welcome to aaa</p>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+    <h1>aaa</h1>
+</body>
+</html>
+
+<script type="text/javascript">
+   
+
+    //str.push("$(document     ").height(     ")     "); 
+    //str.push("$(document     ").width(     ")     ");
+</script>

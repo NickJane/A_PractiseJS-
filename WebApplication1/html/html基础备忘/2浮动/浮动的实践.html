@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        .box { width:300px; border: 5px solid black; margin: 0 auto;  }
+        .box1 { border: 5px solid black; margin: 0 auto;  }
+        .div { width: 200px; height: 200px; background-color: red; float: left; }
+        .clear:after { content: ""; background-color: blue; display: block; clear: both; }
+        .clear { *zoom:1; }
+        p { border: 1px solid red; }
+            p:after { content: "hello"; background-color: red; display: block; clear: both; }
+    </style>
+</head>
+<body>
+    <div class="box clear">
+        <div class="div"></div>
+    </div>
+    <br />
+    使用overflow
+    <div class="box1" style="overflow:hidden; zoom:1;">
+        <div class="div"></div>
+    </div>
+</body>
+</html>

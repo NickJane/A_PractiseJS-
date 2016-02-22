@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+    <title>Untitled Document</title>
+    <style type="text/css">
+        * { padding: 0; margin: 0px; font-size: 12px; font-family: Verdana, Geneva, sans-serif, "微软雅黑"; }
+
+        /*每个方块14px的内容+1px的边框=15px*/
+        div[class^=item] { width: 14px; height: 14px; border: 0.5px solid red; display: inline-block; position: absolute; }
+        .item1 { background-color: #f0a000; }
+        /*左L*/
+        .item2 { background-color: #0000f0; }
+        /*右L*/
+        .item3 { background-color: #f0f000; }
+        /*田*/
+        .item4 { background-color: #a000f0; }
+        /*土*/
+        .item5 { background-color: #00f000; }
+        /*左z*/
+        .item6 { background-color: #f00000; }
+        /*右z*/
+        .item7 { background-color: #00f0f0; }
+        /*棍子*/
+
+        #wrap { height: 300px; width: 330px; border: 1px solid red; padding: 5px; margin: 50px; }
+        #sidebar { width: 140px; height: 100%; background-color: #f4efe9; float: left; }
+            #sidebar li { list-style: none; height: 17px; text-align: center; }
+                #sidebar li span { list-style: none; border: 1px solid #e4be95; height: 100%; background-color: #e1d4c0; width: 80px; 
+                                   display: inline-block; cursor:pointer;  }
+
+        #gameboard { width: 180px; border: 1px solid #e1d4c0; height: 300px; float: right; padding: 0; z-index: -2; position: relative; }
+            #gameboard .gb_bg { width: 15px; height: 100%; background-color: #f4efe9; display: inline-block; margin: 0px; float: left; z-index: -1; }
+    </style>
+    <script type="text/javascript">
+        var GlobalVar = { FangKuaiID: 0, MoveHandler: null };
+        var FangKuai = {
+            ZuoL: {
+                bg: '#f0a000',
+                i1: { x: 60, y: 0 },
+                i2: { x: 60, y: 15 },
+                i3: { x: 75, y: 15 },
+                i4: { x: 90, y: 15 }
+            }
+        };
+        //构造方块的html
+        function BuildDivHtml(FangKuai) {
+            GlobalVar.FangKuaiID++;
+            var item = FangKuai;
+            var str = [];
+            for (var i = 1; i < 5; i++) {//每个方块都是四个小方块组成, 因此需要循环4次
+                str.push("<div"); str.push(" name='FangKuaiID"); str.push(GlobalVar.FangKuaiID); str.push("' ");
+                str.push(" class='item' style='background-color:"); str.push(item.bg); str.push("; left:");
+                str.push(item['i' + i].x); str.push('px;top:'); str.push(item['i' + i].y); str.push("px;'></div>")
+            }
+            return str.join("");
+        }
+
+        var creatItem = function () {
+            var div = parseStringToHTML(BuildDivHtml(FangKuai.ZuoL));
+            document.getElementById('gameboard').appendChild(div);
+
+            GlobalVar.MoveHandler = setTimeout("Move('FangKuaiID" + GlobalVar.FangKuaiID + "')", 1000);
+        }
+        function Move(domname) {
+            var divs = document.getElementsByName(domname);
+            var divs4Y = Number(divs[3].style.top.toString().replace('px', '')) + 15;
+            //document.getElementById('show').innerHTML = divs4Y + '  ' + document.getElementById('gameboard').offsetHeight
+            if ((divs4Y) > document.getElementById('gameboard').offsetHeight-10)
+                return;
+
+            for (var i = 0; i < divs.length; i++) {
+                var div = divs[i];
+                var top=Number( div.style.top.toString().replace('px',''));
+                div.style.top = (top + 15) + 'px';
+            }
+            setTimeout("Move('FangKuaiID" + GlobalVar.FangKuaiID + "')", 1000);
+        }
+    </script>
+
+    <script type="text/javascript">
+        
+
+    </script>
+
+    <script type="text/javascript">
+        function parseStringToHTML(text) {
+            var i, a = document.createElement("div"),
+                b = document.createDocumentFragment();
+            a.innerHTML = text;
+            while (i = a.firstChild) b.appendChild(i);
+            return b;
+        }
+    </script>
+</head>
+<body>
+    <div style="position: relative">
+        颜色备忘
+        <div class="item1"></div>
+        <div class="item2"></div>
+        <div class="item3"></div>
+        <div class="item4"></div>
+        <div class="item5"></div>
+        <div class="item6"></div>
+        <div class="item7"></div>
+    </div>
+    <div id="show"></div>
+    <div id="wrap">
+        <div id="sidebar">
+            <p style="line-height: 30px; text-align: center">elsfk</p>
+            <div>
+                <ul>
+                    <li><span onclick="creatItem();">Start</span></li>
+                    <li><span>Reset</span></li>
+                    <li><span>Highscores</span></li>
+                    <li><span>About</span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="gameboard">
+            
+            <div class="gb_bg" style="margin: 0 0 0 15px;"></div>
+            <div class="gb_bg" style="margin: 0 0 0 15px;"></div>
+            <div class="gb_bg" style="margin: 0 0 0 15px;"></div>
+            <div class="gb_bg" style="margin: 0 0 0 15px;"></div>
+            <div class="gb_bg" style="margin: 0 0 0 15px;"></div>
+            <div class="gb_bg" style="margin: 0 0 0 15px;"></div>
+        </div>
+    </div>
+</body>
+</html>

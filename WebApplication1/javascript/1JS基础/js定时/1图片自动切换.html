@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        body, p, h1, h2, h3, h4, h5, h6, dl, dd { margin: 0; font-size: 12px; /* font-family:XX; */ }
+        ol, ul { list-style: none; padding: 0; margin: 0; }
+        a { text-decoration: none; }
+        img { border: none; vertical-align: top; }
+        .container { overflow:hidden;border: 1px solid lightgray; padding: 3px; width: 500px; height: 400px; margin: 0 auto; position: relative; }
+
+        #container_pics { position:relative;}
+        #container_pics li{ position:relative;vertical-align:top; }
+        
+        #container_word { position: absolute; bottom: 0; width: 500px;; height: 100px; color: white; }
+            #container_word .opacityBg { position: absolute; top: 0; left: 0; height: 100%; width: 100%; 
+                                         background-color: black; opacity: 0.5; z-index: 1; filter:alpha(opacity=50) }
+        #container_content { position:relative; z-index:5;} /*需要相对定位 z-index才生效*/
+            #container_content h3 { font-size: 18px; line-height: 40px; text-indent: 20px; }
+            #container_content p { font-size: 12px; line-height: 20px; text-indent: 20px; padding: 0 10px; }
+    </style>
+    <script type="text/javascript">
+        var data = [
+            { imgUrl: '1图片自动切换/5.jpg', title: '长沙火车南站东广场春运迎客 明年9月才能全', 
+                detail: '11月27日，持续19年的长沙走马楼三国简牍保护整理项目通过验收，而这些简牍中所记载的内容，则向世人再现了三国时期真实的长沙生活。' }
+            , { imgUrl: '1图片自动切换/6.jpg', title: '持续19年的长沙走马楼三国简', detail: '11月27日，持续19年的长沙走马楼三国简牍保护整理项目通过验收，而这些简牍中所记载的内容，则向世人再现了三国时期真实的长沙生活。' }
+            , { imgUrl: '1图片自动切换/7.jpg', title: '而这些简牍中所记载的内容', detail: '11月27日，持续19年的长沙走马楼三国简牍保护整理项目通过验收，而这些简牍中所记载的内容，则向世人再现了三国时期真实的长沙生活。' }
+        ];
+        function slider() {
+            var htmls = '';
+            for (var i = 0; i < 3; i++) {
+                htmls += "<li onclick='go(this)'><img src='"+data[i].imgUrl+"' title=''></img></li>";
+            }
+            document.getElementById('container_pics').innerHTML = htmls;
+            //go();
+        }
+        function go() {
+            var father = document.getElementById('container_pics');
+            var lis = father.getElementsByTagName('li');
+
+            var obj = lis[0];
+            var nextObj = obj.nextSibling;
+            nextObj.style.position = 'absolute';
+            nextObj.style.top = '0';
+            nextObj.style.left = '500px';
+
+            var i=0;
+            var timer= window.setInterval(function () {
+                i += 5;
+                obj.style.left = '-' + i + "px";
+                nextObj.style.left = (500 - i) + "px";
+
+                if (i == 500) {
+                    obj.style.left = '0';
+                    father.removeChild(obj);
+                    father.appendChild(obj);
+                    nextObj.style.position = 'relative';
+                    //nextObj.style.position = 'absolute';
+                    clearInterval(timer);
+                    //window.setTimeout(go, 1500);
+                }
+            },2);
+        }
+
+        window.onload = function () {
+            slider();
+        }
+    </script>
+</head>
+<body>
+    <div id="log"></div>
+    <div class="container">
+        <ul id="container_pics">
+            <li><a href="#">
+                <img src="1图片自动切换/6.jpg" />
+            </a></li>
+        </ul>
+        <div id="container_word">
+            <div id="container_content" class="clear" >
+                <h3 class="title">扫毒 可以免费看啦</h3>
+                <p class="detail">11月27日，持续19年的长沙走马楼三国简牍保护整理项目通过验收，而这些简牍中所记载的内容
+                    ，则向世人再现了三国时期真实的长沙生活。</p>
+            </div>
+            <div class="opacityBg"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+/*
+    内联标签 
+    1 同行可以继续跟同类型标签 2内容撑开宽度. 3不支持设置宽高 
+    4不支持上下的margin和padding. 5代码换行被解析
+    块标签
+    1独占一行. 2没有宽度的时候撑满一排.
+
+    inline-block, 可以让元素同时具备行内显示和快元素的特点
+    缺点: 代码换行解析为空格
+    IE67不能解析 需要在标准写法后加上*zoom:1;*display:inline;
+
+    注意!! p标签里不能使用块标签. 内联元素里不能使用块标签
+
+    常见的默认样式重置
+    body,p,h1,h2,h3,h4,h5,h6,dl,dd{margin:0; font-size:12px;/* font-family:XX; }
+    这几个生来就有margin, 初始化的时候默认给0
+    ol,ul, 天生有margin padding. 给归零
+    a 下划线去掉. img border去掉 valign-:top;
+
+
+
+
+    清理浮动最佳实践
+    .clear:after { content: ""; background-color: blue; display: block; clear: both; }
+    .clear { *zoom:1; } IE6hack  在IE6里 如果父级元素设置了宽度. 那么就可以不用清理浮动
+    使用overflow清除浮动
+    需要配合父级元素设置宽度和overflow:hidden
+    IE67需要加上zoom:1
+    IE6下如果父元素浮动了. 子元素最好都浮动
+
+    IE6双边距
+     触发条件 1、要为块状元素； 2、要左侧浮动；3、要有左外边距（margin-left）。
+    hack:  在那个元素的最后加上 *display:inline; 
+
+    ie 67的li的间隙问题: ie 6,7 下li本身没浮动, 但是内容浮动了. 就会多出几个px的间隙
+    <em>给li加上vertical-align:middle;就可以了</em><strong>这个属性除了用来清除li的空隙之外. 主要用来清理图片下面的空隙</strong>
+    Li间隙和最小高度同时出现  float:left; overflow:hidden;
+
+    ie6下最小高度问题. 显示设置元素高度小于19px; 高度会被当作19像素来处理
+    使用overflow:hidden;处理
+    */
+
+
+/*
+    使用多次的hack汇总
+    *zoom:1
+        IE67不能识别 inline-block 需要 *zoom:1; *display:inline;写在最后
+        清理浮动 .clear{*zoom:1;}
+        margin-top传递问题, 父级加
+    *display:inline
+        IE67不能识别 inline-block IE67不能识别 inline-block IE67不能识别 inline-block 
+        需要 *zoom:1; *display:inline;写在最后
+        IE6双边距.  在margin=2x那个元素的最后加上 *display:inline; 
+    vertical-align:middle;
+        ie67下li内容浮动的时候, li之间有间隙
+        图片撑开父级元素的时候下面有间隙
+        vertical-align只有元素是inline(img就是), inlineblock的显示才有用
+
+    overflow:hidden
+        清理浮动: 如果父级元素设置了宽度. 可以用这个清除浮动, 配上overflow:hidden兼容ie67
+        ie6的最小高度:显示设置元素高度小于19px; 高度会被当作19像素来处理 使用overflow:hidden;处理
+        margin-top传递问题, 父级加
+        Li间隙和最小高度同时出现  float:left; overflow:hidden;
+    */
+
+/*
+    元素的宽度由内容撑开. 做滑动门的东西
+	display:inline; 不支持高度
+	display:inline-block; 不支持ie6 
+	float 浮动 首选
+	position:absolute
+	position:fixed
+    */
+    </style>
+</head>
+<body>
+    常用内联标签
+    <a href="#">a标签（链接，下载，锚点）</a>
+    <img src="1.png" alt="" />
+    <a href="#">
+        <img src="1.png" alt="" /></a>
+    <span>区分样式</span>
+    <strong>强调（粗体）</strong>
+    <em>强调（斜体）</em>
+
+    <br /><br />
+    常用块标签
+    <h1></h1><h2></h2>
+    <div></div><p></p><ol></ol><ul></ul><dl><dt></dt><dd></dd></dl>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css" id="grow">
+        #dgrow .box { display: -webkit-flex; display: flex; width: 600px; margin: 5px; padding: 0px; list-style: none; background-color: #eee; }
+            #dgrow .box li {  height: 100px; border: 0px solid #aaa; text-align: center; }
+            #dgrow #box li { -webkit-flex-grow: 1; flex-grow: 1; }
+        /*#dgrow #box li:nth-child(2) { -webkit-flex-grow: 1; flex-grow: 1; }*/
+        #dgrow #box li:nth-child(3) { -webkit-flex-grow: 2; flex-grow: 2; }
+    </style>
+</head>
+<body>
+    <div id="dgrow">
+        宽是600, 未显示设置flexgrow的元素则默认为0, 取width=100px; 五个li三个未显示. 那么剩余300px由两个li分配. <br />
+        1:2. 那么
+        <ul id="box" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <!--<li>d</li>
+            <li>e</li>-->
+        </ul>
+    </div>
+</body>
+</html>

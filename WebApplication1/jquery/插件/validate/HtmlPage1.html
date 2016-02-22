@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#form1').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 2
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    }
+                }
+                , messages: {
+                    username: {
+                        required: "Please enter a username",
+                        minlength: "Your username must consist of at least 2 characters"
+                    },
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    }
+                }
+            });
+        });
+
+        function save() {
+            $('#form1').validate();
+            $('#form1').valid();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form id="form1">
+            <div>username : <input type="text" name="username" id="username" /></div>
+            <div>password : <input type="text" name="password" id="password" /></div>
+            <button onclick="save()">提交</button>
+        </form>
+    </div>
+</body>
+</html>

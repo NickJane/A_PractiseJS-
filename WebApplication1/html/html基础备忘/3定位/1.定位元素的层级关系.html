@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .box1 { height:100px; width:100px; background-color:red; position:absolute;}
+        .box2 { height:200px; width:200px; background-color:blue; 
+                position:relative;
+                /*这里设置了position属性. 那么box1就会看不见. 
+                    定位属性之间有层级关系. 后设置的级别较高*/
+        }
+        .box3 { height:100px; width:100px; background-color:green;}
+    </style>
+</head>
+<body>
+    <span class="box1">box1</span>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+</body>
+</html>

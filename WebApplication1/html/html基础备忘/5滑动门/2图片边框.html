@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        #divfloat .boxh { float: left; background: url(img/2/boxh.png) repeat-x; }
+        #divfloat .boxhl { float: left; background: url(img/2/boxhl.png) no-repeat left 0px; }
+        #divfloat .boxhr { overflow: hidden; float: left; background: url(img/2/boxhr.png) no-repeat right 0px; height: 9px; width: 200px; }
+        #divfloat .boxcontent { clear: both; *zoom: 1; float: left; width: 198px; height: 100px; border-left: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5; }
+        #divfloat .boxf { clear: both; *zoom: 1; float: left; background: url(img/2/boxf.png) repeat-x; }
+        #divfloat .boxfl { float: left; background: url(img/2/boxfl.png) no-repeat left 0px; }
+        #divfloat .boxfr { overflow: hidden; float: left; background: url(img/2/boxfr.png) no-repeat right 0px; height: 9px; width: 200px; }
+
+        #divright { clear: both; *zoom: 1; margin:250px;}
+            #divright .boxh {  background: url(img/2/boxh.png) repeat-x; width: 400px; }
+            #divright .boxhl { background: url(img/2/boxhl.png) no-repeat left 0px; }
+            #divright .boxhr { overflow: hidden; background: url(img/2/boxhr.png) no-repeat right 0px; height: 9px; }
+            #divright .boxcontent { clear: both; *zoom: 1; width: 398px; height: 100px; border-left: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5; }
+            #divright .boxf { clear: both; *zoom: 1; background: url(img/2/boxf.png) repeat-x; width: 400px; }
+            #divright .boxfl { background: url(img/2/boxfl.png) no-repeat left 0px; }
+            #divright .boxfr { overflow:hidden; background: url(img/2/boxfr.png) no-repeat right 0px; height: 9px; }
+    </style>
+</head>
+<body>
+    最外面的容器撑开宽度(或者由最里面的content撑开). 最里面的content容器撑开高度 
+    <div style="width:200px; height:100px; background-color:lightgreen;"></div>
+    <div style="width:200px; height:100px; background-color:lightblue; margin-top:50px;"></div>
+    <div id="divfloat">
+        <div class="boxh">
+            <div class="boxhl">
+                <div class="boxhr">
+                </div>
+            </div>
+        </div>
+        <div class="boxcontent">
+        </div>
+        <div class="boxf">
+            <div class="boxfl">
+                <div class="boxfr">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divright">
+        <div class="boxh">
+            <div class="boxhl">
+                <div class="boxhr">
+                </div>
+            </div>
+        </div>
+        <div class="boxcontent">
+        </div>
+        <div class="boxf">
+            <div class="boxfl">
+                <div class="boxfr">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

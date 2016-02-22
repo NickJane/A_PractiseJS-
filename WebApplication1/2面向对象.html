@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //function User(properties) {
+        //    for (var p in properties) {
+        //        //(function (which) {
+        //        //    which['get' + p] = function () {
+        //        //        return properties[p];
+        //        //    }
+        //        //    which['set' + p] = function (val) {
+        //        //        properties[p] = val;
+        //        //    }
+        //        //})(this);
+        //        this['get' + p] = function () {
+        //            return properties[p];
+        //        }
+        //        this['set' + p] = function (val) {
+        //            properties[p] = val;
+        //        }
+        //    }
+        //}
+        //var user = new User({ name: 'Bb', age: 22 });
+
+    </script>
+    <script>
+        
+        
+        window.onload = function () {
+            alert(getReturn1()); //output undefined
+            alert(getReturn2()); //output object
+        }
+
+        function getReturn1() {//这里会自动插入分号，等于返回一个 undefined
+            return
+            {
+                state: true
+            };
+        }
+        function getReturn2() {
+            return
+            {
+                state: true
+            } //这样才能得到这个json对象
+        }
+
+    </script>
+    <style type="text/css">
+        .Wrapper { margin-bottom:10px;}
+        .box { border:3px solid yellow; height:30px; width:30px;}
+            .box input { opacity:0;}
+    </style>
+</head>
+    
+<body>
+    <div class="Wrapper">
+        <div class="box">
+            <input type="radio" checked="checked" id="r1" name="1" /><span>8</span>
+        </div>
+        <label for="r1">choose 1</label>
+    </div>
+    <div class="Wrapper">
+        <div class="box">
+            <input type="radio" id="r2" name="1" /><span>1</span>
+        </div>
+        <label for="r2">choose 1</label>
+    </div>
+</body>
+</html>

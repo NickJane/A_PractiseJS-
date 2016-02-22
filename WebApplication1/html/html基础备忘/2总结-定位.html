@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        /*
+            文档流,  元素在文档中本来占据的位置
+            float 会使元素脱离文档流, 即为原来元素的位置没有了. 会让本来元素位置的后面的元素顶上来
+            不过float元素的浮动是以父级元素进行的
+
+            position: relative
+            1 不影响元素本身的特性 内联还是内联, 块还是块
+            2 不使元素脱离文档流. 元素在文档中本来占据的位置依然存在
+            3 让元素变成定位元素 获得位置控制 top/left/bottom/right
+            
+            position: absolute
+            1. 元素完全脱离文档流 (以html为父级 或者 找 position:relative的父级)
+            2. 内联元素支持宽高 相当于inlineblock了
+            3. 块属性如果没有设置宽度, 那么宽度将由内容撑开 (和float元素一致)
+            4. 相对定位一般都是配合绝对定位元素使用；
+
+
+            定位属性之间有层级关系. 后设置的级别较高 (见1.定位元素的层级关系.html)
+            显式用z-index控制
+
+
+            
+
+            position:absolute; 绝对定位元素子级的浮动可以不用写清浮动方法；
+
+            position:fixed;  固定定位元素子级的浮动可以不用写清浮动方法；（IE6不兼容）
+
+            */
+
+        /*
+            兼容
+            opacity: 0.3; filter: alpha( opacity:30); 
+            position:relative;在 IE6 下父级的 overflow:hidden; 包不住子级的relative;
+            position:absolute;
+	        在 IE6 下定位元素的父级宽高都为奇数那么在 IE6 下定位元素的 right 和 bottom 都有1像素的偏差。
+
+            ie6 下只支持a元素的hover
+
+            */
+    </style>
+</head>
+<body>
+
+</body>
+</html>

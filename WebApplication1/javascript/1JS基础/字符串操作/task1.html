@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .container { margin:50px auto; border:1px solid gray; width:800px; overflow:hidden}
+            .container > div { float:left;margin:20px;}
+        .left,.right {  width:300px; height:300px; background-color:lightgray; }
+        .middle { width:80px; height:300px; }
+        textarea { width:100%; height:100%; background-color:transparent }
+    </style>
+    <script type="text/javascript">
+        function transfer() {
+            var txt = document.getElementById('txt');
+            var show = document.getElementById('show');
+            var i = 0, len = txt.value.length;
+            
+            var timer = window.setInterval(function () {
+                
+                    var v = txt.value.charAt(0);
+                    show.innerHTML += v;
+                    if (txt.value.length == 1) txt.value = "";
+                    else
+                        txt.value = txt.value.substr(1);
+                
+                if (txt.value.length == 0)
+                    window.clearInterval(timer);
+            }, 100);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <textarea id="txt">习近平为何选择这个日子谋新篇？
+经济发展长期向好 论述互联网发展中国主张 网络空间新秩序
+李克强祝贺中泰铁路项目启动 谈判难点| 乌镇锋会 乌镇倡议
+大龄夫妇扎堆尝试试管二孩 年龄最大59岁
+中国人成泰国试管婴儿生意主力军 包生男孩 无结婚证都可做
+母亲让女儿用父亲医保卡买药 母女均获刑
+为母亲配药34次报销万余元 双倍罚款 因母亲保险报销比例小
+印尼一客轮遇险 警方称船或仍浮在海面
+118人生死未卜 曾遭恶劣海况致引擎失灵 目前客轮已被定位
+一教师猥亵多名幼女 受害者与其多是亲戚
+性侵行为已有20余年| 追问：为何性侵儿童罪犯容易逍遥法外？</textarea>
+        </div>
+        <div class="middle">
+            <input type="button" onclick="transfer()" value="文字搬家" />
+            <br />
+            <span id="showProcess"></span>
+        </div>
+        <div id="show" class="right"></div>
+    </div>
+</body>
+</html>

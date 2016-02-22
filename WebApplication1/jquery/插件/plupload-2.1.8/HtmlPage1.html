@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/jquery/插件/plupload-2.1.8/js/plupload.full.min.js"></script>
+    <script src="/jquery/插件/plupload-2.1.8/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+    <script src="/jquery/插件/plupload-2.1.8/js/i18n/zh_CN.js"></script>
+    <style type="text/css">
+        .fd-view .plupload_button { display: -moz-inline-box; /* FF < 3*/ display: inline-block; font: normal 12px sans-serif; text-decoration: none; color: #42454a; border: 1px solid #bababa; padding: 2px 8px 3px 20px; }
+        /*.fd-view #flash_uploader { margin-left: auto; margin-right: auto; }*/
+
+        .fd-view .plupload_wrapper { font: normal 11px Verdana,sans-serif; width: 100%; }
+
+        .fd-view .plupload_button:hover { color: #000; text-decoration: none; }
+
+        .fd-view .plupload_disabled, a.plupload_disabled:hover { color: #737373; border-color: #c5c5c5; background: #ededed url('images/buttons-disabled.png') no-repeat 0 center; cursor: default; }
+
+        .fd-view .plupload_add { background-position: -181px center; }
+
+
+        .fd-view .plupload_header { background: #2A2C2E url('images/backgrounds.gif') repeat-x; }
+
+        .fd-view .plupload_filelist { margin: 0; padding: 0; list-style: none; }
+
+        .fd-view .plupload_scroll .plupload_filelist { height: 300px; background: #F5F5F5; overflow-y: scroll; }
+
+        .fd-view .plupload_filelist li { padding: 10px 8px; background: #F5F5F5 url('images/backgrounds.gif') repeat-x 0 -156px; border-bottom: 1px solid #DDD; }
+
+        .fd-view .plupload_filelist_header, .plupload_filelist_footer { background: #DFDFDF; padding: 8px 8px; color: #42454A; }
+
+        .fd-view .plupload_filelist_header { border-top: 1px solid #EEE; border-bottom: 1px solid #CDCDCD; }
+
+        .fd-view .plupload_filelist_footer { border-top: 1px solid #FFF; height: 35px; line-height: 20px; vertical-align: middle; }
+
+        .fd-view .plupload_file_name { float: left; overflow: hidden; }
+
+        .fd-view .plupload_file_status { color: #777; }
+
+            .fd-view .plupload_file_status span { color: #42454A; }
+
+        .fd-view .plupload_file_size, .plupload_file_status, .plupload_progress { float: right; width: 80px; }
+
+        .fd-view .plupload_file_size, .plupload_file_status, .plupload_file_action { text-align: right; }
+
+        .fd-view .plupload_filelist .plupload_file_name { width: 205px; }
+
+        .fd-view .plupload_file_action { float: right; width: 16px; height: 16px; margin-left: 15px; }
+
+            .fd-view .plupload_file_action * { display: none; width: 16px; height: 16px; }
+
+        .fd-view li.plupload_uploading { background: #ECF3DC url('images/backgrounds.gif') repeat-x 0 -238px; }
+
+        .fd-view li.plupload_done { color: #AAA; }
+
+        .fd-view li.plupload_delete a { background: url('images/delete.gif'); }
+
+        .fd-view li.plupload_failed a { background: url('images/error.gif'); cursor: default; }
+
+        .fd-view li.plupload_done a { background: url('images/done.gif'); cursor: default; }
+
+        .fd-view .plupload_progress, .plupload_upload_status { display: none; }
+
+        .fd-view .plupload_progress_container { margin-top: 3px; border: 1px solid #CCC; background: #FFF; padding: 1px; }
+
+        .fd-view .plupload_progress_bar { width: 0px; height: 7px; background: #CDEB8B; }
+
+        .fd-view .plupload_scroll .plupload_filelist_header .plupload_file_action, 
+                 .plupload_scroll .plupload_filelist_footer .plupload_file_action 
+        { margin-right: 17px; }
+
+        .fd-view .plupload_clear, .plupload_clearer { clear: both; }
+
+        .fd-view .plupload_clearer, .plupload_progress_bar { display: block; font-size: 0; line-height: 0; }
+
+        .fd-view li.plupload_droptext { background: transparent; text-align: center; vertical-align: middle; border: 0; line-height: 165px; }
+
+
+
+        .fd-view .d-close { margin-left: auto; margin-right: auto; width: 600px; height: 25px; position: relative; }
+
+            .fd-view .d-close a { float: right; font-family: arial; font-size: 15px; _font-size: 12px; font-weight: 700; color: #999; text-decoration: none; margin-right: 6px; }
+    </style>
+    <script type="text/javascript">
+        plupload.addI18n({ "Stop Upload": "Stop Upload", "Upload URL might be wrong or doesn't exist.": "Upload URL might be wrong or doesn't exist.", "tb": "tb", "Size": "Size", "Close": "Close", "Init error.": "Init error.", "Add files to the upload queue and click the start button.": "Add files to the upload queue and click the start button.", "Filename": "Filename", "Image format either wrong or not supported.": "Image format either wrong or not supported.", "Status": "Status", "HTTP Error.": "HTTP Error.", "Start Upload": "Start Upload", "mb": "mb", "kb": "kb", "Duplicate file error.": "Duplicate file error.", "File size error.": "File size error.", "N\/A": "N\/A", "gb": "gb", "Error: Invalid file extension:": "Error: Invalid file extension:", "Select files": "Select files", "%s already present in the queue.": "%s already present in the queue.", "File: %s": "File: %s", "b": "b", "Uploaded %d\/%d files": "Uploaded %d\/%d files", "Upload element accepts only %d file(s) at a time. Extra files were stripped.": "Upload element accepts only %d file(s) at a time. Extra files were stripped.", "%d files queued": "%d files queued", "File: %s, size: %d, max file size: %d": "File: %s, size: %d, max file size: %d", "Drag files here.": "Drag files here.", "Runtime ran out of available memory.": "Runtime ran out of available memory.", "File count error.": "File count error.", "File extension error.": "File extension error.", "Error: File too large:": "Error: File too large:", "Add Files": "Add Files" });
+        $(function () {
+            $g_totalSize = 0;
+            $("#flash_uploader").pluploadQueue({
+                //runtimes: 'flash', 	//使用Flash插件
+                max_file_count: 10,
+                url: "", 	//服务器端响应页面
+                max_file_size: '@(ViewBag.MaxFileSize)mb', //最大文件限制
+            chunk_size: '200kb', 	//一次上传数据大小
+            unique_names: true, 	//是否自动生成唯一名称
+            filters: [				//文件类型限制
+                { title: "全部文件", extensions: "@ViewBag.filters" }
+            ],
+
+
+            // 缩放图片
+            resize: { quality: 80 },
+
+            // SWF文件位置
+            flash_swf_url: '/Administration/Scripts/plupload/Moxie.swf',
+
+            init: {
+                FileUploaded: function (up, file, info) {
+                    var result = $.parseJSON(info.response);
+                    if (!result.error) {
+                        $.ajax({
+                            cache: false,
+                            url: "",
+                            type: 'POST',
+                        data: { id: file.target_name, filename: file.name, filesize: file.origSize },
+                        //data: { filename: result.data.filename, filetype: result.data.filetype, fileSize: result.data.fileSize },
+                        success: function (data) {
+                            if (!data.error) {
+                                $s_upfilecount--;
+                                if ($s_upfilecount == 0) {
+                                    location.reload();
+                                }
+                            } else {
+                                bootbox.Alert(data.message);
+                            }
+                        },
+                        error: function (e) { bootbox.Alert(e) }
+                    });
+                } else {
+                        bootbox.Alert(result.message);
+            }
+        },
+            StateChanged: function (up) {
+                //var canuploadSize = 100000;
+
+
+                //bootbox.Alert("已传大小"+$s_bysize + "上传大小" + $g_totalSize + '总容量' + $s_sizecount);
+
+
+                if (parseInt($g_totalSize) > 0) {
+                    if (($g_totalSize + $s_bysize) > $s_sizecount) {
+                        up.state = plupload.STOPPED;
+                        bootbox.Alert('@T("Admin.FileUpload.Fullcapacity")');
+                    } else {
+                        up.state = plupload.STARTED;
+                    }
+                } else {
+                    bootbox.Alert('@T("Admin.FileUpload.Uploadthefileistoolarge")');
+                    up.state = plupload.STOPPED;
+                }
+            },
+        FilesAdded: function (up, files) {
+            for (var i = 0; i < files.length; i++) {
+                var sizevalue = files[i].size;
+                if (sizevalue > 0) {
+                    if (sizevalue < $s_sizecount) {
+                        $g_totalSize += sizevalue;
+                    }
+                    else {
+                        $s_upfilecount = $s_upfilecount - 1;
+                    }
+                }
+                else {
+                    $g_totalSize = Math.abs($g_totalSize) - Math.abs(sizevalue);
+                    bootbox.Alert(files[i].name + " 为空文件或过大,已移除!");
+                    //bootbox.Alert(files[i].name + "@T("Admin.FileUpload.Thefileistoolargehavebeenremoved")");
+                    up.removeFile(files[i]);
+                }
+            }
+            $s_upfilecount += files.length;
+        },
+        FilesRemoved: function (up, files) {
+            $s_upfilecount--;
+            plupload.each(files, function (file) {
+                $g_totalSize = $g_totalSize - file.size;
+            });
+        },
+        UploadComplete: function (up, files) {
+            // Called when all files are either uploaded or failed
+            //log('[UploadComplete]');
+            bootbox.Alert('@T("Admin.FileUpload.Theuploadiscomplete")');
+        },
+        Error: function (up, args) {
+            if (args.message == "FileSizeError") {
+                bootbox.Alert('@T("Admin.FileUpload.UpFileMaxMsg") @(ViewBag.MaxFileSize)mb');
+            } else if (args.message == "FileExtensionError") {
+                bootbox.Alert("文件格式错误");
+            }
+            return false;
+
+            //发生错误
+            //if (args.file) {
+            //    bootbox.Alert('[error] File:' + args.file);
+            //} else {
+            //    bootbox.Alert('[error]' + args);
+            //}
+        }
+        }
+        });
+
+        //$.ajax({
+        //    cache: false,
+        //    url: "@Url.Action("QueryFileSize", "FileUpload")",
+        //    type: 'POST',
+        //success: function (data) {
+        //    if (!data.error) {
+        //        $("#Uprogre").css("width", data.data.size + "%");
+        //        $("#sizecount").html("共 " + data.data.sizeCountName);
+        //        $s_bysize = data.data.bysize;
+        //        $("#Uprogre").html(data.data.size + "%");
+        //        $s_sizecount = data.data.sizeCount;
+        //    } else {
+        //        $("#sizecount").html(data.data.sizeCountName);
+        //        $s_sizecount = data.data.sizeCount;
+        //    }
+        //},
+        //datatype: 'json',
+        //    error: function (e) { bootbox.Alert(e) }
+        //});
+        //});
+    </script>
+</head>
+<body>
+    <div class="fd-view" id="d-upload">
+        <div id="flash_uploader" style="position: relative;">
+            
+        </div>
+    </div>
+
+</body>
+</html>

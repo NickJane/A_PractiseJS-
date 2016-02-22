@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        body, p, h1, h2, h3, h4, h5, h6, dl, dd { margin: 0; font-size: 12px; /* font-family:XX; */ }
+        ol, ul { list-style: none; padding: 0; margin: 0; }
+        a { text-decoration: none; }
+        img { border: none; vertical-align: top; }
+
+        ul { float:left; position:relative;}
+        li { list-style:none; float:left; width:122px; height:172px; overflow:hidden; margin-left:1px; position:relative; left:0; right:0;}
+        .pic_container{ width:100%; zoom:1; overflow:hidden; position:relative; left:0; right:0; height:344px;}
+            .pic_container div{ float:left;}
+        </style>
+    <script type="text/javascript">
+        function showDate() {
+            var getnow = function () {
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = now.getMonth() + 1;
+                var date = now.getDate();
+                var iWeek = now.getDay();
+
+                var hour = now.getHours();
+                var mi = now.getMinutes();
+                var se = now.getSeconds();
+
+                if (iWeek === 0) iWeek = '星期日';
+                if (iWeek === 1) iWeek = '星期一';
+                if (iWeek === 2) iWeek = '星期二';
+                if (iWeek === 3) iWeek = '星期三';
+                if (iWeek === 4) iWeek = '星期四';
+                if (iWeek === 5) iWeek = '星期五';
+                if (iWeek === 6) iWeek = '星期六';
+                var str = year + '年' + month + '月' + date + '日' + ' ' + iWeek + ' ' + hour + ':' + mi + ':' + se;
+                return str;
+            }
+
+            window.setInterval(function () {
+
+                document.getElementById('showdate').innerHTML = getnow();
+            }, 1000);
+        }
+        function showDate2() {
+            function getnow() {
+                var fixNum = function (num) {
+                    return num < 10 ? '0' + num : num;
+                }
+                var now = new Date();
+                var hour = now.getHours();
+                var mi = now.getMinutes();
+                var se = now.getSeconds();
+                var str = fixNum(hour) + '' + fixNum(mi) + '' + fixNum(se);
+
+                var imgs = document.getElementById('showdate2').getElementsByTagName('img');
+                for (var i = 0; i < str.length; i++) {
+                    imgs[i].src = 'img/' + str.charAt(i) + '.jpg';
+                }
+            }
+            window.setInterval(function () {
+                getnow();
+            }, 1000);
+        }
+        function showDate3() {
+            window.setInterval(function () {
+                var nextday = new Date(2015, 11, 6);
+                var se = Math.floor((nextday - (new Date())) / 1000);
+                var hour = Math.floor(se / 3600);
+                var mi = Math.floor(se % 3600 / 60);
+                var s = Math.floor(se % 60);
+
+                var str = hour + ':' + mi + ':' + s;
+                document.getElementById('nextDay').innerHTML = str;
+            }, 1000);
+        }
+        function showDate4() {
+            /*
+            <li>
+                <div class="pic_container" id="pic_container0">
+                    <div><img src="img/0.JPG" /></div>
+                    
+                </div> 
+            </li>
+            */
+            function changePic(containerLi, target) {//container是图片容器, target是即将显示的数字
+                var pic_container = containerLi.getElementsByTagName('div')[0];
+                var deleteDiv = pic_container.getElementsByTagName('div')[0];
+                var src = deleteDiv.getElementsByTagName('img')[0].src;
+                if (src.substr(src.length - 5).charAt(0) == target.toString())
+                    return;
+                var div = document.createElement('div');
+                var img = document.createElement("img");
+                img.src = 'img/' + target + '.jpg';
+                div.appendChild(img);
+                pic_container.appendChild(div);
+
+                var step = 0;
+                var timer = window.setInterval(function () {
+                    if (step > 172) {
+                        deleteDiv.parentNode.removeChild(deleteDiv);
+                        pic_container.style.top = "0";
+                        clearInterval(timer);
+                        return;
+                    }
+                    pic_container.style.top = "-" + step + "px";
+
+                    step += 20;
+
+                },20)
+            }
+            
+            window.setInterval(function () {
+                var fixNum = function (num) {
+                    return num < 10 ? '0' + num : num;
+                }
+                var now = new Date();
+                var hour = fixNum(now.getHours());
+                var mi = fixNum(now.getMinutes());
+                var se = fixNum(now.getSeconds());
+                var str=hour+":"+mi+":"+se;
+                var lis = document.getElementById('clock').getElementsByTagName('li');
+                for (var i = 0; i < lis.length; i++) {
+                    if (i == 2 || i == 5)
+                        continue;
+
+                    changePic(lis[i], str.charAt(i));
+                }
+            }, 1000);
+
+        }
+        window.onload = function () {
+            showDate();
+            showDate2();
+            showDate3();
+            showDate4();
+        }
+    </script>
+</head>
+<body>
+    <div id="showdate"></div>
+    <div id="showdate2">
+        <img src="img/0.JPG" />
+        <img src="img/0.JPG" />
+        <img src="img/0.JPG" />
+        <img src="img/0.JPG" />
+        <img src="img/0.JPG" />
+        <img src="img/0.JPG" />
+
+    </div>
+    <div id="showdate4">
+        <ul id="clock">
+            
+            <li>
+                <div class="pic_container" id="pic_container0">
+                    <div><img src="img/0.JPG" /></div>
+                    
+                </div> 
+            </li>
+            <li>
+                <div class="pic_container" id="pic_container1">
+                    <div><img src="img/0.JPG" /></div>
+                    
+                </div> 
+            </li>
+            <li><img src="img/colon.JPG" /></li>
+            <li>
+                <div class="pic_container" id="pic_container3">
+                    <div><img src="img/0.JPG" /></div>
+                    
+                </div> 
+            </li>
+            <li>
+                <div class="pic_container" id="pic_container4">
+                    <div><img src="img/0.JPG" /></div>
+                    
+                </div> 
+            </li>
+            <li><img src="img/colon.JPG" /></li>
+            <li>
+                <div class="pic_container" id="pic_container6">
+                    <div><img src="img/0.JPG" /></div>
+                    
+                </div> 
+            </li>
+            <li>
+                <div class="pic_container" id="pic_container7">
+                    <div><img src="img/0.JPG" /></div>
+                    
+                </div> 
+            </li>
+        </ul>
+    </div>
+    <div id="daojishi">距离明天还有<span id="nextDay"></span></div>
+</body>
+</html>

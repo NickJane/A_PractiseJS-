@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function fun(n, o) {
+            console.log(o)
+            return {
+                fun: function (m) {
+                    return fun(m, n);
+                }
+            };
+        }
+        var a = fun(0); a.fun(1); a.fun(2); a.fun(3);//undefined,?,?,?;  my: undefined, 0,0,0
+        var b = fun(0).fun(1).fun(2).fun(3);//undefined,?,?,?            my: undefined, 0,1,2
+        var c = fun(0).fun(1); c.fun(2); c.fun(3);//undefined,?,?,?      my: undefined, 0, 1, 1
+
+        window.onload = function () {
+            var c = document.getElementById('container');
+            var inputs = c.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length;i++) {
+                inputs[i].onclick = (function () {
+                    var j = i;
+                    return function () {
+                        inputs[j].style.backgroundColor = 'yellow';
+                    }
+                    
+                    //alert(2);
+                })();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <input type="button" value="button" /><input type="button" value="button" />
+        <input type="button" value="button" />
+    </div>
+</body>
+</html>

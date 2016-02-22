@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        var arr = [1, 2, 3];
+        //增加 push尾部增加  unshift 头部增加, 并且返回数组长度
+        arr.push(4);console.log(arr);//[1,2,3,4]
+        arr.unshift(0);//[0,1,2,3,4]  unshift(1,2,3) 一次插入多条
+
+        //删除 pop删除最后一位并返回, shift删除第一位并返回
+        arr.pop();//[0,1,2,3]
+        arr.shift()//[1,2,3]
+
+        //splice 方法
+        //从一个数组中移除一个或多个元素，如果必要，在所移除元素的位置上插入新元素，返回所移除的元素。
+        arr.splice(0, 2, 100, 101, 102);// 从arr的位置0开始, 删除2个, 并插入100,101,102三个
+        arr.splice(0, 2, 100, 101, 102) //返回[1, 2]   arr数组为[100,101,102,3]
+
+
+        //数组去重复
+        var arrQuChong = [1, 2, 2, 4, 2];
+        for (var i = 0; i < arrQuChong.length; i++) {
+            for (var j = i + 1; j < arrQuChong.length; j++) {
+                if (arrQuChong[i] == arrQuChong[j]) {
+                    arrQuChong.splice(j, 1);
+                    j--;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

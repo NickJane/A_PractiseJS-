@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title></title>
+    <style type="text/css">
+        #contain { background-color: ActiveCaption; height: 100px; text-align: center; }
+            #contain > div { width: 100px; height: 50px; background-color: gray; display: inline-block; }
+            #contain > span { width: 100px; height: 50px; background-color: gray; display: inline-block; }
+
+        #center { margin: auto; width: 100px; height: 100px; background-color: #666; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; }
+    </style>
+    <style type="text/css">
+        #dleft .box { margin: 0; padding: 5px; display: -webkit-flex; display: flex; list-style: none; background-color: #eee; }
+            #dleft .box li { width: 30px; height: 30px; border: 1px solid #aaa; text-align: center; }
+        #dleft #box1 { flex-direction: row; }
+        #dleft #box2 { flex-direction: row-reverse; }
+        #dleft #box3 { flex-direction: column; }
+        #dleft #box4 { flex-direction: column-reverse; }
+
+        #dright .box { display: -webkit-flex; display: flex; width: 110px; margin: 0; padding: 10px; list-style: none; background-color: #eee; }
+            #dright .box li { width: 50px; height: 50px; border: 1px solid #aaa; text-align: center; }
+        #dright #box { -webkit-flex-wrap: nowrap; flex-wrap: nowrap; }
+        #dright #box2 { -webkit-flex-wrap: wrap; flex-wrap: wrap; }
+        #dright #box3 { -webkit-flex-wrap: wrap-reverse; flex-wrap: wrap-reverse; }
+    </style>
+</head>
+<body>
+    http://caibaojian.com/flexbox-guide.html
+    设置或检索伸缩盒对象的子元素在父容器中的位置。
+    <div id="dleft" style="width: 46%; float: left;">
+        flex-direction flex-direction: row默认 | row-reverse | column | column-reverse
+    <h4>flex-direction:row</h4>
+        <ul id="box" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h4>flex-direction:row-reverse</h4>
+        <ul id="box2" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h4>flex-direction:column</h4>
+        <ul id="box3" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h4>flex-direction:column-reverse</h4>
+        <ul id="box4" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+    </div>
+    <div id="dright" style="width: 46%; float: right;">
+        设置或检索伸缩盒对象的子元素超出父容器时是否换行<br />
+        nowrap：当子元素溢出父容器时不换行。
+wrap：当子元素溢出父容器时自动换行。
+wrap-reverse：反转 wrap 排列。
+        <h2>nowrap</h2>
+        <ul id="box" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h2>flex-wrap:wrap</h2>
+        <ul id="box2" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <h2>flex-wrap:wrap-reverse</h2>
+        <ul id="box3" class="box">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+    </div>
+</body>
+</html>

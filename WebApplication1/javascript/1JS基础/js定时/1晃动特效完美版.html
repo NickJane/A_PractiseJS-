@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function getStyle(dom, attr) {
+            return dom.currentStyle ? dom.currentStyle[attr] : getComputedStyle(dom)[attr];
+        }
+        function removeEvent(dom, event) {
+           // if(document.body.de)
+        }
+
+        function move(dom, speed, distance, direction, callback) {
+            var step = 20;
+
+            var control = window.setInterval(function () {
+                if (distance > 0) {
+                    dom.style[direction] = (parseInt(getStyle(dom, direction), 10) + 20) + 'px';
+                    if (parseInt(getStyle(dom, direction), 10) > distance) {
+                        clearInterval(control);
+                    }
+                }
+                else {
+                    dom.style[direction] = (parseInt(getStyle(dom, direction), 10) - 20) + 'px';
+                    if (i < 0)
+                        clearInterval(control);
+                }
+                if (!control)
+                    callback();
+            }, speed);
+        }
+        function shake(dom,direction, callback) {
+            var arr = [];			// 20, -20, 18, -18 ..... 0
+           
+            var timer = null;
+
+            for (var i = 20; i > 0; i -= 2) {
+                arr.push(i,-i);
+            }
+            arr.push(0);
+
+            clearInterval(timer);
+            var num = 0;
+            var pos = parseInt(getStyle(dom, direction));
+
+            var tempobj = this;
+
+            timer = window.setInterval(function () {
+                dom.style[direction] = pos + arr[num] + 'px';
+                num++;
+                if (num == arr.length) {
+                    clearInterval(timer);
+
+                    
+                    //callback.call(dom);//dom 或者在上面把this另存为一个变量
+                    callback.call(tempobj);
+                }
+            }, 50);
+            
+        }
+        window.onload = function () {
+            var divs = document.getElementById('dropcontainer').getElementsByTagName('div');
+            var log = document.getElementById('log');
+            var test=function () {
+                this.innerHTML = '22';
+            }
+            log.onclick = function () {
+
+            }
+            log.onclick = test;
+            for (var i = 0; i < divs.length; i++) {
+                var mouseover = function () {
+                    //普通写法, 用call把参数传递过去 
+                    shake.call(this, this, 'left',
+                            function () {
+                                this.onmouseover = mouseover;
+                            }
+                        );
+
+                    /*
+                    //闭包的写法
+                    shake(this, 'left',
+                            (function (obj) {//在这里就锁定回调函数中操作的对象就是这个dom
+                                return function () { obj.onmouseover = mouseover; }
+                            })(this)
+                        );
+                        */
+                    this.onmouseover = null;
+                }
+                divs[i].onmouseover = mouseover;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="log" style="border:1px solid red">1:</div>
+    <div id="dropcontainer" style="position: relative; top: 150px; border: 1px solid red; width: 800px; height: 600px;">
+        <div onclick="drop()" style="position: absolute; left: 50px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">0</div>
+        <div onclick="drop()" style="position: absolute; left: 110px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">1</div>
+        <div onclick="drop()" style="position: absolute; left: 170px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">2</div>
+        <div onclick="drop()" style="position: absolute; left: 230px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">3</div>
+        <div onclick="drop()" style="position: absolute; left: 290px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">4</div>
+        <div onclick="drop()" style="position: absolute; left: 350px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">5</div>
+        <div onclick="drop()" style="position: absolute; left: 410px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">6</div>
+        <div onclick="drop()" style="position: absolute; left: 470px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">7</div>
+        <div onclick="drop()" style="position: absolute; left: 530px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">8</div>
+        <div onclick="drop()" style="position: absolute; left: 590px; top: 350px; width: 50px; height: 50px; background-color: rgb(173, 216, 230);">9</div>
+        </div>
+</body>
+</html>

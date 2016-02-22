@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        #div1 .btnL { background: url(课件及课后练习/img3/btnl.gif) no-repeat;  }
+        #div1 .btnR { background: url(课件及课后练习/img3/btnr.gif) no-repeat right 0; }
+
+        
+        #div1 .btn { height: 25px; background: url(课件及课后练习/img3/btn.gif) repeat-x; width: 100px;}
+        /*注意  由于左右圆角是透明的.  btn的背景肯定会被看到*/
+
+
+        /*1: 让btnL 和btnR相对定位靠左右一点*/
+        #div2 .btnL { background: url(课件及课后练习/img3/btnl.gif) no-repeat; position:relative; left:-9px; }
+        #div2 .btnR { background: url(课件及课后练习/img3/btnr.gif) no-repeat right 0; position:relative; right:-18px;height: 25px;}
+
+        #div2 .btn {  background: url(课件及课后练习/img3/btn.gif) repeat-x;  width: 100px;}
+
+        /*2: 最里面的容器设置左右margin*/
+        #div3 .btnL { background: url(课件及课后练习/img3/btnl.gif) no-repeat; position:relative; left:-9px; }
+        #div3 .btnR { background: url(课件及课后练习/img3/btnr.gif) no-repeat right 0; position:relative; right:-18px;height: 25px;}
+
+        #div3 .btn {  background: url(课件及课后练习/img3/btn.gif) repeat-x;  width: 100px; margin:0 9px;}
+   </style>
+</head>
+<body>
+    
+    <div id="div1" style="padding: 20px;">
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR"></div>
+            </div>
+        </div>
+    </div>
+    <div id="div2" style="padding: 20px;">
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR"></div>
+            </div>
+        </div>
+    </div>
+    <div id="div3" style="padding: 20px;">
+        <div class="btn">
+            <div class="btnL">
+                <div class="btnR"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

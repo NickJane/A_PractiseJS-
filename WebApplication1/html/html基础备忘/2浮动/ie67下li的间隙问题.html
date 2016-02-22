@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        ul { margin:0; padding:0; list-style:none;}
+        a { text-decoration:none}
+        .list { width:300px;}
+            .list li { height:30px; border:1px solid red; vertical-align:middle;}
+            .list a { float:left;}
+            .list span { float:right}
+
+        .box { height:200px; border:5px solid black;}
+        .span1 { width:50px; height:100px; background-color:red; display:inline-block;
+                 vertical-align:middle;;
+        }
+        .span2 { width:100px; height:50px; background-color:blue; display:inline-block;
+                 vertical-align:middle;;
+        }
+    </style>
+</head>
+<body>
+    ie 6,7 下li本身没浮动, 但是内容浮动了. 就会多出几个px的间隙
+    <br />
+    <em>给li加上vertical-align:middle;就可以了</em>
+    <strong>这个属性除了用来清除li的空隙之外. 主要用来清理图片下面的空隙</strong>
+    <ul class="list">
+        <li>
+            <a href="#">wordwordwordwordwordwo</a>
+            <span>author</span>
+        </li>
+        <li>
+            <a href="#">wordwordwordwordwordwo</a>
+            <span>author</span>
+        </li>
+        <li>
+            <a href="#">wordwordwordwordwordwo</a>
+            <span>author</span>
+        </li>
+    </ul>
+
+    <div class="box">
+        <span class="span1"></span>
+        <span class="span2"></span>
+    </div>
+
+    <div style="border:5px solid green">
+        <img src="artcle3.png" style="vertical-align:middle;" />
+    </div>
+</body>
+</html>

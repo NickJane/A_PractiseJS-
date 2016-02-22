@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .div_task1_content div { }
+
+        #task2_menu { zoom:1; overflow:hidden;}
+        #task2_menu div { float:left; width:50px; border:1px solid lightgreen; margin-left:2px;}
+        #task2_content {  height:130px; border:1px solid red; }
+        #task2_menu .current { background-color:lightgreen;}
+
+        ul { padding:0; margin:0;}
+        li { list-style:none; float:left; margin-left:10px;}
+
+        #task4 .current{ background-color:lightgreen;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            //var div_task1
+            taks1();
+            taks2();
+            task3();
+            task4();
+        }
+        //上下滚动
+        function taks1() {
+            var btns = document.getElementById('div_task1').getElementsByTagName('input');
+            var content = document.getElementById('div_task1_content');
+            var control;
+            var log = document.getElementById('log');
+            btns[0].onmousedown = function () {
+                log.innerHTML += "1";
+                control=window.setInterval(
+                    function () {
+                        log.innerHTML += "1";
+                        content.scrollTop = parseInt(content.scrollTop) + 20;
+                    },100
+                    );
+            }
+            btns[0].onmouseup = function () { clearInterval(control);}
+            btns[1].onmousedown = function () {
+                control = window.setInterval(
+                    function () {
+                        log.innerHTML += "1";
+                        content.scrollTop = parseInt(content.scrollTop) - 20;
+                    }, 100
+                    );
+            }
+            btns[1].onmouseup = function () { clearInterval(control); }
+        }
+        //淘宝广告轮换
+        function taks2() {
+
+            var log = document.getElementById('log');
+            var i = 0, pre = 0;
+            var menus = document.getElementById('task2_menu').getElementsByTagName('div');
+            var content = document.getElementById('task2_content');
+
+            function go() {
+                
+                content.innerHTML = i + 1;
+                menus[pre].className = '';
+                menus[i].className = 'current';
+                pre = i;
+                i++;
+                if (i == 8) i = 0;
+            }
+            function reset() {
+                menus[pre].className = '';
+                i = 0;
+            }
+            for (var j = 0; j < menus.length; j++) {
+                menus[j].onmouseover = function () {
+                    if (timeout) clearTimeout(timeout);
+                    log.innerHTML += "2";
+                    reset();
+                    menus[pre].className = '';
+                    this.className = 'current';
+                    content.innerHTML = this.innerHTML;
+                    pre = parseInt(this.innerHTML)-1;
+                    
+                    clearInterval(control);
+                }
+                menus[j].onmouseout = function () {
+                    timeout = setTimeout(function () {
+                        control = window.setInterval(go, 1000);
+                    }, 2000)
+                    
+                }
+            }
+            var timeout;
+            var control = window.setInterval(go, 1000);
+
+            
+        }
+        //延迟消失的菜单
+        function task3() {
+            var A = document.getElementById('task3_A');
+            var menu_detail = document.getElementById('menu_detail');
+            A.onmouseover = function () {
+                menu_detail.style.display = 'block';
+            }
+            A.onmouseout = function () {
+                setTimeout(function () { menu_detail.style.display = 'none'; },1000);
+            }
+        }
+        function task4() {
+            var taks4_menu = document.getElementById('taks4_menu');
+            var taks4_menu_li = taks4_menu.getElementsByTagName('li');
+            var taks4_content = document.getElementById('taks4_content');
+            var taks4_content_menu = document.getElementById('taks4_content_menu');
+            var taks4_content_menu_li = taks4_content_menu.getElementsByTagName('li');
+            var taks4_content_menu_li_1 = getLi( taks4_content_menu.getElementsByTagName('li'),1);
+            var taks4_content_menu_li_2 = getLi(taks4_content_menu.getElementsByTagName('li'), 2);
+
+            function getLi(index) {
+                var lis=[];
+                for (var i = 0; i < taks4_content_menu_li.length; i++) {
+                    if (taks4_content_menu_li[i].getAttribute('target') == index)
+                        lis.push(taks4_content_menu_li[i]);
+                }
+                return lis;
+            }
+            function clearClassName(li) {
+                var ul=li.parentNode;
+                for (var i = 0; i < ul.childNodes.length; i++) {
+                    ul.childNodes[i].className='';
+                }
+            }
+            function showtaks4_content_menu_li(index) {
+                for (var i = 0; i < taks4_content_menu_li.length; i++) {
+                    if (taks4_content_menu_li[i].getAttribute('target') == index)
+                        taks4_content_menu_li[i].style.display = 'block';
+                    else
+                        taks4_content_menu_li[i].style.display = 'none';
+                }
+            }
+
+            var i_menu = 0, i_content_menu = 0;
+            var taks4_content_menu_control;
+
+            function go() {
+                //初始化
+                clearClassName(taks4_menu_li[i_menu]);//清理主menu样式
+                taks4_menu_li[i_menu].className = 'current';//主menu当前
+
+                
+                showtaks4_content_menu_li(i_menu);//显示子menu
+                var current_content_menu_li = getLi(i_menu);//子menu列表
+                clearClassName(current_content_menu_li[i_content_menu]);//清理子menu样式
+                taks4_content.innerHTML = current_content_menu_li[i_content_menu].innerHTML;
+                current_content_menu_li[i_content_menu].className = 'current';//子menu当前
+                i_content_menu++;
+
+
+                function go_inner() {
+                    clearClassName(current_content_menu_li[0]);//清理子menu样式
+                    current_content_menu_li[i_content_menu].className = 'current';
+                    taks4_content.innerHTML = current_content_menu_li[i_content_menu].innerHTML;
+
+                    i_content_menu++;
+
+                    if (i_content_menu == current_content_menu_li.length) {
+                        clearInterval(taks4_content_menu_control);
+                        i_content_menu = 0;
+                        i_menu = i_menu == 0 ? ++i_menu : 0;
+                        setTimeout(go,1000);
+                    }
+
+                    
+                }
+                
+                taks4_content_menu_control = window.setInterval(go_inner, 1000);
+            }
+            go();
+        }
+    </script>
+</head>
+<body>
+    <div id="log">1</div>
+    <div id="div_task1" style="width:150px; height:500px; border:1px solid gray; position:absolute; top:50px; left:20px;">
+        <div><input type="button" value="up" /></div>
+        <div id="div_task1_content" class="div_task1_content" style="height:450px; overflow:hidden;">
+            <div style="height:100px; border:1px solid red;">1</div>
+            <div style="height:100px; border:1px solid red;">2</div>
+            <div style="height:100px; border:1px solid red;">3</div>
+            <div style="height:100px; border:1px solid red;">4</div>
+            <div style="height:100px; border:1px solid red;">5</div>
+            <div style="height:100px; border:1px solid red;">6</div>
+            <div style="height:100px; border:1px solid red;">7</div>
+            <div style="height:100px; border:1px solid red;">8</div>
+        </div>
+        <div><input type="button" value="down" /></div>
+    </div>
+
+    <div id="taks2" style="width:220px; height:200px; border:1px solid gray; position:absolute; top:50px; left:220px;">
+        <div id="task2_menu">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+        </div>
+        <div id="task2_content"></div>
+    </div>
+
+    <div id="task3" style="width:220px; height:200px; border:1px solid gray; position:absolute; top:50px; left:450px;">
+        <ul style="width:100%; overflow:hidden">
+            <li><a id="task3_A" href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+        </ul>
+        <div id="menu_detail" style="border:1px solid red; display:none">
+            <ul style="width:100%; overflow:hidden">
+                <li><a href="#">menu_detail</a></li>
+                <li><a href="#">menu_detail</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="task4" style="width:320px; height:200px; border:1px solid gray; position:absolute; top:50px; left:680px;">
+        <ul id="taks4_menu" style="width:100%; overflow:hidden">
+            <li><a href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+        </ul>
+        <div style="border:0px solid red;">
+            <div id="taks4_content" style="float:left; width:150px; height:150px; border:1px solid red;">
+            </div>
+            <ul  id="taks4_content_menu" style="width:100px; overflow:hidden;float:left; ">
+                <li target="0"><a href="#">menu_detail 1</a></li>
+                <li target="0"><a href="#">menu_detail 2</a></li>
+                <li target="1"><a href="#">menu_detail 3</a></li>
+                <li target="1"><a href="#">menu_detail 4</a></li>
+                <li target="1"><a href="#">menu_detail 5</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

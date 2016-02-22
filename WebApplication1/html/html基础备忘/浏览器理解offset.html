@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <style type="text/css">
+        body { border: 20px solid #CCC; margin: 10px; padding: 40px; background: #EEE; }
+        #test { width: 400px; height: 200px; padding: 20px; background: lightgray; border: 5px solid #888; }
+        p { line-height: 18px; margin: 0; padding: 0; }
+    </style>
+
+    <div id="div1" style="position:relative; border:1px solid red; padding:10px; overflow:scroll;">
+        <div id="test"></div>
+    </div>
+    <script>
+        var test = document.getElementById("test");
+        test.innerHTML = "<p>Browser:" + navigator.userAgent + "</p>" +
+            "<p>offsetWidth:=(内容宽度+padding宽度+边框宽度)" + test.offsetWidth + "</p>" +
+            "<p>offsetHeight:" + test.offsetHeight + "</p>" +
+            "<p>offsetLeft:" + test.offsetLeft + "</p>" +
+            "<p>offsetTop:" + test.offsetTop + "</p>" +
+            "<p>div.clientWidth=内容宽度+padding宽度:" + test.clientWidth + "</p>" +
+        "<p>test.style.width=内容宽度 :" + window.getComputedStyle(test, null)["width"] + "</p>",
+        "<p>document.getElementById('div1').scrollWidth :" + document.getElementById("div1").scrollWidth + "  这个不包括显示出来的滚动条的宽度</p>"
+        ;    </script>
+</body>
+</html>

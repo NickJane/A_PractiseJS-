@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        p { margin:0px; padding:20px;}
+        #head, #foot { padding:20px 3px; text-align:center; background-color:lightgray;}
+
+        #bd-lft,#bd-rft,#bd-3-middle,#bd-3-left,#bd-3-right {  
+            /*左侧固定, 右侧随着浏览器自适应*/
+            margin: 10px 0; min-width: 400px; 
+                     zoom:1; overflow:hidden;/*清理浮动 兼容ie6*/
+                     padding-left:210px;/*腾出左侧菜单的位置. 圣杯布局的关键*/
+        }
+        #main { float:left;width:100%;/*内容区左浮动占满*/
+                background-color:lightblue;
+        }
+
+        #bd-lft #aside {  background-color:lightblue;
+                           /*这个100%等于bd-lft(父节点)的内容宽度, 直接让处于第二行的aside左移到第一行覆盖掉main*/
+                          float:left;margin-left: -100%;
+                         /*用这个relative可以再次让元素发生位移. */
+                          position:relative; left:-210px;
+                          width:200px;
+                          _left:0;
+        }
+
+    </style>
+    <style type="text/css">
+        #bd-rft { padding:0 210px 0 0;}
+        
+            #bd-rft #aside { 
+                width:200px;
+                background-color:blue;
+                float:left; margin-left:-200px;
+                position:relative; right:-210px;
+                /*注意这里与上面的不同*/
+            }
+    </style>
+    <style type="text/css">
+        #bd-3-middle { padding:0 210px 0 210px;}
+        #bd-3-middle #Rside { 
+                width:200px;
+                background-color:blue;
+                float:left; margin-left:-200px;
+                position:relative; right:-210px;
+                /*注意这里与上面的不同*/
+            }
+        #bd-3-middle #Lside { 
+                width:200px;
+                background-color:blue;
+                float:left; 
+                margin-left:-100%;
+                position:relative; left:-210px;
+                /*注意这里与上面的不同*/
+                _left:210px;
+            }
+    </style>
+    <style type="text/css">
+        #bd-3-left { padding:0 0 0 420px;}
+        #bd-3-left #Rside { 
+                width:200px;
+                background-color:blue;
+                float:left; margin-left:-100%;
+                position:relative; left:-210px;
+                /*注意这里与上面的不同*/
+                _left:210px;
+            }
+        #bd-3-left #Lside { 
+                width:200px;
+                background-color:blue;
+                float:left; margin-left:-100%;
+                position:relative; left:-420px;
+                /*注意这里与上面的不同*/
+                _left:0;
+            }
+    </style>
+    <style type="text/css">
+        #bd-3-right { padding:0 420px 0 0;}
+        #bd-3-right #Rside { 
+                width:200px;
+                background-color:blue;
+                float:left; margin-left:-200px;
+                position:relative; right:-420px;
+                /*注意这里与上面的不同*/
+            
+            }
+        #bd-3-right #Lside { 
+                width:200px;
+                background-color:blue;
+                float:left; margin-left:-200px;
+                position:relative; right:-210px;
+                /*注意这里与上面的不同*/
+            }
+    </style>
+</head>
+<body>
+    <div id="head">头部</div>
+
+    <div id="bd-lft">
+        <!--内容写在上面, 首先加载-->
+        <div id="main">
+            <p>内容区自适应宽度</p>
+        </div>
+        <div id="aside">
+            <p>caidanqu固定宽度</p>
+        </div>
+    </div>
+
+    <div id="bd-rft">
+        <!--内容写在上面, 首先加载-->
+        <div id="main">
+            <p>内容区自适应宽度</p>
+        </div>
+        <div id="aside">
+            <p>caidanqu固定宽度</p>
+        </div>
+    </div>
+    <div id="bd-3-middle">
+        <!--内容写在上面, 首先加载-->
+        <div id="main">
+            <p>内容区自适应宽度</p>
+        </div>
+        <div id="Lside">
+            <p>LL</p>
+        </div>
+        <div id="Rside">
+            <p>RR固定宽度middle</p>
+        </div>
+    </div>
+    <div id="bd-3-left">
+        <!--内容写在上面, 首先加载-->
+        <div id="main">
+            <p>内容区自适应宽度</p>
+        </div>
+        <div id="Lside">
+            <p>LL</p>
+        </div>
+        <div id="Rside">
+            <p>RR固定宽度</p>
+        </div>
+    </div>
+    <div id="bd-3-right">
+        <!--内容写在上面, 首先加载-->
+        <div id="main">
+            <p>内容区自适应宽度</p>
+        </div>
+        <div id="Lside">
+            <p>LL</p>
+        </div>
+        <div id="Rside">
+            <p>RR固定宽度</p>
+        </div>
+    </div>
+    <div id="foot">脚步</div>
+</body>
+</html>

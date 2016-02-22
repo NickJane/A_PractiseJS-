@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <!--理解预解析
+        JavaScript中的函数运行在它们被定义的作用域里,而不是它们被执行的作用域里.
+        -->
+    <script type="text/javascript">
+        //著作权归作者所有。
+        //商业转载请联系作者获得授权，非商业转载请注明出处。
+        //作者：阳光下的向日葵
+        //链接：http://www.zhihu.com/question/21517000/answer/45765011
+        //    来源：知乎
+        /*
+此阶段浏览器只是对var、function、函数形参进行一个解析的准备过程。
+而且在这个“预解析”过程中，有一个预解析先后顺序，即函数的形参 -> function -> var。
+而且重名时预留函数、后来者覆盖前者。
+预解析结果形参如果有值则解析到值，没有则为underfined，
+函数则解析到整个函数体，变量都为underfined；
+
+这道题目中没有参数出现，所以先不讨论。
+        */
+        document.writeln(a); // function a() { document.writeln(4); } 
+        var a = 1;
+        document.writeln(a); // 1 
+        function a() { document.writeln(2); }
+        document.writeln(a); // 1
+        var a = 3;
+        document.writeln(a); // 3
+        function a() { document.writeln(4); }
+        document.writeln(a); // 3
+        a(); // （报错）number is not a function
+
+        /*
+        实际的执行是
+        1. 预编译
+        function a() { document.writeln(2); }
+        function a() { document.writeln(4); } 覆盖
+        var a = undefined;
+
+        2. 执行
+        document.writeln(a); // function a() { document.writeln(4); } 
+         var a = 1;
+        document.writeln(a); // 1 
+        var a = 3;
+        document.writeln(a); // 3
+         a(); // （报错）number is not a function
+        */
+
+    </script>
+    <script type="text/javascript">
+        //著作权归作者所有。
+        //商业转载请联系作者获得授权，非商业转载请注明出处。
+        //作者：阳光下的向日葵
+        //链接：http://www.zhihu.com/question/21517000/answer/45765011
+        //    来源：知乎
+
+        var a2 = 1;
+        function fn2() {
+            document.writeln(a2); //underfined   这里是fn2的局部变量 函数内部会进行再一次的解析
+            var a2 = 2;
+        }
+        fn2();
+        document.writeln(a2); //1   全局变量
+
+        /*
+        1.预解析
+           fn2 =   function fn() {
+               alert( a );
+               a = 2;   
+            }
+            a2 = underfined //形式参数
+        2. 执行
+            a2 = 1
+            fn2() ==> {
+                        即函数调用，第二步中的预解析开始（注意：只要函数被调用就出现了函数执行上下文，浏览器开始预解析）
+                        （函数内部）预解析：  a = underfined                      
+                        函数逐行向下执行：  alert（a） —> underfined（因为函数内部预解析时a值为未定义）
+                        读到var a = 2，此时预解析过程中得到的a赋值为2,                      
+                        函数执行结束，因为局部变量会在函数执行完毕（此时函数执行上下文消失）被垃圾回收机制回收掉，
+                        所以此时函数里面的a已经不存在了
+
+                        document.writeln(a2); //underfined
+                        a2=2;
+                        }
+            document.writeln(a2);==> 1
+
+
+            变形
+
+            var a = 1;
+            function fn1() {
+            alert( a );// 1  fn里面没有了变量, 不需要预编译, 所以a就是全局变量
+            a = 2;
+            }
+            fn1();
+            alert( a );
+
+            var a = 1;
+            function fn1(a) { 这里传入参数, 实际上, 在fn的预编译里就是 var a = undefined
+                alert( a ); //underfined
+                a = 2;
+            }
+            fn1();
+            alert(a); // 1
+        */
+    </script>
+
+    <!--练习-->
+    <script type="text/javascript">
+        //著作权归作者所有。
+        //商业转载请联系作者获得授权，非商业转载请注明出处。
+        //作者：阳光下的向日葵
+        //链接：http://www.zhihu.com/question/21517000/answer/45765011
+        //    来源：知乎
+
+        //5、
+        var a = 1;
+        function fn1() {
+            alert( a );
+            a = 2;
+        }
+        fn1(a);
+        alert(a);
+        //6、
+        var a = 10;
+        function aaa() {
+            alert( a );
+        }
+        function bbb() {
+            var a = 20;
+            aaa();
+        }
+        bbb();
+        //7、
+        var a = 3;
+        function test( a ){
+            alert( a ); 
+            var a = 123; 
+            function a(){ }
+            alert( a ); 
+        }
+        test(a);
+
+    </script>
+</head>
+<body>
+    http://www.laruence.com/2009/05/28/863.html
+</body>
+</html>

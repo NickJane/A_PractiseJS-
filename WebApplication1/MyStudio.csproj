@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{872E42F7-7D45-4E9A-8F62-CDC353763201}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyStudio</RootNamespace>
+    <AssemblyName>MyStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="html\1_html布局\1_html_flex布局\flex-alignitem.html" />
+    <Content Include="html\1_html布局\1_html_flex布局\flex-grow-shrink-basis.html" />
+    <Content Include="html\html基础备忘\7其他常用\10_盒模型的怪异模式.html" />
+    <Content Include="html\html基础备忘\7其他常用\11_隐藏元素.html" />
+    <Content Include="html\html基础备忘\7其他常用\14_未知宽高的img如何在容器里水平垂直居中.html" />
+    <Content Include="html\html基础备忘\7其他常用\15_未知宽高的img如何在容器里水平垂直居中.html" />
+    <Content Include="html\html基础备忘\7其他常用\16_列表的文字溢出.html" />
+    <Content Include="html\html基础备忘\7其他常用\1_热区.html" />
+    <Content Include="html\html基础备忘\7其他常用\8_英文单词 数字词内断行.html" />
+    <Content Include="html\html基础备忘\7其他常用\9_文本溢出显示省略号.html" />
+    <Content Include="html\html基础备忘\7其他常用\bigptr.jpg" />
+    <Content Include="html\html基础备忘\浏览器理解offset.html" />
+    <Content Include="html\html基础备忘\浏览器的各种高度.png" />
+    <Content Include="html\html基础备忘\实战\index.html" />
+    <Content Include="html\html基础备忘\浏览器的各种高度.html" />
+    <Content Include="html\1_html布局\1_html_flex布局\目录.txt" />
+    <Content Include="html\1_html布局\1_html_flex布局\页脚固定底部1.html" />
+    <Content Include="html\1_html布局\1_html_flex布局\阮一峰_骰子的布局.html" />
+    <Content Include="html\1_html布局\1_html_flex布局\页脚固定底部2.html" />
+    <Content Include="html\1_html布局\等高布局\等高原理2.html" />
+    <Content Include="html\1_html布局\等高布局\8_等高布局.html" />
+    <Content Include="html\1_html布局\等高布局\等高原理.html" />
+    <Content Include="html\1_html布局\圣杯布局-学习.html" />
+    <Content Include="html\1_html布局\圣杯布局.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\1-常见标签-默认样式重置.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\1-常见标签.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\1.png" />
+    <Content Include="html\html基础备忘\1常用标签解析\2-块和内嵌.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\3-块和内嵌特性.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\4-块和内嵌转换.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\5-img.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\6-inline-block%28IE67兼容%29.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\7-pages.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\8-面试题.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\9-p.html" />
+    <Content Include="html\html基础备忘\1常用标签解析\hand.cur" />
+    <Content Include="html\html基础备忘\1常用标签解析\pages.png" />
+    <Content Include="html\html基础备忘\1常用标签解析\练习pages.html" />
+    <Content Include="html\html基础备忘\1总结%28常用标签和浮动%29.html" />
+    <Content Include="html\html基础备忘\2总结-定位.html" />
+    <Content Include="html\html基础备忘\2浮动\artcle3.png" />
+    <Content Include="html\html基础备忘\2浮动\ie67下li的间隙问题.html" />
+    <Content Include="html\html基础备忘\2浮动\HtmlPage1.html" />
+    <Content Include="html\html基础备忘\2浮动\ie6双边距.html" />
+    <Content Include="html\html基础备忘\2浮动\Ie6最下高度.html" />
+    <Content Include="html\html基础备忘\2浮动\浮动的实践.html" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\1-qiyi.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\10-qqyinyue.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\1\HtmlPage1.html" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\1\pic.jpg" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\1\titlebg.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\2-tmall.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\2\2-pic.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\2\2_delete.jpg" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\2\HtmlPage1.html" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\3-xunlei+.jpg" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\4-douban.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\5-weibo+.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\6-wangyi.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\7-xunlei.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\8-didatuan.png" />
+    <Content Include="html\html基础备忘\2浮动示例\作业\9-youxirensheng.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习2\2_练习2.html" />
+    <Content Include="html\html基础备忘\2浮动示例\练习2\titleBg.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习2\bg.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习2\practise2.html" />
+    <Content Include="html\html基础备忘\2浮动示例\练习2\pic.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习2效果图.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习3\bg.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习4\headBg.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习4\liBg.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习4\pic.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习4\practise4.html" />
+    <Content Include="html\html基础备忘\2浮动示例\练习4\textListBg.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习4\titleBg.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习4效果图.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习3\listbg.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习3\pic.jpg" />
+    <Content Include="html\html基础备忘\2浮动示例\练习3\practise3.html" />
+    <Content Include="html\html基础备忘\2浮动示例\练习3\titlebg.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习3效果图.png" />
+    <Content Include="html\html基础备忘\2浮动示例\3.png" />
+    <Content Include="html\html基础备忘\2浮动示例\练习1\bg.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习1\HtmlPage1.html" />
+    <Content Include="html\html基础备忘\2浮动示例\练习1\liBg.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习1\将爱情进行到底.gif" />
+    <Content Include="html\html基础备忘\2浮动示例\练习1\大兵.jpg" />
+    <Content Include="html\html基础备忘\2浮动示例\练习1效果图.png" />
+    <Content Include="html\html基础备忘\3定位\1.定位元素的层级关系.html" />
+    <Content Include="html\html基础备忘\3定位\2遮罩优酷弹窗居中.html" />
+    <Content Include="html\html基础备忘\3定位\3相对定位的问题.html" />
+    <Content Include="html\html基础备忘\3定位\3绝对定位的问题.html" />
+    <Content Include="html\html基础备忘\3定位\练习\pic.jpg" />
+    <Content Include="html\html基础备忘\3定位\练习\comment.png" />
+    <Content Include="html\html基础备忘\3定位\练习\gaoqing.png" />
+    <Content Include="html\html基础备忘\3定位\练习\play.png" />
+    <Content Include="html\html基础备忘\3定位\练习\基础练习1和2.html" />
+    <Content Include="html\html基础备忘\3定位\练习\基础练习2+.gif" />
+    <Content Include="html\html基础备忘\3定位\练习\基础练习3++.gif" />
+    <Content Include="html\html基础备忘\3定位\练习\练习1.html" />
+    <Content Include="html\html基础备忘\3定位\练习\练习1.jpg" />
+    <Content Include="html\html基础备忘\3定位\练习\练习2.jpg" />
+    <Content Include="html\html基础备忘\4表格表单\1-完整表格标签.html" />
+    <Content Include="html\html基础备忘\4表格表单\1-表格.html" />
+    <Content Include="html\html基础备忘\4表格表单\2-表格-基本特性.html" />
+    <Content Include="html\html基础备忘\4表格表单\3-单元格合并.html" />
+    <Content Include="html\html基础备忘\4表格表单\4-table实例.html" />
+    <Content Include="html\html基础备忘\4表格表单\5-表单.html" />
+    <Content Include="html\html基础备忘\4表格表单\5-表单元素.html" />
+    <Content Include="html\html基础备忘\4表格表单\6-表单样式重置.html" />
+    <Content Include="html\html基础备忘\4表格表单\7-表单元素问题.html" />
+    <Content Include="html\html基础备忘\4表格表单\sun.jpg" />
+    <Content Include="html\html基础备忘\4表格表单\table实例.png" />
+    <Content Include="html\html基础备忘\5滑动门\2图片边框.html" />
+    <Content Include="html\html基础备忘\5滑动门\3背景透明的滑动门.html" />
+    <Content Include="html\html基础备忘\5滑动门\4使用css精灵制作滑动门.html" />
+    <Content Include="html\html基础备忘\5滑动门\HtmlPage1.html" />
+    <Content Include="html\html基础备忘\5滑动门\img\2\boxF.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\2\boxFL.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\2\boxFR.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\2\boxH.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\2\boxHL.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\2\boxHR.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\2\ico.gif" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\boxBG.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\boxL.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\boxR.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\InBoxBG.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\InBoxBG_black.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\inboxL.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\InBoxL_black.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\inboxR.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\InBoxR_black.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\11\Wenhao.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\1\boxBG.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\1\boxL.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\1\boxR.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\1\current.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\3\1\NoneBG.png" />
+    <Content Include="html\html基础备忘\5滑动门\三层和两层的滑动门.html" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\btn.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\btn2.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\btnL.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\btnR.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\hoverA.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\hoverR.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\navL.png" />
+    <Content Include="html\html基础备忘\5滑动门\img\1\navR.png" />
+    <Content Include="html\html基础备忘\5滑动门\1课堂实例1导航.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\1_三层嵌套.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\2_两层嵌套.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\3_滑动门导航 - 副本 %282%29.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\3_滑动门导航 - 副本 %283%29.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\3_滑动门导航 - 副本.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\3_滑动门导航.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\4_圆角.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\5_宽高可扩展的圆角背景.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\6_背景透明的圆角.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\7_背景透明的圆角.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\8_css精灵.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\9_css精灵.html" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\bigptr.jpg" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img2\boxF.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img2\boxFL.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img2\boxFR.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img2\boxH.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img2\boxHL.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img2\boxHR.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img2\ico.gif" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img3\btn.gif" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img3\btnL.gif" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img3\btnR.gif" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\btn.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\btn2.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\btnL.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\btnR.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\hoverA.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\hoverR.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\navL.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\img\navR.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\练习\练习.txt" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\练习\课后练习\1-1004140UZ14J.jpg" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\练习\课后练习\精灵.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\练习\课后练习\课后练习3.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\练习\课堂实例1.png" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\练习\课堂实例2.png" />
+    <Content Include="html\html基础备忘\5滑动门\课后练习-不规则滑动门.html" />
+    <Content Include="html\html基础备忘\5滑动门\5利用透明边框.html" />
+    <Content Include="html\html基础备忘\5滑动门\课后练习-导航.html" />
+    <Content Include="html\html基础备忘\5滑动门\课堂实例1.png" />
+    <Content Include="html\html基础备忘\6兼容汇总\bug浮动%28LI不浮动而子元素浮动IE6下间隙.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\bugli间隙和IE6最小高度共存的时候.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\12_无解ie6特定下最后一行子元素margin失效.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\少-ie6文字溢出bug.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\少_ie6浮动和绝对定位并列,IE6绝对定位元素消失.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\bug相对定位, overflow包不住,撑破.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\16_无解ie6绝对定位元素父级宽高奇数的问题.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\17_IE6 fix定位无解.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\input上下间隙.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\好习惯-浮动ie6子元素会撑破父级导致错位.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\bug浮动IE6无宽度浮动元素里面的块元素也需要浮动.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\input间隙2.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\input背景.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\2_条件注释语句.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\好习惯p里面不要带块元素.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\bugIE6高度小于19需要加overflowHidden.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\bugmargin传递问题.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\bugIE6浮动双边距.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\bugIE6浮动双边距详解.html" />
+    <Content Include="html\html基础备忘\6兼容汇总\ball.png" />
+    <Content Include="javascript\1JS基础\1_for应用\for应用_生成li.html" />
+    <Content Include="javascript\1JS基础\1_for应用\for应用_生成li.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动%28模仿京东%29.html" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\1.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\2.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\3.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\4.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\8.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1定时基础.html" />
+    <Content Include="javascript\1JS基础\js定时\1定时基础作业.html" />
+    <Content Include="javascript\1JS基础\js定时\1.div掉落setInterval.html" />
+    <Content Include="javascript\1JS基础\js定时\1晃动特效完美版.html" />
+    <Content Include="javascript\1JS基础\js定时\1点击加分.html" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\5.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\6.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换\7.jpg" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动%28模仿新浪%29.html" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动%28模仿蘑菇街%29.html" />
+    <Content Include="javascript\1JS基础\js定时\timeAnimation.js" />
+    <Content Include="javascript\1JS基础\js定时\1图片自动切换.html" />
+    <Content Include="javascript\1JS基础\js日期对象\img\0.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\1.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\2.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\3.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\4.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\5.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\6.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\7.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\8.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\9.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\img\colon.JPG" />
+    <Content Include="javascript\1JS基础\js日期对象\js日期对象.html" />
+    <Content Include="javascript\1JS基础\字符串操作\task1.html" />
+    <Content Include="javascript\1JS基础\字符串操作\替换.html" />
+    <Content Include="javascript\1JS基础\数组\HtmlPage1.html" />
+    <Content Include="javascript\js作用域预编译和执行.html" />
+    <Content Include="javascript\Js兼容性.html" />
+    <Content Include="javascript\1JS基础\数据类型\1js类型判断2.html" />
+    <Content Include="javascript\1JS基础\数据类型\Null_空_Undefined_等区别.html" />
+    <Content Include="javascript\js作用域闭包.html" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\custom.html" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\events.html" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\jquery\all_runtimes.html" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\jquery\jquery_ui_widget.html" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\jquery\queue_widget.html" />
+    <Content Include="jquery\插件\plupload-2.1.8\HtmlPage1.html" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ar.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\az.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\be_BY.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\bg.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\bs.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ca.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\cs.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\cy.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\da.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\de.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\el.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\en.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\es.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\et.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\fa.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\fi.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\fr.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\he.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\hr.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\hu.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\hy.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\id.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\it.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ja.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ka.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\kk.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\km.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ko.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ku_IQ.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\lt.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\lv.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ms.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\nl.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\pl.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\pt_BR.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ro.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\ru.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\sk.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\sq.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\sr.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\sv.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\th_TH.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\tr.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\uk_UA.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\vi.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\zh_CN.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\i18n\zh_TW.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\done.gif" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\error.gif" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\jquery.plupload.queue.min.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\css\jquery.ui.plupload.css" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\img\loading.gif" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\img\plupload.png" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\jquery.ui.plupload.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\jquery.ui.plupload.min.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\moxie.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\moxie.min.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\Moxie.swf" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\Moxie.xap" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\plupload.dev.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\plupload.full.min.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\js\plupload.min.js" />
+    <Content Include="jquery\插件\plupload-2.1.8\license.txt" />
+    <Content Include="jquery\插件\validate\additional-methods.js" />
+    <Content Include="jquery\插件\validate\additional-methods.min.js" />
+    <Content Include="jquery\插件\validate\HtmlPage1.html" />
+    <Content Include="jquery\插件\validate\jquery.validate.js" />
+    <Content Include="jquery\插件\validate\jquery.validate.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ar.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ar.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_bg.js" />
+    <Content Include="jquery\插件\validate\localization\messages_bg.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_bn_BD.js" />
+    <Content Include="jquery\插件\validate\localization\messages_bn_BD.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ca.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ca.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_cs.js" />
+    <Content Include="jquery\插件\validate\localization\messages_cs.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_da.js" />
+    <Content Include="jquery\插件\validate\localization\messages_da.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_de.js" />
+    <Content Include="jquery\插件\validate\localization\messages_de.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_el.js" />
+    <Content Include="jquery\插件\validate\localization\messages_el.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_es.js" />
+    <Content Include="jquery\插件\validate\localization\messages_es.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_es_AR.js" />
+    <Content Include="jquery\插件\validate\localization\messages_es_AR.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_es_PE.js" />
+    <Content Include="jquery\插件\validate\localization\messages_es_PE.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_et.js" />
+    <Content Include="jquery\插件\validate\localization\messages_et.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_eu.js" />
+    <Content Include="jquery\插件\validate\localization\messages_eu.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_fa.js" />
+    <Content Include="jquery\插件\validate\localization\messages_fa.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_fi.js" />
+    <Content Include="jquery\插件\validate\localization\messages_fi.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_fr.js" />
+    <Content Include="jquery\插件\validate\localization\messages_fr.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ge.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ge.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_gl.js" />
+    <Content Include="jquery\插件\validate\localization\messages_gl.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_he.js" />
+    <Content Include="jquery\插件\validate\localization\messages_he.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_hr.js" />
+    <Content Include="jquery\插件\validate\localization\messages_hr.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_hu.js" />
+    <Content Include="jquery\插件\validate\localization\messages_hu.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_hy_AM.js" />
+    <Content Include="jquery\插件\validate\localization\messages_hy_AM.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_id.js" />
+    <Content Include="jquery\插件\validate\localization\messages_id.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_is.js" />
+    <Content Include="jquery\插件\validate\localization\messages_is.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_it.js" />
+    <Content Include="jquery\插件\validate\localization\messages_it.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ja.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ja.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ka.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ka.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_kk.js" />
+    <Content Include="jquery\插件\validate\localization\messages_kk.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ko.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ko.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_lt.js" />
+    <Content Include="jquery\插件\validate\localization\messages_lt.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_lv.js" />
+    <Content Include="jquery\插件\validate\localization\messages_lv.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_my.js" />
+    <Content Include="jquery\插件\validate\localization\messages_my.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_nl.js" />
+    <Content Include="jquery\插件\validate\localization\messages_nl.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_no.js" />
+    <Content Include="jquery\插件\validate\localization\messages_no.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_pl.js" />
+    <Content Include="jquery\插件\validate\localization\messages_pl.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_pt_BR.js" />
+    <Content Include="jquery\插件\validate\localization\messages_pt_BR.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_pt_PT.js" />
+    <Content Include="jquery\插件\validate\localization\messages_pt_PT.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ro.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ro.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ru.js" />
+    <Content Include="jquery\插件\validate\localization\messages_ru.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_si.js" />
+    <Content Include="jquery\插件\validate\localization\messages_si.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sk.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sk.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sl.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sl.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sr.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sr.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sr_lat.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sr_lat.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sv.js" />
+    <Content Include="jquery\插件\validate\localization\messages_sv.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_th.js" />
+    <Content Include="jquery\插件\validate\localization\messages_th.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_tj.js" />
+    <Content Include="jquery\插件\validate\localization\messages_tj.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_tr.js" />
+    <Content Include="jquery\插件\validate\localization\messages_tr.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_uk.js" />
+    <Content Include="jquery\插件\validate\localization\messages_uk.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_vi.js" />
+    <Content Include="jquery\插件\validate\localization\messages_vi.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_zh.js" />
+    <Content Include="jquery\插件\validate\localization\messages_zh.min.js" />
+    <Content Include="jquery\插件\validate\localization\messages_zh_TW.js" />
+    <Content Include="jquery\插件\validate\localization\messages_zh_TW.min.js" />
+    <Content Include="jquery\插件\validate\localization\methods_de.js" />
+    <Content Include="jquery\插件\validate\localization\methods_de.min.js" />
+    <Content Include="jquery\插件\validate\localization\methods_es_CL.js" />
+    <Content Include="jquery\插件\validate\localization\methods_es_CL.min.js" />
+    <Content Include="jquery\插件\validate\localization\methods_fi.js" />
+    <Content Include="jquery\插件\validate\localization\methods_fi.min.js" />
+    <Content Include="jquery\插件\validate\localization\methods_nl.js" />
+    <Content Include="jquery\插件\validate\localization\methods_nl.min.js" />
+    <Content Include="jquery\插件\validate\localization\methods_pt.js" />
+    <Content Include="jquery\插件\validate\localization\methods_pt.min.js" />
+    <Content Include="packages.config" />
+    <Content Include="前端每日一练\目录.txt" />
+    <Content Include="html\html基础备忘\1常用标签解析\常见标签（下）.ppt" />
+    <Content Include="html\html基础备忘\2浮动\css3—浮动.ppt" />
+    <Content Include="html\css预备课--PS基础.ppt" />
+    <Content Include="html\html基础备忘\3定位\定位.ppt" />
+    <Content Include="html\html基础备忘\4表格表单\表格表单.ppt" />
+    <Content Include="html\html基础备忘\5滑动门\css6—滑动门.ppt" />
+    <Content Include="html\html基础备忘\5滑动门\课件及课后练习\css6—滑动门.ppt" />
+    <Content Include="html\html基础备忘\6兼容汇总\css7—兼容性.ppt" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\dump.php" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\jquery\s3.php" />
+    <Content Include="jquery\插件\plupload-2.1.8\examples\upload.php" />
+    <Content Include="jquery\插件\plupload-2.1.8\readme.md" />
+    <Content Include="javascript\1JS基础\微软JavaScript手册js.chm" />
+    <None Include="Properties\PublishProfiles\1.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="html\1_html布局\1_html_flex布局\1flex移动布局.html" />
+    <Content Include="html\1_html布局\1_html_flex布局\flex-justify-content-align-content.html" />
+    <Content Include="html\1_html布局\多种居中.html" />
+    <Content Include="2面向对象.html" />
+    <Content Include="HtmlPage1.html" />
+    <Content Include="文章列表.html" />
+    <Content Include="html\1_html布局\1_html_flex布局\flex-direction-wrap.html" />
+    <Content Include="html\1_html布局\float布局.html" />
+    <Content Include="javascript\ElsFk.html" />
+    <Content Include="javascript\1JS基础\数据类型\1js类型判断.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="html\1_html布局\布局作业-前端开发教程页面设计.html" />
+    <Content Include="html\1_html布局\布局作业-模拟有道词典.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3933</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3933/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

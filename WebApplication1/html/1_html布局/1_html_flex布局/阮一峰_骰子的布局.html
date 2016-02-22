@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        .box { width: 200px; height:200px; border-radius:16px; box-shadow:inset 0px 10px #d7d7d7, inset 0 -10px #bbb, inset 10px 0 #d7d7d7, inset -10px 0 #d7d7d7;
+                 background-color:black; margin:10px; 
+                 /*居中*/
+                 display:-webkit-flex; display:-ms-flexbox; display:flex; 
+                 justify-content:center;
+                 align-items:center;
+
+                 color:white; position:relative;
+        }
+        .description { position: absolute; left: 20px; top: 20px; color: red; font-size:11px; }
+        .item { 
+            width:80px; height:80px; background-color:#e7e7e7; display:block; padding:8px; margin:0;
+            box-shadow:inset 0 5px white, inset 0 -5px #bbb,inset 5px 0 #d7d7d7, inset -5px 0 #d7d7d7;
+            border-radius: 10%;
+        }
+        .ball { 
+            border-radius:50%; width:20px; height:20px; display:inline-block; background-color:#191717;
+            margin:3px;
+            box-shadow:0 -3px #584848 inset;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:900px;">
+        <a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank"></a>
+        <br />
+        
+        <div style="display:-webkit-flex; display:-ms-flexbox; display:flex; flex-flow:row wrap; padding:10px; ">
+            <div class="box" >
+                <div class="description" >左对齐justify-content:flex-start</div> 
+                <div class="item" style="display:flex; flex-flow:row nowrap;justify-content:flex-start">
+                    <span class="ball"></span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="description" >上部居中justify-content:center</div>
+                <div class="item"  style="display:flex; flex-flow:row nowrap; justify-content:center;"><span class="ball"></span></div>
+            </div>
+            <div class="box" >
+                <div class="description" >中对齐justify-content:flex-start</div> 
+                <div class="item" style="display:flex; flex-flow:row nowrap;justify-content:flex-start; align-items:center;">
+                    <span class="ball"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >完全居中</div> 
+                <div class="item" style="display:flex; flex-flow:row nowrap;justify-content:center; align-items:center;">
+                    <span class="ball"></span>
+                </div>
+            </div>
+
+            <div class="box" >
+                <div class="description" >justify-content:space-between;</div> 
+                <div class="item" style="display:flex; flex-flow:row nowrap;justify-content:space-between; align-items:flex-start;">
+                    <span class="ball"></span>
+                    <span class="ball"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >justify-content:space-between;</div> 
+                <div class="item" style="display:flex; flex-flow:column nowrap;justify-content:flex-start; align-items:flex-start;">
+                    <span class="ball"></span>
+                    <span class="ball"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >flex-flow:column nowrap; 列排序;</div> 
+                <div class="item" style="display:flex; flex-flow:column nowrap;justify-content:space-between; align-items:flex-start;">
+                    <span class="ball"></span>
+                    <span class="ball"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >列排序的时候align-items:center;功能由cross轴转为main轴</div> 
+                <div class="item" style="display:flex; flex-flow:column nowrap;justify-content:space-between; align-items:center;">
+                    <span class="ball"></span>
+                    <span class="ball"></span>
+                </div>
+            </div>
+
+
+            <div class="box" >
+                <div class="description" >justify-content:space-between;</div> 
+                <div class="item" style="display:flex; flex-flow:row nowrap;justify-content:flex-start; align-items:flex-start;">
+                    <span class="ball"></span>
+                    <span class="ball" style="align-self:center;"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" ></div> 
+                <div class="item" style="display:flex; flex-flow:row nowrap;justify-content:space-between; align-items:flex-start;">
+                    <span class="ball"></span>
+                    <span class="ball" style="align-self:flex-end"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" ></div> 
+                <div class="item" style="display:flex; flex-flow:row nowrap;justify-content:space-between; align-items:flex-start;">
+                    <span class="ball"></span>
+                    <span class="ball" style="align-self:center;"></span>
+                    <span class="ball" style="align-self:flex-end"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >flex-flow:row-reverse溢出的第二排从右开始. </div> 
+                <div class="item" style="display:flex; flex-flow:row-reverse wrap;justify-content:space-between; align-items:flex-start;">
+                    <span class="ball"></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style="align-self:flex-end"></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >justify-content:flex-end;溢出的第二排从右开始; 然后加上align-content:space-between</div> 
+                <div class="item" style="display:flex; flex-flow:row wrap;justify-content:flex-end; align-content:space-between">
+                    <span class="ball"></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=""></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >flex-basis:100%确定项目在父容器里面的宽度</div> 
+                <div class="item" style="display:flex; flex-flow:row wrap;align-content:space-between">
+                    <div style="display:flex; justify-content:space-between; border:1px solid red; flex-basis:100%">
+                        <span class="ball"></span>
+                        <span class="ball" style=" "></span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; border:1px solid red; flex-basis:100%">
+                        <span class="ball" style=" "></span>
+                        <span class="ball" style=""></span>
+                    </div>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" ></div> 
+                <div class="item" style="display:flex; flex-flow:row wrap;align-content:space-between">
+                    <span class="ball"></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=""></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=""></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >justify-content:flex-end;溢出的第二排从右开始; 然后加上align-content:space-between</div> 
+                <div class="item" style="display:flex; flex-flow:column wrap; align-content:space-between">
+                    <span class="ball"></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=""></span>
+                    <span class="ball" style=" "></span>
+                    <span class="ball" style=""></span>
+                </div>
+            </div>
+            <div class="box" >
+                <div class="description" >flex-basis:100%确定项目在父容器里面的宽度</div> 
+                <div class="item" style="display:flex; flex-flow:row wrap;align-content:space-between">
+                    <div style="display:flex; justify-content:space-between; border:1px solid red; flex-basis:100%">
+                        <span class="ball"></span>
+                        <span class="ball"></span>
+                        <span class="ball" style=" "></span>
+                    </div>
+                    <div style="display:flex; justify-content:center; border:1px solid red; flex-basis:100%">
+                        <span class="ball"></span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; border:1px solid red; flex-basis:100%">
+                        <span class="ball" style=" "></span>
+                        <span class="ball" style=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

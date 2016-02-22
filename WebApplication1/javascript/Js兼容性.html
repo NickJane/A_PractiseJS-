@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+            console.log("float的兼容" + document.getElementById('divfloat').style.styleFloat ||
+                document.getElementById('divfloat').style.cssFloat);
+            console.log("cssText的兼容, IE6,7,8 不会带分号" + document.getElementById('divfloat').style.cssText);
+
+            var u = document.getElementById('ul2')
+            var fir = first(u);
+            nodeText(u);
+        }
+        
+    </script>
+   
+    <script type="text/javascript">
+        <!-- 兼容cssText不带分号-->
+        function setStyle(el, strCss) {
+            function endsWith(str, suffix) {
+                var l = str.length - suffix.length;
+                return l >= 0 && str.indexOf(suffix, l) == l;
+            }
+            var sty = el.style,
+                cssText = sty.cssText;
+            if (!endsWith(cssText, ';')) {
+                cssText += ';';
+            }
+            sty.cssText = cssText + strCss;
+        }
+        //获得真正的样式
+        function getRealStyle(elem, styleName) {
+            var realStyle = null;
+            //微软  
+            if (elem.currentStyle) {
+                realStyle = elem.currentStyle[styleName];
+            }
+                //W3C  
+            else if (window.getComputedStyle) {
+                realStyle = window.getComputedStyle(elem, null)[styleName];
+            }
+            return realStyle;
+        }
+        /* childNode属性和children属性的区别
+           childNode包含空节点, 推荐使用children获得集合
+        */
+        /*
+		元素.firstChild : 只读 属性 第一个子节点
+			标准下：firstChild会包含文本类型的节点
+			非标准下：只包含元素节点
+		元素.firstElementChild : 只读 属性 标准下获取第一个元素类型的子节点
+
+        那么如何安全地获得firstChild呢
+        var oFirst = oUl.firstElementChild || oUl.firstChild;
+        这个有个bug, 如果ul没有子节点, 那么还是有问题 
+        var ul2=document.getElementById('ul2')
+        var firstchild=ul2.children.length==0?null:(ul2.firstElementChild || ul2.firstChild)
+        console.log(firstchild);
+	*/
+    </script>
+
+    <!--兼容的dom操作-->
+    <script type="text/javascript">
+        /* 
+        1	Element	代表元素	Element, Text, Comment, ProcessingInstruction, CDATASection, EntityReference
+        2	Attr	代表属性	Text, EntityReference
+        3	Text
+        */
+        function preNode(elem) {
+            do { elem = elem.previousSibling; } while (elem && elem.nodeType != 1)
+            return elem;
+        }
+        function nexNode(elem) {
+            do { elem = elem.nextSibling; } while (elem && elem.nodeType != 1)
+            return elem;
+        }
+        /*找到第一个标签子节点    首先找到第一个子节点,判断其是不是标签;如果不是,则用
+        nexNode一直找到其不是文本的排在它后面的第一个兄弟节点*/
+        function firstChildNode(elem) {
+            elem = elem.firstChild;
+            return elem && elem.nodeType == 3 ? nexNode(elem) : elem;
+        }
+        function first(elem) {// 找到第一个节点nodetype是1的为止
+            elem = elem.firstChild;
+            return elem && elem.nodeType == 1 ? elem : nexNode(elem);
+        }
+        function last(elem) {
+            elem = elem.lastChild;
+            return elem && elem.nodeType == 1 ? elem : preNode(elem);
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="divfloat" style="float:left"></div>
+    <ul id="ul1" style="border: 1px solid red; margin-top:100px;">
+        <li>11111 <span>span</span></li>
+        <li>22222</li>
+        <li>33333</li>
+        <li>44444</li>
+        <p>pppppppp</p>
+    </ul>
+<ul id="ul2">
+</ul>
+</body>
+</html>

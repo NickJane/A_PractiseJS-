@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function Lecture(name, teacher) {
+            this.name = name;
+            this.teacher = teacher;
+        }
+
+        Lecture.prototype.display = function () {
+            return this.teacher + ' is teaching' + this.name;
+        }
+
+        function Schedule(lectures) {
+            this.lectures = lectures;
+        }
+        Schedule.prototype.display = function () {
+            var str = '';
+            for (var i = 0; i < this.lectures.length; i++) {
+                str += this.lectures[i].display;
+            }
+            return str;
+        }
+
+        var mySchedule = new Schedule([
+            new Lecture('Gym', 't_gym'),
+            new Lecture('Math', 't_math'),
+            new Lecture('English','t_english')
+        ]);
+
+        //alert(mySchedule.display());
+        document.write(mySchedule.display());
+    </script>
+    <script type="text/javascript">
+        var ii = 0;
+        function sortNumber(a, b) {
+            ii += 1;
+            return a - b
+        }
+
+        var arr = new Array(6)
+        arr[0] = "10"
+        arr[1] = "5"
+        arr[2] = "40"
+        arr[3] = "25"
+        arr[4] = "1000"
+        arr[5] = "1"
+
+        document.write(arr + "<br />")
+        document.write(arr.sort(sortNumber))
+        document.write("<br />")
+        document.write(ii + "<br />")
+
+    </script>
+    <script >
+        window.onload = function () {
+           
+            var d = document.getElementById('div1');
+            
+            var items = ["click", 'keypress'];
+
+            for (var i = 0; i < items.length; i++) {
+                (function () {
+                    var item = items[i];
+                    d['on' + item] = function () {
+                        alert('click' + item)
+                    };
+                })();
+            }
+
+            var obj = {
+                yes: function () {
+                    this.val = true;
+                },
+                no: function () { this.val = false;}
+            };
+            obj.yes();
+            window.no = obj.no;
+            window.no();
+            //alert(window.val+'   '+obj.val);
+
+            function changecolor() {
+                this.style.color = arguments[0];
+            }
+            changecolor.call(d, 'red');
+        }
+    </script>
+    <script>
+        function testCaller() {
+            document.writeln('<br>'); document.writeln('<br>');
+            document.writeln(testCaller.caller || 'nono');
+            document.writeln(arguments.callee || 'nono');
+            document.writeln('<br>');
+        }
+        testCaller();
+        (function () { testCaller(); })();
+    </script>
+</head>
+<body>
+    <div id="div1">ffffffffff</div>
+</body>
+</html>

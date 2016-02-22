@@ -1,0 +1,101 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS不规则导航nav</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding:0;
+		}
+		.demo {
+			width: 450px;
+			margin: 20px auto;
+		}
+		body{
+			background-color:#ccc;
+			font-size:12px;
+		}
+		.nav{
+			list-style: none outside none;
+			overflow: hidden;
+			zoom: 1;
+		}
+		.nav li {
+			float: left;
+		}
+		.nav a {
+			float: left;
+			display: block;
+			margin-left:2px;
+			height:0;
+			line-height:0;
+			border:0;
+			border-left:35px solid transparent;
+			border-bottom:35px solid #EF70A7;
+			text-decoration: none;
+		}
+		.nav .outer {
+			display: block;
+			float: left;
+			margin-right:-35px;
+			height:0;
+			line-height:0;
+			border:0;
+			border-right:35px solid transparent;
+			border-top:35px solid #EF70A7;
+			color:rgba(255, 255, 0, 0.5);
+			text-decoration:none;
+			font: bold 14px arial;
+			text-transform:uppercase;
+			text-shadow: 1px -1px 0px rgba(0,0,0,0.4);
+		}
+
+		.nav .inner{
+			display:block;
+			margin-top:-35px;
+			padding:0 10px;
+			height:35px;
+			line-height:35px;
+			text-align:center;
+			cursor:pointer;
+		}
+		.nav a.active,
+		.nav a:hover {
+			border-bottom-color: #c08;		
+		}
+		.nav a.active .outer,
+		.nav a:hover .outer {
+			border-top-color:#c08;
+			color: #fff;
+		}
+		/*IE6 HACK*/
+
+		*html .nav a{
+			border-left:35px solid dashed;}
+
+		*html .nav .outer{
+			margin-bottom:-35px;
+			position:relative;
+			z-index:1;
+			border-right:35px solid dashed;
+		}
+
+		*html .nav .inner{
+			float:left;
+			position:relative;
+			z-index:2;
+		}
+	</style>
+</head>
+<body>
+<h1>zaole.net</h1>
+	<div class="demo">
+		<ul class="nav">
+			<li><a href="#" class="active"><span class="outer"><span class="inner">W3cplus</span></span></a></li>
+			<li><a href="#"><span class="outer"><span class="inner">W3cplus Demo</span></span></a></li>
+			<li><a href="#"><span class="outer"><span class="inner">Blog</span></span></a></li>
+		</ul>
+	</div>
+</body>
+</html> 
