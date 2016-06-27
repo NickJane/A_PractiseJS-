@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery横向自适应幻灯片 - 站长素材</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/superslide.2.1.js"></script>
+
+</head>
+<body>
+<style type="text/css">		
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+body {
+	background:#fff;
+	font:normal 12px/22px 宋体;
+	width:100%;
+}
+img {
+	border:0;
+}
+a {
+	text-decoration:none;
+	color:#333;
+}
+a:hover {
+	color:#1974A1;
+}
+#footer {
+	text-align:center;
+}
+.fullSlide {
+	width:100%;
+	position:relative;
+	height:410px;
+	background:#000;
+}
+.fullSlide .bd {
+	margin:0 auto;
+	position:relative;
+	z-index:0;
+	overflow:hidden;
+}
+.fullSlide .bd ul {
+	width:100% !important;
+}
+.fullSlide .bd li {
+	width:100% !important;
+	height:410px;
+	overflow:hidden;
+	text-align:center;
+}
+.fullSlide .bd li a {
+	display:block;
+	height:410px;
+}
+.fullSlide .hd {
+	width:100%;
+	position:absolute;
+	z-index:1;
+	bottom:0;
+	left:0;
+	height:30px;
+	line-height:30px;
+}
+.fullSlide .hd ul {
+	text-align:center;
+}
+.fullSlide .hd ul li {
+	cursor:pointer;
+	display:inline-block;
+	*display:inline;
+	zoom:1;
+	width:42px;
+	height:11px;
+	margin:1px;
+	overflow:hidden;
+	background:#000;
+	filter:alpha(opacity=50);
+	opacity:0.5;
+	line-height:999px;
+}
+.fullSlide .hd ul .on {
+	background:#f00;
+}
+.fullSlide .prev,.fullSlide .next {
+	display:block;
+	position:absolute;
+	z-index:1;
+	top:50%;
+	margin-top:-30px;
+	left:15%;
+	z-index:1;
+	width:40px;
+	height:60px;
+	background:url(images/slider-arrow.png) -126px -137px #000 no-repeat;
+	cursor:pointer;
+	filter:alpha(opacity=50);
+	opacity:0.5;
+	display:none;
+}
+.fullSlide .next {
+	left:auto;
+	right:15%;
+	background-position:-6px -137px;
+}
+
+</style>
+<div class="fullSlide">
+  <div class="bd">
+    <ul>
+      <li _src="url(images/1.jpg)" style="background:#E2025E center 0 no-repeat;"><a target="_blank" href="http://sc.chinaz.com"></a></li>
+      <li _src="url(images/2.jpg)" style="background:#DED5A1 center 0 no-repeat;"><a target="_blank" href="http://sc.chinaz.com"></a></li>
+      <li _src="url(images/3.jpg)" style="background:#B8CED1 center 0 no-repeat;"><a target="_blank" href="http://sc.chinaz.com"></a></li>
+      <li _src="url(images/4.jpg)" style="background:#98918E center 0 no-repeat;"><a target="_blank" href="http://sc.chinaz.com"></a></li>
+      <li _src="url(images/5.jpg)" style="background:#FEFF19 center 0 no-repeat;"><a target="_blank" href="http://sc.chinaz.com"></a></li>
+    </ul>
+  </div>
+  <div class="hd">
+    <ul>
+    </ul>
+  </div>
+  <span class="prev"></span> <span class="next"></span> </div>
+<script type="text/javascript">
+jQuery(".fullSlide").hover(function() {
+    jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.5)
+},
+function() {
+    jQuery(this).find(".prev,.next").fadeOut()
+});
+jQuery(".fullSlide").slide({
+    titCell: ".hd ul",
+    mainCell: ".bd ul",
+    effect: "fold",
+    autoPlay: true,
+    autoPage: true,
+    trigger: "click",
+    startFun: function(i) {
+        var curLi = jQuery(".fullSlide .bd li").eq(i);
+        if ( !! curLi.attr("_src")) {
+            curLi.css("background-image", curLi.attr("_src")).removeAttr("_src")
+        }
+    }
+});
+</script>
+<div style="text-align:center;clear:both">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. </p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

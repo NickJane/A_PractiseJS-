@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!--不能删除此节点, 但是能修改值-->
+  <day id="2015-12-01">
+  </day>
+</root>

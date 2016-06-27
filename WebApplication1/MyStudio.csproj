@@ -401,6 +401,9 @@
     <Content Include="jquery\插件\plupload-2.1.8\js\plupload.full.min.js" />
     <Content Include="jquery\插件\plupload-2.1.8\js\plupload.min.js" />
     <Content Include="jquery\插件\plupload-2.1.8\license.txt" />
+    <Content Include="jquery\插件\superslider\HtmlPage1.html" />
+    <Content Include="jquery\插件\superslider\jquery.min.js" />
+    <Content Include="jquery\插件\superslider\jquery.SuperSlide.2.1.1.js" />
     <Content Include="jquery\插件\validate\additional-methods.js" />
     <Content Include="jquery\插件\validate\additional-methods.min.js" />
     <Content Include="jquery\插件\validate\HtmlPage1.html" />

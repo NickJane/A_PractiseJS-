@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<oss>
+  <!--百度开放云提供的oss-->
+  <instant domain="img.bwezhan.cn" endPoint="http://bj.bcebos.com" imgdomain="img1.bwezhan.cn"
+          skuIds="pujiban,biaozhunban,gaojiban,zunguiban" bucketName="bwezhancdn"
+          validInDesign="true" validInPublished="true"
+          isLocalOss="false" accessId="2f4b1f60919f4a918302a106b7726c69" 
+           accessKey="f3856720809b4435ac5d286d0cfacbe9" platform="baidu">
+  </instant>
+
+  <!--此类OSS是使用阿里云提供的OSS-->
+  <instant domain="img.andni.cn" endPoint="http://oss.aliyuncs.com" imgdomain="wezhan.andni.cn" 
+           skuIds="pujiban,biaozhunban,gaojiban,zunguiban" bucketName="wezhan"
+           validInDesign="true" validInPublished="true"
+           isLocalOss="false" accessId="8LCEEFOwxD3cEo0i" accessKey="f4Yexhzq6juh8gWUgWJWBPS3frphv6"></instant>
+
+  <!--香港oss-->
+  <instant domain="img.wezhan.hk" endPoint="http://oss-cn-hongkong-internal.aliyuncs.com" imgdomain="img.wezhan.hk" 
+          skuIds="" bucketName="wezhanhk"
+          validInDesign="true" validInPublished="true"
+          isLocalOss="false" accessId="8LCEEFOwxD3cEo0i" accessKey="f4Yexhzq6juh8gWUgWJWBPS3frphv6"></instant>
+
+  <!--阿里云, 美国oss-->
+  <instant domain="img.wezhan.us" endPoint="http://oss-us-west-1.aliyuncs.com" imgdomain="wezhanus.img-us-west-1.aliyuncs.com"
+           skuIds="pujiban,biaozhunban,gaojiban,zunguiban" bucketName="wezhanus"
+           validInDesign="true" validInPublished="true"
+           isLocalOss="false" accessId="8LCEEFOwxD3cEo0i" accessKey="f4Yexhzq6juh8gWUgWJWBPS3frphv6"></instant>
+  
+  <!--此类OSS是在Web服务器通过一个单独的站点模拟的，文件路径使用配置的域名-->
+  <instant domain="img.andni.cn" accessId="8LCEEFOwxD3cEo0i" accessKey="f4Yexhzq6juh8gWUgWJWBPS3frphv6" validInDesign="true" validInPublished="false"  skuIds="50011" bucketName="wezhan" isLocalOss="false" ></instant>
+  <!--此类实际上是不使用OSS，文件在SAAS服务器生成，如果搭配了VM则需要将文件发布到VM-->
+  <instant domain="" skuIds="" bucketName="img1" validInDesign="true" validInPublished="true" isLocalOss="true" rootFilePath="C:\Work\WeZhanData\"></instant>
+</oss>
