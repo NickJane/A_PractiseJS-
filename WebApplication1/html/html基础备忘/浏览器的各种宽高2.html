@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var div = document.getElementById('div1');
+            var str = "";
+            str += "div.clientHeight():" + div.clientHeight + "<br>";
+            str += "div.offsetHeight:" + div.offsetHeight + "<br>";
+            str += "div.clientWidth(content+padding):" + div.clientWidth + "<br>";
+            str += "div.offsetWidth(content+padding+border):" + div.offsetWidth + "<br>";
+            div.innerHTML = str;
+        }
+    </script>
+</head>
+<body style="margin:20px; border:10px solid #e8e1e1; height:2600px;">
+    <div id="div1" style="margin:10px; border:10px solid #9b3b3b; height:1300px; width:300px; padding:20px; background-color:#f7bd32">
+
+    </div>
+</body>
+</html>
