@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+
+        document.body.onclick = function (e) {
+            e = window.event || e;
+            alert(e.srcElement.tagName || e.currentTarget.tagName);
+        }
+        /*  element.onXXX方式（比较古老，不推荐使用）
+
+        这种方式添加事件IE6/7/8只支持window.event不支持参数传入，
+        Firefox只支持参数传入不支持其它方式。
+        IE9/Opera/Safari/Chrome 两种方式都支持。
+
+        为了兼容firefox每次都传入一个e参数, 是很麻烦的事情. 所以火狐下这样获取event参数
+        */
+        function a() {
+            e = arguments.callee.caller.arguments[0] || window.event;
+            alert(e.keyCode);
+        }
+        /*
+        arguments.callee   ==>  a() arguments.callee指的就是当前的函数体
+        arguments.callee.caller ==> arguments.callee.caller就是当前函数的上级函数 onclick(event),
+        当执行onclick="a()"时arguments.callee就是a()，arguments.callee.caller就是function onclick 
+        */
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

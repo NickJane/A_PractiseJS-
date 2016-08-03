@@ -19,7 +19,8 @@ ie：obj.attachEvent(事件名称，事件函数);
 	4.this触发该事件的对象
 
     是否捕获:  false的话, 从内到外依次事件冒泡..  true的话, 从外到内来执行事件
-*/        /*document.attachEvent('onclick', function() {
+*/
+        /*document.attachEvent('onclick', function() {
 	fn1.call(document);
 });
 document.attachEvent('onclick', fn2);*/
@@ -37,13 +38,16 @@ document.attachEvent('onclick', fn2);*/
                     fn.call(obj); //用call就可以把this传过去
                 });
             }
-        }        function fn1(a, b) {
+        }
+
+        function fn1(a, b) {
             console.log(this);
             console.log(a + b);
         }
 
         fn1();	//window
-        fn1.call(null, 10, 20);	//调用函数	fn1() == fn1.call() ; 如果传null, 那this就是window对象了
+        fn1.call(null, 10, 20);	//调用函数	fn1() == fn1.call() ; 如果传null, 那this就是window对象了
+
 
 
         /*
@@ -58,7 +62,11 @@ ie : obj.detachEvent(事件名称，事件函数);
         document.addEventListener('click', fn1, true);
         document.addEventListener('click', fn2, false);
 
-        document.removeEventListener('click', fn1, false);//注意, 这里只取消了冒泡的事件fn1, 没有取消进入的事件fn1        //oncontextmenu : 右键菜单事件，当右键菜单（环境菜单）显示出来的时候触发
+        document.removeEventListener('click', fn1, false);//注意, 这里只取消了冒泡的事件fn1, 没有取消进入的事件fn1
+
+
+
+        //oncontextmenu : 右键菜单事件，当右键菜单（环境菜单）显示出来的时候触发
 
         document.oncontextmenu = function () {
             //alert(1)  可以在这里构造自定义右键菜单

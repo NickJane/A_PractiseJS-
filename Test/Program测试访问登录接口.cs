@@ -20,9 +20,8 @@ namespace Test
         }
 
         public static void SsologinForMail() {
-            string username = "123456@qq.com";//"xuna@clouddream.net";
-            string url2 = "http://192.168.199.226:9090/customer/ssologin?username=" + username + "&redirecturl=";
-            url2 += System.Web.HttpUtility.UrlEncode("/apv2");
+            string username = "zengjw@andni.cn";//"xuna@clouddream.net";"123456@qq.com";
+            string url2 = "http://localhost:9090/customer/ssologin?username=" + username;
 
             string _securityKey = "yunmeng123";
             TimeSpan ts = DateTime.Now.AddMinutes(30) - new DateTime(1970, 1, 1);
@@ -34,7 +33,7 @@ namespace Test
             
             var token = GetToken(queryKeyValues);
 
-            string url = url2 + "&timestamp=" + ts.TotalSeconds + "&token=" + token;
+            string url = url2 + "&timestamp=" + ts.TotalSeconds + "&token=" + token + "&redirecturl=" + System.Web.HttpUtility.UrlEncode("/ap");
             Console.Read();
         }
         public static void requestLoginGet() {
