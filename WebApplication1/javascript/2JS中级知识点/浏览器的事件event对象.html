@@ -15,9 +15,10 @@
         Firefox只支持参数传入不支持其它方式。
         IE9/Opera/Safari/Chrome 两种方式都支持。
 
+
         为了兼容firefox每次都传入一个e参数, 是很麻烦的事情. 所以火狐下这样获取event参数
         */
-        function a() {
+        function GetEvent() {
             e = arguments.callee.caller.arguments[0] || window.event;
             alert(e.keyCode);
         }
@@ -27,6 +28,41 @@
         当执行onclick="a()"时arguments.callee就是a()，arguments.callee.caller就是function onclick 
         */
 
+
+        //取消浏览器对事件的默认行为（响应）（比如<a>标签的跳转等）并停止事件的继续传播。 
+
+        function stopEvent (evt) { 
+            var evt = evt || window.event; 
+            if (evt.preventDefault) { 
+                evt.preventDefault(); 
+                evt.stopPropagation(); 
+            } else { 
+                evt.returnValue = false; 
+                evt.cancelBubble = true; 
+            } 
+        } 
+
+        //只阻止事件继续传播（不取消默认行为） 
+
+        function stopEvent (evt) { 
+            var evt = evt || window.event; 
+            if (evt.stopPropagation) { 
+                evt.stopPropagation(); 
+            } else { 
+                evt.cancelBubble = true; 
+            } 
+        } 
+
+        //只取消默认行为（不阻止事件的继续传播） 
+
+        function stopEvent (evt) { 
+            var evt = evt || window.event; 
+            if (evt.preventDefault) { 
+                evt.preventDefault(); 
+            } else { 
+                evt.returnValue = false; 
+            } 
+        } 
     </script>
 </head>
 <body>

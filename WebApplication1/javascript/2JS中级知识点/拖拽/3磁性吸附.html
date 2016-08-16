@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function GetEvent() {
+            e = arguments.callee.caller.arguments[0] || window.event;
+            //alert(e.keyCode);
+            return e;
+        }
+        function bind(obj, evname, fn) {
+            if (obj.addEventListener) {
+                obj.addEventListener(evname, fn, false);
+            } else {
+                obj.attachEvent('on' + evname, function () {
+                    fn.call(obj); //用call就可以把this传过去
+                });
+            }
+        }
+        function unbind(target, type, func) {
+            if (target.removeEventListener)
+                target.removeEventListener(type, func, false);
+            else if (target.detachEvent)
+                target.detachEvent("on" + type, func);
+            else target["on" + type] = null;
+        }
+        function stopEvent(evt) {
+            var evt = evt || window.event;
+            if (evt.preventDefault) {
+                evt.preventDefault();
+                evt.stopPropagation();
+            } else {
+                evt.returnValue = false;
+                evt.cancelBubble = true;
+            }
+        }
+        function stopDefaultBehavior(evt) {
+            var evt = evt || window.event;
+            if (evt.preventDefault) {
+                evt.preventDefault();
+            } else {
+                evt.returnValue = false;
+            }
+        }
+        window.onload = function () {
+            var container = document.getElementsByClassName("container")[0];
+            var dragObject = document.getElementsByClassName("dragObject")[0];
+            var x = document.getElementById('x');
+            var y = document.getElementById('y');
+
+            bind(dragObject, "mousedown", function () {//鼠标按下的时候, 注册鼠标移动事件和鼠标松开的事件
+                var ev = GetEvent();
+                var disX = parseInt(ev.clientX) - parseInt(this.offsetLeft);
+                // 鼠标按下的时候距离屏幕左侧的长度=点击点的距离左侧的长度-对象离上级对象(position:relative)的距离
+                var disY = parseInt(ev.clientY) - parseInt(this.offsetTop);
+
+                var move=function () {//移动
+                    var e = GetEvent();
+                    var left = parseInt(e.clientX) - disX;
+                    var top = parseInt(e.clientY) - disY;
+
+                    var containerHeight=parseInt(container.clientHeight);
+                    var dragObjectHeight = parseInt(dragObject.clientHeight);
+                    var containerW=parseInt(container.clientWidth);
+                    var dragObjectW = parseInt(dragObject.clientWidth);
+
+                    
+
+                    x.innerHTML = left;
+                    y.innerHTML = top;
+                    dragObject.style.left = left + "px";
+                    dragObject.style.top = top + "px";
+
+                    if (left < 20 )
+                        dragObject.style.left =  "0px";
+                    if (top < 20) 
+                        dragObject.style.top = 0 + "px";
+                    if ((top + dragObjectHeight+20) > containerHeight)
+                        dragObject.style.top = (containerHeight - dragObjectHeight) + "px";
+                    if ((left + dragObjectW+20) > containerW)
+                        dragObject.style.left = (containerW - dragObjectW) + "px";
+                    
+                }
+                bind(container, "mousemove", move);
+                bind(container, "mouseup", function () {//松开的时候取消掉移动事件
+                    unbind(container, "mousemove", move)
+                });
+                bind(container, "mouseleave", function () {//离开被选中元素的时候触发
+                    unbind(container, "mousemove", move)
+                });
+                stopDefaultBehavior(ev);//阻值默认行为. 一般用来防止选中了图片或者文字的时候不能拖拽
+            })
+        }
+
+    </script>
+    <style type="text/css">
+        body { padding:50px;}
+
+        .container { border:10px solid #808080; width:80%; height:300px; position:relative;}
+        .dragObject {  width:50px; height:50px; background-color:#0fa395;position:absolute; left:5px; top:5px;font-size:12px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dragObject">fffff</div>
+    </div>
+    <div>
+        x:<span id="x"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        y:<span id="y"></span>
+    </div>
+</body>
+</html>

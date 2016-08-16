@@ -182,6 +182,13 @@ $(function () {
         return this.optional(element) || !reg.test(value);
     }, "含有中英文特殊字符");
 
+    //密码
+    jQuery.validator.addMethod('checkpassword', function (value, element) {
+        return this.optional(element) || (/[0-9]+/.test(value) && /[a-zA-Z]/.test(value));
+    }, '必须包括英文字母和数字');
+    jQuery.validator.addMethod("alnum", function (value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9]+$/.test(value);
+    }, "只能包括英文字母和数字");
 
     //身份证号码的验证规则
     function isIdCardNo(num) {

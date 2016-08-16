@@ -39,6 +39,13 @@ document.attachEvent('onclick', fn2);*/
                 });
             }
         }
+        function unbind(target, type, func) {
+            if (target.removeEventListener)
+                target.removeEventListener(type, func, false);
+            else if (target.detachEvent)
+                target.detachEvent("on" + type, func);
+            else target["on" + type] = null;
+        }
 
         function fn1(a, b) {
             console.log(this);

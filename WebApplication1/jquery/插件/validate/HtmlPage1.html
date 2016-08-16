@@ -30,7 +30,18 @@
                 }
             });
         });
+        /*
+        $('#Edit_Password').rules("add", {
+                required: true, maxlength: 32, minlength: 6, checkpassword: true,
+                messages: { required: "密码不能为空", maxlength: "长度最多32位", minlength: "长度最少6位" }
+            });
+            $('#Edit_Password2').rules("add", {
+                required: true, maxlength: 32, minlength: 6, checkpassword: true, equalTo: '#Edit_Password'
+                , messages: { required: "密码不能为空", maxlength: "长度最多32位", minlength: "长度最少6位", equalTo: "两次密码输入不对" }
+            });
 
+            $('#Edit_Password').rules("remove"); $('#Edit_Password2').rules("remove");
+        */
         function save() {
             //$('#form1').validate().resetForm();重置验证状态
             $('#form1').validate();

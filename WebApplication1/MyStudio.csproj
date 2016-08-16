@@ -85,10 +85,15 @@
     <Content Include="html\html基础备忘\7其他常用\8_英文单词 数字词内断行.html" />
     <Content Include="html\html基础备忘\7其他常用\9_文本溢出显示省略号.html" />
     <Content Include="html\html基础备忘\7其他常用\bigptr.jpg" />
+    <Content Include="html\html基础备忘\宽高等属性详解.gif" />
     <Content Include="html\html基础备忘\浏览器理解offset.html" />
-    <Content Include="html\html基础备忘\浏览器的事件event对象.html" />
-    <Content Include="html\html基础备忘\浏览器的事件和坐标2.html" />
-    <Content Include="html\html基础备忘\浏览器的事件和坐标.html" />
+    <Content Include="javascript\2JS中级知识点\拖拽\4碰撞.html" />
+    <Content Include="javascript\2JS中级知识点\拖拽\3磁性吸附.html" />
+    <Content Include="javascript\2JS中级知识点\拖拽\2限定的拖拽.html" />
+    <Content Include="javascript\2JS中级知识点\拖拽\1基本拖拽.html" />
+    <Content Include="javascript\2JS中级知识点\浏览器的事件event对象.html" />
+    <Content Include="javascript\2JS中级知识点\浏览器的事件和坐标2.html" />
+    <Content Include="javascript\2JS中级知识点\浏览器的事件和坐标.html" />
     <Content Include="html\html基础备忘\浏览器的各种宽高2.html" />
     <Content Include="html\html基础备忘\浏览器的各种高度.png" />
     <Content Include="html\html基础备忘\实战\index.html" />
@@ -328,6 +333,8 @@
     <Content Include="javascript\1JS基础\数据类型\1js类型判断2.html" />
     <Content Include="javascript\1JS基础\数据类型\Null_空_Undefined_等区别.html" />
     <Content Include="javascript\js作用域闭包.html" />
+    <Content Include="javascript\2JS中级知识点\跨域\1资料.html" />
+    <Content Include="javascript\2JS中级知识点\跨域\jsonp.js" />
     <Content Include="jquery\插件\plupload-2.1.8\examples\custom.html" />
     <Content Include="jquery\插件\plupload-2.1.8\examples\events.html" />
     <Content Include="jquery\插件\plupload-2.1.8\examples\jquery\all_runtimes.html" />
@@ -528,6 +535,7 @@
     <Content Include="jquery\插件\validate\localization\methods_nl.min.js" />
     <Content Include="jquery\插件\validate\localization\methods_pt.js" />
     <Content Include="jquery\插件\validate\localization\methods_pt.min.js" />
+    <Content Include="jquery\插件\合并table的列\HtmlPage1.html" />
     <Content Include="packages.config" />
     <Content Include="前端每日一练\目录.txt" />
     <Content Include="html\html基础备忘\1常用标签解析\常见标签（下）.ppt" />

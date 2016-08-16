@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        /*
+        js跨域
+        1. 域名完全不同
+        2. 子域名和主域名
+
+
+        
+        
+        
+        */
+
+
+        /*
+        1. document.domain设置为 baidu.com
+        2. 使用script标签进行跨域, 这个被称为 jsonp跨域
+            src指向不受跨域影响
+            jsonp= json+padding(内填充)
+        
+        3. location.hash跨域
+        */
+        function createJs(sUrl) {
+            var el = document.createElement("script");
+            el.type = "text/javascript";
+            el.src = sUrl;
+            document.head.appendChild(el);
+        }
+        createJs('jsonp.js?callback=fn')
+
+        function fn() {
+            //被调用的方法体
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

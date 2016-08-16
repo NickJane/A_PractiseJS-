@@ -7,10 +7,10 @@
         window.onload = function () {
             var div = document.getElementById('div1');
             var str = "";
-            str += "div.clientHeight():" + div.clientHeight + "<br>";
+            str += "div.clientHeight():" + div.clientHeight + ",  clientWidth: "+div.clientWidth+"<br>";
             str += "div.offsetHeight:" + div.offsetHeight + "<br>";
-            str += "div.clientWidth(content+padding):" + div.clientWidth + "<br>";
-            str += "div.offsetWidth(content+padding+border):" + div.offsetWidth + "<br>";
+            str += "div.clientWidth(元素宽度=content+padding):" + div.clientWidth + "<br>";
+            str += "div.offsetWidth(元素占位宽度=content+padding+border):" + div.offsetWidth + "<br>";
             div.innerHTML = str;
         }
     </script>
