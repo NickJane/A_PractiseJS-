@@ -4,12 +4,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style type="text/css">
+        
+        /*flex-flow: <flex-direction> || <flex-wrap>; 
+            flex-direction属性决定主轴的方向（即项目的排列方向）。
+
+        flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+        
+            
+        justify-content属性定义了项目(内容)在主轴上的对齐方式。    
+        align-items:
+        
+        align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+                     配合flex-wrap的换行就成了多根轴线了
+        
+            */
+
+
         .box { width: 200px; height:200px; border-radius:16px; box-shadow:inset 0px 10px #d7d7d7, inset 0 -10px #bbb, inset 10px 0 #d7d7d7, inset -10px 0 #d7d7d7;
                  background-color:black; margin:10px; 
                  /*居中*/
                  display:-webkit-flex; display:-ms-flexbox; display:flex; 
-                 justify-content:center;
-                 align-items:center;
+                 justify-content:center;/*内容在main axis对齐方式:中间*/
+                 align-items:center;/*内容在 across axis对齐:中间*/
 
                  color:white; position:relative;
         }
@@ -40,7 +56,9 @@
             </div>
             <div class="box">
                 <div class="description" >上部居中justify-content:center</div>
-                <div class="item"  style="display:flex; flex-flow:row nowrap; justify-content:center;"><span class="ball"></span></div>
+                <div class="item"  style="display:flex; flex-flow:row nowrap; justify-content:center;">
+                    <span class="ball"></span>
+                </div>
             </div>
             <div class="box" >
                 <div class="description" >中对齐justify-content:flex-start</div> 

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    
+    <style type="text/css">
+        /*属性选择器
+            和jquery的属性选择差不多
+            E[attr]只使用属性名，但没有确定任何属性值
+            E[type="text"]指定属性名，并指定了该属性的属性值
+            E[attr~="value"]指定属性名，并且具有属性值，此属性值是一个词列表，并且以空格隔开，其中词列表中包含了一个value词，而且等号前面的“〜”不能不写
+            E[attr^="value"]指定了属性名，并且有属性值，属性值是以value开头的
+            E[attr$="value"]指定了属性名，并且有属性值，而且属性值是以value结束的
+            E[attr*="value"]指定了属性名，并且有属性值，而且属值中包含了value
+            E[attr|="value"]指定了属性名，并且属性值是value或者以“value-”开头的值（比如说zh-cn）
+
+
+
+
+            结构性伪类
+            E:nth-child(n)  表示E的父元素中的第n个字节点
+
+            例子: 下面这个表示P标签父级节点之下的查找, 而且找到的元素必须为p标签才能生效
+            p:nth-child(odd){background:red} 匹配奇数行,2n必须为p标签 还可以写作 p:nth-child(2n) 
+            p:nth-child(even){background:red} 匹配偶数行 还可以写作 p:nth-child(2n-1) 
+            div *:nth-child(2){  background: red; } div中的第二个子元素(忽视子元素的类型)
+
+            E:nth-last-child(n) 表示E父元素中的第n个字节点，从后向前计算
+
+
+
+            E:nth-of-type(n)  表示E父元素中类型为E(独立进行排序)的第n个字节点
+            E:nth-last-of-type(n)表示E父元素中的第n个字节点，且类型为E,从后向前计算
+
+
+            其他的延伸
+            E:first-child 表示E元素中的第一个子节点  == E:nth-child(1)
+            E:last-child 表示E元素中的最后一个子节点 == E:nth-last-child(1)
+            E:first-of-type 表示E父元素中的第一个子节点且节点类型是E的  E:nth-of-type
+            E:last-of-type 表示E父元素中的最后一个子节点且节点类型是E的 E:nth-last-of-type(1)
+
+
+
+            E:empty 表示E元素中没有子节点。注意：子节点包含文本节点
+
+
+
+        */
+    </style>
+    <style type="text/css">
+        /*target伪类
+
+
+        */
+    </style>
+</head>
+<body>
+
+</body>
+</html>

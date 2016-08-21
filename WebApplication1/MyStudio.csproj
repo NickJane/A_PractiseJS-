@@ -74,8 +74,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="html\1_html布局\1_html_flex布局\flex-alignitem.html" />
-    <Content Include="html\1_html布局\1_html_flex布局\flex-grow-shrink-basis.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\css3选择器.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\direction文字排版.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\prev ~ siblings选择器模拟单选框.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\伪类before_after.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\伪类target.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\伪类表单元素.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\结构性伪类nth-child%28n%29的问题.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\结构性伪类练习.html" />
+    <Content Include="Html5Css3\0Css3\1选择器\超出省略号.html" />
+    <Content Include="Html5Css3\0Css3\3实用的css新特性\Rgba实现背景半透明而内容不透明.html" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-alignitem.html" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-grow-shrink-basis.html" />
     <Content Include="html\html基础备忘\7其他常用\10_盒模型的怪异模式.html" />
     <Content Include="html\html基础备忘\7其他常用\11_隐藏元素.html" />
     <Content Include="html\html基础备忘\7其他常用\14_未知宽高的img如何在容器里水平垂直居中.html" />
@@ -98,15 +108,14 @@
     <Content Include="html\html基础备忘\浏览器的各种高度.png" />
     <Content Include="html\html基础备忘\实战\index.html" />
     <Content Include="html\html基础备忘\浏览器的各种高度.html" />
-    <Content Include="html\1_html布局\1_html_flex布局\目录.txt" />
-    <Content Include="html\1_html布局\1_html_flex布局\页脚固定底部1.html" />
-    <Content Include="html\1_html布局\1_html_flex布局\阮一峰_骰子的布局.html" />
-    <Content Include="html\1_html布局\1_html_flex布局\页脚固定底部2.html" />
-    <Content Include="html\1_html布局\等高布局\等高原理2.html" />
-    <Content Include="html\1_html布局\等高布局\8_等高布局.html" />
-    <Content Include="html\1_html布局\等高布局\等高原理.html" />
-    <Content Include="html\1_html布局\圣杯布局-学习.html" />
-    <Content Include="html\1_html布局\圣杯布局.html" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\目录.txt" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\2阮一峰_骰子的布局.html" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\页脚固定底部.html" />
+    <Content Include="Html5Css3\1_html布局\等高布局\等高原理2.html" />
+    <Content Include="Html5Css3\1_html布局\等高布局\8_等高布局.html" />
+    <Content Include="Html5Css3\1_html布局\等高布局\等高原理.html" />
+    <Content Include="Html5Css3\1_html布局\圣杯布局-学习.html" />
+    <Content Include="Html5Css3\1_html布局\圣杯布局.html" />
     <Content Include="html\html基础备忘\1常用标签解析\1-常见标签-默认样式重置.html" />
     <Content Include="html\html基础备忘\1常用标签解析\1-常见标签.html" />
     <Content Include="html\html基础备忘\1常用标签解析\1.png" />
@@ -560,21 +569,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="html\1_html布局\1_html_flex布局\1flex移动布局.html" />
-    <Content Include="html\1_html布局\1_html_flex布局\flex-justify-content-align-content.html" />
-    <Content Include="html\1_html布局\多种居中.html" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\1flex移动布局.html" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-justify-content-align-content.html" />
+    <Content Include="Html5Css3\1_html布局\多种居中.html" />
     <Content Include="2面向对象.html" />
     <Content Include="HtmlPage1.html" />
     <Content Include="文章列表.html" />
-    <Content Include="html\1_html布局\1_html_flex布局\flex-direction-wrap.html" />
-    <Content Include="html\1_html布局\float布局.html" />
+    <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-direction-wrap.html" />
+    <Content Include="Html5Css3\1_html布局\float布局.html" />
     <Content Include="javascript\ElsFk.html" />
     <Content Include="javascript\1JS基础\数据类型\1js类型判断.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="html\1_html布局\布局作业-前端开发教程页面设计.html" />
-    <Content Include="html\1_html布局\布局作业-模拟有道词典.html" />
+    <Content Include="Html5Css3\1_html布局\布局作业-前端开发教程页面设计.html" />
+    <Content Include="Html5Css3\1_html布局\布局作业-模拟有道词典.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

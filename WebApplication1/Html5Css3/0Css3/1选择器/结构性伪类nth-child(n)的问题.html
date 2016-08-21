@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        div { border:1px solid blue;margin-top:10px;
+        }
+        p {
+            height: 20px;
+            border: 1px solid #000;
+        }
+
+
+
+        /*body *:nth-last-child(2n) {
+                    background: red;
+                }*/
+        
+        div p:nth-child(2){background: red;} 
+        /*找p标签父级下的第二个子元素，并且这个元素还的是p标签,  这里找到的第二个元素是h4, 不是p, 所以这里无效, 改成下面的这局就好*/
+        div[id=div1] *:nth-child(3){  background: red; } 
+        div[id=div2] p:nth-of-type(2n){  background: red; } 
+
+
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <p>p1</p>
+        <h4>h4</h4>
+        <p>p2</p>
+        <h4>h2</h4>
+        <p>p3</p>
+        <h4>h3</h4>
+        <p>p4</p>
+        <p>p5</p>
+    </div>
+    <div id="div2">
+        <p>p1</p>
+        <h4>h4</h4>
+        <p>p2</p>
+        <h4>h2</h4>
+        <p>p3</p>
+        <h4>h3</h4>
+        <p>p4</p>
+        <p>p5</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        .Site { display: flex; min-height: 100vh;/*1vh表示浏览器高度的1%，100vh为浏览器高度，感觉这个挺好的*/
+                 flex-direction: column; 
+                 margin:0 auto; padding:0 auto;
+        }
+        /*flex 可伸缩元素能够随着框的缩小或扩大而缩写或放大。只要框中有多余的空间，可伸缩元素就会扩展来填充这些空间。
+            下面这个flex:1, 会占用屏幕-底部(100px)的全部空间.
+            */
+        .Site-content { flex: 1; }
+        footer { height:100px; background-color:black;}
+    </style>
+</head>
+<body class="Site">
+    <header>...</header>
+    <main class="Site-content">...</main>
+    <footer>f</footer>
+</body>
+</html>

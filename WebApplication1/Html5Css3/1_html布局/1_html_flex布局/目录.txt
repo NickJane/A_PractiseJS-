@@ -1,0 +1,36 @@
+﻿http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
+
+任何一个容器都可以指定为Flex布局。
+.box{
+  display: flex;
+}
+行内元素也可以使用Flex布局。
+.box{
+  display: inline-flex;
+}
+Webkit内核的浏览器，必须加上-webkit前缀。
+
+.box{
+  display: -webkit-flex; /* Safari */
+  display: flex;
+}
+注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
+
+
+以下6个属性设置在容器上。
+flex-direction
+flex-wrap
+flex-flow
+justify-content
+align-items
+align-content
+
+
+
+以下6个属性设置在项目上。
+order
+flex-grow
+flex-shrink
+flex-basis
+flex
+align-self
