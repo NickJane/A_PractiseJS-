@@ -52,6 +52,7 @@
             bind(dragObject, "mousedown", function () {//鼠标按下的时候, 注册鼠标移动事件和鼠标松开的事件
                 var ev = GetEvent();
                 var disX = parseInt(ev.clientX) - parseInt(this.offsetLeft);
+                console.log('ev.clientX) - parseInt(this.offsetLeft)'+ev.clientX+','+parseInt(this.offsetLeft));
                 // 鼠标按下的时候距离屏幕左侧的长度=点击点的距离左侧的长度-对象离上级对象(position:relative)的距离
                 var disY = parseInt(ev.clientY) - parseInt(this.offsetTop);
 
