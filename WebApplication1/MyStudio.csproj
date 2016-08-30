@@ -85,10 +85,10 @@
     <Content Include="Html5Css3\0Css3\1选择器\结构性伪类练习.html" />
     <Content Include="Html5Css3\0Css3\1选择器\超出省略号.html" />
     <Content Include="Html5Css3\0Css3\3实用的css新特性\Rgba实现背景半透明而内容不透明.html" />
-    <Content Include="Html5Css3\0Css3\变形和动画\Rotate旋转常用.html" />
-    <Content Include="Html5Css3\0Css3\变形和动画\scale在xy轴上放大.html" />
-    <Content Include="Html5Css3\0Css3\变形和动画\skew长方形变平行四边形.html" />
-    <Content Include="Html5Css3\0Css3\变形和动画\translate位移居中.html" />
+    <Content Include="Html5Css3\0Css3\变形和动画transform\Rotate旋转常用.html" />
+    <Content Include="Html5Css3\0Css3\变形和动画transform\scale在xy轴上放大.html" />
+    <Content Include="Html5Css3\0Css3\变形和动画transform\skew长方形变平行四边形.html" />
+    <Content Include="Html5Css3\0Css3\变形和动画transform\translate位移居中.html" />
     <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-alignitem.html" />
     <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-grow-shrink-basis.html" />
     <Content Include="html\html基础备忘\7其他常用\10_盒模型的怪异模式.html" />
