@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function GetEvent() {
+            e = arguments.callee.caller.arguments[0] || window.event;
+            //alert(e.keyCode);
+            return e;
+        }
+        function bind(obj, evname, fn) {
+            if (obj.addEventListener) {
+                obj.addEventListener(evname, fn, false);
+            } else {
+                obj.attachEvent('on' + evname, function () {
+                    fn.call(obj); //用call就可以把this传过去
+                });
+            }
+        }
+        function unbind(target, type, func) {
+            if (target.removeEventListener)
+                target.removeEventListener(type, func, false);
+            else if (target.detachEvent)
+                target.detachEvent("on" + type, func);
+            else target["on" + type] = null;
+        }
+        function stopEvent(evt) {
+            var evt = evt || window.event;
+            if (evt.preventDefault) {
+                evt.preventDefault();
+                evt.stopPropagation();
+            } else {
+                evt.returnValue = false;
+                evt.cancelBubble = true;
+            }
+        }
+        function stopDefaultBehavior(evt) {
+            var evt = evt || window.event;
+            if (evt.preventDefault) {
+                evt.preventDefault();
+            } else {
+                evt.returnValue = false;
+            }
+        }
+    </script>
+    <style type="text/css">
+        body { padding: 50px; }
+
+        .container { border: 10px solid #808080; width: 80%; height: 300px; position: relative; }
+        .dragObject { width: 150px; height: 50px; background-color: #0fa395; position: absolute; left: 5px; top: 5px; font-size: 12px; z-index: 11; }
+        .object2 { width: 50px; height: 50px; background-color: red; position: relative; left: 45%; top: 45%; font-size: 12px; z-index: 10; }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var dragObject = document.querySelector('.dragObject');
+            var x = document.getElementById('x');
+            var y = document.getElementById('y');
+
+            bind(dragObject, "mousedown", function () {//鼠标按下的时候, 注册鼠标移动事件和鼠标松开的事件
+                var ev = GetEvent();
+                
+                var ToRight = this.clientWidth - ev.offsetX;
+                var disX = ev.clientX - ev.offsetX;
+
+                function move() {
+                    var e = GetEvent();
+                    dragObject.style.width = (parseInt(dragObject.style.width) + parseInt(e.clientX - disX)) + "px";
+                }
+
+                if (ToRight < 10) {
+                    bind(document, "mousemove", move)
+                    bind(document, "mouseup", function () {//松开的时候取消掉移动事件
+                        unbind(document, "mousemove", move)
+                    });
+                }
+
+
+
+
+                stopDefaultBehavior(ev);//阻值默认行为. 一般用来防止选中了图片或者文字的时候不能拖拽
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="dragObject">fffff</div>
+        <div class="object2"></div>
+    </div>
+    <div>
+        x:<span id="x"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        y:<span id="y"></span>
+    </div>
+</body>
+</html>

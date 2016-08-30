@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+            //第一种方式
+            document.getElementsByTagName("input")[0].onclick = function () {
+                var number = getRandNum(35, 7);
+                document.getElementById('num').innerHTML = number;
+
+                //写入location的hash对象中
+                window.location.hash = number.join(',');
+            }
+
+            //第二种方式,
+            document.getElementsByTagName("input")[1].onclick = function () {
+                var number = getRandNum(35, 7);
+                document.getElementById('num2').innerHTML = number;
+
+                //state：与要跳转到的URL对应的状态信息。
+                //title：不知道干啥用，传空字符串就行了。
+                //url：要跳转到的URL地址，不能跨域。
+                history.pushState(number, "test", 'testurl');
+            }
+        }
+        //每当处于激活状态的历史记录条目发生变化时,popstate事件就会在对应window对象上触发
+        window.onpopstate = function (ev) {
+            var number = ev.state || '';
+            document.getElementById('num2').innerHTML = number;
+        }
+
+
+        //第一种方法
+        window.onhashchange = function () {
+            document.getElementById('num').innerHTML = window.location.hash.substring(1);
+        }
+
+        function getRandNum(max, length) {
+            var container = [];
+            for (var i = 1; i <= max; i++) {
+                container.push(i);
+            }
+
+            var result = [];
+            for (var j = 0; j < length; j++) {
+                //Math.random() 0-1之间的伪随机数字. 乘以 数组的长度. 得到一个不大于这个长度的数字.
+                //然后用切片剔除数组中的成员
+
+                var rand = container.splice(Math.floor(Math.random() * container.length), 1);
+                result.push(rand);
+            }
+            return result;
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="随机数" />
+    <div id="num"></div>
+    <p></p>
+    <input type="button" value="随机数" />
+    <div id="num2"></div>
+</body>
+</html>

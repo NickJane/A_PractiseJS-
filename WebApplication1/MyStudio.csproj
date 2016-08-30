@@ -102,10 +102,13 @@
     <Content Include="html\html基础备忘\7其他常用\bigptr.jpg" />
     <Content Include="html\html基础备忘\宽高等属性详解.gif" />
     <Content Include="html\html基础备忘\浏览器理解offset.html" />
+    <Content Include="javascript\2JS中级知识点\事件和委托event.Target指向谁.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\4碰撞.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\3磁性吸附.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\2限定的拖拽.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\1基本拖拽.html" />
+    <Content Include="javascript\2JS中级知识点\历史管理和随机数.html" />
+    <Content Include="javascript\2JS中级知识点\拖拽\5拖拽改变元素的尺寸.html" />
     <Content Include="javascript\2JS中级知识点\浏览器的事件event对象.html" />
     <Content Include="javascript\2JS中级知识点\浏览器的事件和坐标2.html" />
     <Content Include="javascript\2JS中级知识点\浏览器的事件和坐标.html" />
