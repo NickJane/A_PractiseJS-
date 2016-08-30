@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+
+        //constructor : 查看对象的构造函数
+        function Aaa(){
+        }
+        var a1 = new Aaa();
+        console.log( a1.constructor );  //Aaa
+        var arr = [];
+        console.log("arr.constructor == Array" + (arr.constructor == Array).toString());  //true*/
+
+
+        //每写一个函数， 比如Aaa， 系统会默认增加Aaa.prototype.constructor并指向本身
+        function Bbb(){
+        }
+        Bbb.prototype.constructor = Bbb;   //每一个函数都会有的，都是自动生成的
+
+        //Bbb.prototype.constructor = Array;//当然这个属性也能手动更改， 
+
+        var b1 = new Bbb();
+        //hasOwnProperty也是属于object的， 对象从_proto_原型链从Object对象获得
+        console.log(" b1.hasOwnProperty == Object.prototype.hasOwnProperty" +
+            (b1.hasOwnProperty == Object.prototype.hasOwnProperty).toString());  //true*/
+
+
+
+        //注意的地方， 写一个函数对象Ccc， 然后增加公共属性name，age
+        function Ccc(){
+        }
+
+        Ccc.prototype.name = '小明';
+        Ccc.prototype.age = 20;
+
+        //或者使用json的方式整体赋值， 看起来和上面一样， 但是这样的话， 会覆盖 Ccc.prototype
+        //导致系统自动生成的那句 Xxx.prototype.constructor丢失，
+        //console.log( c1.constructor );会输出Object， 
+        Ccc.prototype = {
+            //constructor : Ccc,//所以为了避免丢失原型链， 在使用json赋值的时候必须手动补全， jquery里面也有这样的写法
+            name : '小明',
+            age : 20
+        };
+        var c1 = new Ccc();
+        console.log( c1.constructor );
+
+
+
+        function Ddd() {
+        }
+
+        Ddd.prototype.name = 10;
+        Ddd.prototype.constructor = Ddd;
+
+        for (var attr in Ddd.prototype) {
+            console.log(attr);//系统自带的属性是便利不到的
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

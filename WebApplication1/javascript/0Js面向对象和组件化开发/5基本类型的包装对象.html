@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+        //我们先看段代码：
+
+        var s = "Test";
+        var len=s.length;
+        //我们知道在JavaScript中像上面这样声明的字符串不是对象，但既然这里的s不是对象，为什么会有length的属性呢？
+
+        //原因是在JavaScript中只要引用了字符串（数字、布尔值也是一样的）的属性，JS就会将字符串通过调用new String(s)的方式转换成对象，这个对象继承了字符串的方法，并被用来处理属性的引用。一旦属性引用结束，这个新创建的对象就会销毁（真实实现并不一定是这样，但整个过程看起来是这样）。这个过程就叫包装对象。
+
+        //有没有办法验证上面的解释呢，我们来看两段代码：
+
+        //代码一：
+
+        var s = "Test";
+        s.len=10;//创建字符串对象，并添加len属性，然后销毁
+        var t = s.len;//创建字符串对象，读取len属性，由于不存在所以结果是 undefined
+        //代码二：
+
+        var s = new String("Test");
+        s.len = 10;
+        var t = s.len;//10
+        //最后一点需要注意的是，原始对象和包装对象不严格相等：
+
+        var s = "Test", S=new String("Test");
+        console.log(s == S);//true
+        console.log(s === S);//false
+    </script>
+</head>
+<body>
+
+</body>
+</html>

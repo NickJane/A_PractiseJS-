@@ -109,6 +109,9 @@
     <Content Include="javascript\0Js面向对象和组件化开发\3面向对象的最佳写法.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\4实践-面向对象的选项卡-面向对象1.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\4实践-面向对象的选项卡-常见写法.html" />
+    <Content Include="javascript\0Js面向对象和组件化开发\5基本类型的包装对象.html" />
+    <Content Include="javascript\0Js面向对象和组件化开发\6原型链和hasOwnProperty.html" />
+    <Content Include="javascript\0Js面向对象和组件化开发\7constructor和原型链复习.html" />
     <Content Include="javascript\2JS中级知识点\事件和委托event.Target指向谁.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\4碰撞.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\3磁性吸附.html" />
