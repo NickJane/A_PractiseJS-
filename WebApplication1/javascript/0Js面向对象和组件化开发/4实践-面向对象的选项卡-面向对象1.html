@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        #div1 div, #div2 div  { border: 1px solid red; height: 200px; width: 200px; display: none; }
+        .active{ background:red;}
+    </style>
+    <script type="text/javascript">
+        //改成面向对象:
+        //全局变量就是属性
+        //函数就是方法
+        //Onload中创建对象
+
+        //改this指向问题 : 事件或者是定时器,尽量让面向对象中的this指向对象
+        window.onload = function () {
+            var t1=new Tab('#div1');
+            t1.init();
+            t1.autoplay();
+           
+            var t1 = new Tab('#div2');
+            t1.init();
+        }
+
+        function Tab(id) {
+            this.container = document.getElementById(id);
+            this.btns = document.querySelectorAll(id+'>input[type=button]');
+            this.divs = document.querySelectorAll(id+'>div');
+        }
+        Tab.prototype.init = function () {
+            var This = this;//this是tab
+            for (var i = 0; i < this.btns.length; i++) {
+                this.btns[i].index = i;
+                this.btns[i].onclick = function () {
+                    This.change(this);//This是tab, this是按钮元素
+                }
+            }
+        }
+        Tab.prototype.change = function (btn) {
+            for (var i = 0; i < this.divs.length; i++) {
+                this.divs[i].style.display = 'none';
+                this.btns[i].className = '';
+            }
+            this.divs[btn.index].style.display = 'block';
+            btn.className = 'active';
+        }
+        Tab.prototype.autoplay = function () {
+            var This=this;
+            var i = 0;
+            window.setInterval(function () {
+                for (var j = 0; j <This.divs.length ; j++) {
+                    This.divs[j].style.display = "none";
+                    This.btns[j].className = "";
+                }
+                This.divs[i].style.display = "block";
+                This.btns[i].className = "active";
+
+                i++;
+                if (i == 3)
+                    i= 0;
+
+            }, 2000)
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input class="active" type="button" value="1" />
+        <input type="button" value="2" />
+        <input type="button" value="3" />
+        <div style="display: block">11111</div>
+        <div>22222</div>
+        <div>33333</div>
+    </div>
+
+    <div id="div2">
+        <input class="active" type="button" value="1" />
+        <input type="button" value="2" />
+        <input type="button" value="3" />
+        <div style="display: block">11111</div>
+        <div>22222</div>
+        <div>33333</div>
+    </div>
+</body>
+</html>

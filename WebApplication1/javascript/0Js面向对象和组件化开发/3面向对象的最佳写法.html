@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function 构造函数(参数) {
+            this.属性 = 参数;
+        }
+        构造函数.prototype.方法 = function () { alert(this.属性); };
+        构造函数.prototype.属性 = 0;
+        var 对象1 = new 构造函数(3);
+        对象1.方法();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

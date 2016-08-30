@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function GetEvent() {
+            e = arguments.callee.caller.arguments[0] || window.event;
+            //alert(e.keyCode);
+            return e;
+        }
+        function bind(obj, evname, fn) {
+            if (obj.addEventListener) {
+                obj.addEventListener(evname, fn, false);
+            } else {
+                obj.attachEvent('on' + evname, function () {
+                    fn.call(obj); //用call就可以把this传过去
+                });
+            }
+        }
+        function unbind(target, type, func) {
+            if (target.removeEventListener)
+                target.removeEventListener(type, func, false);
+            else if (target.detachEvent)
+                target.detachEvent("on" + type, func);
+            else target["on" + type] = null;
+        }
+        function stopEvent(evt) {
+            var evt = evt || window.event;
+            if (evt.preventDefault) {
+                evt.preventDefault();
+                evt.stopPropagation();
+            } else {
+                evt.returnValue = false;
+                evt.cancelBubble = true;
+            }
+        }
+        function stopDefaultBehavior(evt) {
+            var evt = evt || window.event;
+            if (evt.preventDefault) {
+                evt.preventDefault();
+            } else {
+                evt.returnValue = false;
+            }
+        }
+       
+
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var d = new Drag(document.querySelector(".dragObject"));
+            d.init();
+        }
+
+        function Drag(target) {
+            this.target = target;
+            var disX = 0;//距离上一个脱离文档流元素的距离
+            var disY = 0;//距离上一个脱离文档流元素的距离
+        }
+        Drag.prototype.init = function () {
+            var This = this;
+            this.target.onmousedown = function () {
+                var ev = GetEvent();
+                This.Mdown(ev);//This是drag, this是被拖拽的元素
+            } 
+        }
+        Drag.prototype.Mdown = function (ev) {
+            var This=this;
+            
+            this.disX = parseInt(ev.clientX) - parseInt(ev.target.offsetLeft);
+            this.disY = parseInt(ev.clientY) - parseInt(ev.target.offsetTop);
+            console.log("Mdown, disx" + this.disX + ",disy" + this.disY);
+
+            document.onmousemove = function () {
+                var e = GetEvent();
+                This.Mmove(e);
+            }
+            document.onmouseup = This.Mstopmove;
+
+            stopDefaultBehavior(ev);//阻值默认行为. 一般用来防止选中了图片或者文字的时候不能拖拽
+        }
+        Drag.prototype.Mmove = function (e) {
+            
+            var left = parseInt(e.clientX) - this.disX;
+            var top = parseInt(e.clientY) - this.disY;
+
+            this.target.style.left = left + "px";
+            this.target.style.top = top + "px";
+
+            console.log("Mmove"+left+","+top);
+        }
+        Drag.prototype.Mstopmove = function (e) {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    </script>
+    <style type="text/css">
+        body { padding:50px;}
+
+        .container { border:10px solid #808080; width:80%; height:300px; position:relative;}
+        .dragObject {  width:50px; height:50px; background-color:#0fa395;position:absolute; left:5px; top:5px;font-size:12px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dragObject">fffff</div>
+    </div>
+    <div>
+        x:<span id="x"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        y:<span id="y"></span>
+    </div>
+</body>
+</html>

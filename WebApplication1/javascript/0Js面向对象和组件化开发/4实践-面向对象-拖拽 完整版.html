@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function GetEvent() {
+            e = arguments.callee.caller.arguments[0] || window.event;
+            //alert(e.keyCode);
+            return e;
+        }
+
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var p = {
+                target: document.querySelector(".dragObject")
+                , container: document.querySelector(".container"),
+                keepontheside:true
+            };
+            var d = new Drag(p);
+            d.init();
+        }
+
+        function Drag(parms) {
+            this.p = {
+                target: null,
+                container: null
+                , keepontheside: false
+            }
+            for (var i in parms) {
+                this.p[i] = parms[i];
+            }
+            this.target = this.p.target;
+            this.target.style.position = "absolute";
+            var disX = 0;//距离上一个脱离文档流元素的距离relative or absolute
+            var disY = 0;//距离上一个脱离文档流元素的距离
+            var left = 0;
+            var top = 0;
+        }
+        Drag.prototype.init = function () {
+            var This = this;
+            this.target.onmousedown = function () {
+                var ev = GetEvent();
+                This.Mdown(ev);//This是drag, this是被拖拽的元素
+            }
+        }
+        Drag.prototype.Mdown = function (ev) {
+            var This = this;
+
+            this.disX = parseInt(ev.clientX) - parseInt(ev.target.offsetLeft);
+            this.disY = parseInt(ev.clientY) - parseInt(ev.target.offsetTop);
+            console.log("Mdown, disx" + this.disX + ",disy" + this.disY);
+
+            document.onmousemove = function () {
+                var e = GetEvent();
+                This.Mmove(e);
+            }
+            document.onmouseup = This.Mstopmove;
+
+            //stopDefaultBehavior(ev);//阻值默认行为. 一般用来防止选中了图片或者文字的时候不能拖拽
+            return false;
+        }
+        Drag.prototype.Mmove = function (e) {
+
+            this.left = parseInt(e.clientX) - this.disX;
+            this.top = parseInt(e.clientY) - this.disY;
+
+            if (this.p.container) {//如果有container 就设置范围
+                this.MlimitedInContainer();
+            }
+            if (this.p.keepontheside) {//磁性吸附
+                this.MkeepOnTheSide()
+            }
+
+            this.target.style.left = this.left + "px";
+            this.target.style.top = this.top + "px";
+
+            console.log("Mmove" + this.left + "," + this.top);
+        }
+        Drag.prototype.Mstopmove = function (e) {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        Drag.prototype.MlimitedInContainer = function () {
+            var left = this.left;
+            var top = this.top;
+
+            left = left < 0 ? 0 : left;
+            top = top < 0 ? 0 : top;
+
+            left = left > (this.p.container.clientWidth - this.p.target.offsetWidth) ?
+                (this.p.container.clientWidth - this.p.target.offsetWidth) : left;
+            top = top > (this.p.container.clientHeight - this.p.target.offsetHeight) ?
+                (this.p.container.clientHeight - this.p.target.offsetHeight) : top;
+
+            this.left=left;
+            this.top=top;
+        }
+        Drag.prototype.MkeepOnTheSide = function () {
+            var left = this.left;
+            var top = this.top;
+
+            left = left < 20 ? 0 : left;
+            top = top < 20 ? 0 : top;
+
+            left = left > (this.p.container.clientWidth - this.p.target.offsetWidth - 20) ?
+                (this.p.container.clientWidth - this.p.target.offsetWidth) : left;
+            top = top > (this.p.container.clientHeight - this.p.target.offsetHeight - 20) ?
+                (this.p.container.clientHeight - this.p.target.offsetHeight) : top;
+
+            this.left = left;
+            this.top = top;
+        }
+    </script>
+    <style type="text/css">
+        body { padding: 50px; }
+
+        .container { border: 10px solid #808080; width: 80%; height: 300px; position: relative; }
+        .dragObject { width: 50px; height: 50px; background-color: #0fa395; left: 5px; top: 5px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div style="border:1px solid red; padding:30px;">
+        <div class="container">
+            <div class="dragObject">fffff</div>
+        </div>
+    </div>
+    <div>
+        x:<span id="x"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        y:<span id="y"></span>
+    </div>
+</body>
+</html>

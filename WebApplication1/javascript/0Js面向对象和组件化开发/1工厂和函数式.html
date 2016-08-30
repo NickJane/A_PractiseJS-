@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //封装函数
+        function CreatePerson(name) {
+            //1 原料
+            var person = new Object();
+            //2 加工
+            person.name = name;
+            person.showName = function () {
+                console.log('showName, function' + this.name);
+            }
+            //3 出厂
+            return person;
+        }
+
+        var p1 = CreatePerson('小明');
+        p1.showName();
+        var p2 = CreatePerson('小强');
+        p2.showName();
+
+
+        //用this去代替object对象, 构造函数
+        //当new去调用一个函数 : 这个时候函数中的this就是创建出来的对象,
+        //而且函数的的返回值直接就是this啦(隐式返回)
+        //new后面调用的函数 : 叫做构造函数
+        function CreateDog(name) {
+            this.name = name;
+            this.showName = function () {
+                console.log('showName, function'+ this.name);
+            }
+        }
+        var dog1 = new CreatePerson('哈士奇'); 
+        var dog2 = new CreatePerson('金毛'); 
+        console.log(dog1.showName == dog2.showName);  //false
+    </script>
+</head>
+<body>
+
+</body>
+</html>

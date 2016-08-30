@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        /*
+        原型 : 去改写对象下面公用的方法或者属性 , 让公用的方法或者属性在内存中存在一份 ( 提高性能 )
+
+        原型方法 : CSS中的class, 写入一次, 所有的实例都能拥有这个方法
+        普通方法 : CSS中的style, 只能当前这个实例有这个方法
+
+        原型 : prototype : 要写在构造函数的下面
+                    (什么是构造函数?)
+                    new Array(), new Object, New Dog, 这些Array, Object, Dog 就是构造函数
+        */
+
+        var arr1 = [1, 2, 3];
+        var arr2 = [1, 2, 3, 4];
+
+        //这个sum函数就是普通方法. 只有arr1这个实例能拥有
+        arr1.sum = function () {
+            var r=0;
+            for (var i = 0; i < this.length; i++) {
+                r += this[i];
+            }
+            return r;
+        }
+        console.log(arr1.sum());
+        //console.log(arr2.sum());//error
+
+        //改为原型方法
+        Array.prototype.sumAll = function () {
+            var result = 0;
+            for (var i = 0; i < this.length; i++) {
+                result += this[i];
+            }
+            return result;
+        };
+        console.log(arr1.sumAll());
+        console.log(arr2.sumAll());
+
+
+        //也可以把属性写入原型中, 作为常量保存
+        var arr = [];
+        //arr.number = 10;
+        Array.prototype.number = 20;
+
+        console.log(arr.number);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
