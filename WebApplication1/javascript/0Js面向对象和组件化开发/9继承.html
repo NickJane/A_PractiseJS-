@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <!--//对象的复制-->
+    <script type="text/javascript">
+
+        /*
+        var StrA = {
+            name: '小明'
+        };
+
+        var StrB = StrA;//这里由于a是引用类型， 所以等于b指针指向a。 a和b是同一个对象
+        StrB.name = '小强';
+        console.log("zz" + StrA.name);//a被改变了
+        */
+
+        //正确的对象复制， 用深拷贝
+        /*
+        var a = {
+            name : '小明'
+        };
+        var b = {};
+        extend( b , a );
+        b.name = '小强';
+        alert( a.name );
+        function extend(obj1,obj2){
+            for(var attr in obj2){
+                obj1[attr] = obj2[attr];
+            }
+        }*/
+    </script>
+    <script>
+
+        //继承 : 子类不影响父类，子类可以继承父类的一些功能 ( 代码复用 )
+
+        //属性的继承 : 调用父类的构造函数 call
+
+        //方法的继承 : for in :  拷贝继承 (jquery也是采用拷贝继承extend)
+
+        function CreatePerson(name, sex) {   //父类
+            this.name = name;
+            this.sex = sex;
+        }
+        CreatePerson.prototype.showName = function () {
+            alert(this.name);
+        };
+
+        var p1 = new CreatePerson('小明', '男');
+        //p1.showName();
+
+
+        function CreateStar(name, sex, job) {  //子类
+            CreatePerson.call(this, name, sex);//第一个参数改变调用方法的this对象，后面的参数是属性
+            this.job = job;
+        }
+        CreateStar.prototype.showJob = function () {
+        };
+        extend(CreateStar.prototype, CreatePerson.prototype);
+        //通过深拷贝能得到CreatePerson的showName方法。
+
+        var p2 = new CreateStar('黄晓明', '男', '演员');
+
+        p2.showName();
+
+
+        function extend(obj1, obj2) {
+            for (var attr in obj2) {
+                obj1[attr] = obj2[attr];//赋值操作
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
