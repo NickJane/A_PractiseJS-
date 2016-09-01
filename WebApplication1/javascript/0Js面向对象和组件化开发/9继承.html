@@ -43,6 +43,7 @@
         function CreatePerson(name, sex) {   //父类
             this.name = name;
             this.sex = sex;
+            this.innerFuction = function () { alert('实例方法'); }
         }
         CreatePerson.prototype.showName = function () {
             alert(this.name);
@@ -55,6 +56,7 @@
         function CreateStar(name, sex, job) {  //子类
             CreatePerson.call(this, name, sex);//第一个参数改变调用方法的this对象，后面的参数是属性
             this.job = job;
+            this.innerFuction();
         }
         CreateStar.prototype.showJob = function () {
         };
