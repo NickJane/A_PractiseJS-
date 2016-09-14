@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //var f = function g(){ return 23; };
+        //typeof g();
+        //运行出现错误 因为g没定义. 
+        //而且g函数是赋值表达式的值
+
+
+        
+        console.log(
+            (function(x){
+                delete x;
+                return x;
+            })(1)
+            );//1
+        
+
+        var y = 1, x = y = typeof x;
+        x;
+        //"undefined"
+        
+
+          (function f(f){
+              return typeof f();
+          })(function(){ return 1; });
+        //"number"
+        
+
+        var foo = {
+            bar: function() { return this.baz; },
+            baz: 1
+        };
+        (function(){
+            return typeof arguments[0]();
+        })(foo.bar);
+        //"undefined"
+        //arguments[0]()实际上等于 arguments.function(). 调用者是arguments对象,所以
+        //bar中的this指向arguments, 没有baz属性, 答案是undefined
+
+
+        var foo = {
+            bar: function(){ return this.baz; },
+            baz: 1
+        }
+        typeof (f = foo.bar)();
+        //"undefined"
+        //实际结果= window.bar();
+
+
+        var f = (function f(){ return "1"; }, function g(){ return 2; })();
+        typeof f;
+        //"number". 考察的是逗号运算符
+
+
+        var x = 1;
+        if (function f(){}) {
+            x += typeof f;
+        } 
+        //"1undefined"; 表达式不是申明, 因此括号内的function不是函数; 再次考察了+号运算符
+ 
+
+        var x = [typeof x, typeof y][1];
+        typeof typeof x;
+        //"string"  typeof运算符得到的是字符串结果
+
+
+        (function (foo) {
+            //这里要注意, foo接收的是传入的整个json对象. 所以正确的写法应该是foo.foo.bar
+              return typeof foo.bar;
+          })({ foo: { bar: 1 } });
+        //"undefined"
+        // 这里要注意. 
+        
+
+          (function f(){
+              function f(){ return 1; }
+              return f();
+              function f(){ return 2; }
+          })();
+        //2  输出2. 考察预编译, js会先把function都编译到内存
+
+
+        function f(){ return f; }
+        new f() instanceof f;
+        //返回的是false. 因为f()里面的return干扰了new的先天返回
+        //如果如下则是true
+        function f() {  }
+        new f() instanceof f;
+    </script>
+</head>
+<body>
+
+</body>
+</html>
