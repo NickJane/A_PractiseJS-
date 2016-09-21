@@ -43,7 +43,7 @@
             name: function () { },
             age: function () { }
         }
-        aQuery();
+        //aQuery();
         //这样还会有最后一个问题。 aQuery得到的是正确的实例了。 
         //不过， 这更像是一个单例模式， 永远都是一个实例， 因为this指向的实际上是aQuery的prototype对象
         /*
@@ -65,8 +65,8 @@
             name: function() {},
             age: 20
         }
-        console.log( aQuery("a").age)  //18
-        console.log(aQuery("b").age);//18
+        //console.log( aQuery("a").age)  //18
+        //console.log(aQuery("b").age);//18
  
          /*
         当我调用 传入"a"的时候，修改age=18，及aQuery("a").age 的值为18
@@ -94,14 +94,14 @@
             name: function() {},
             age: 20
         }
-        console.log(aQuery("a").age)  //18
-        console.log(aQuery("b").age)  //undefined
+        //console.log(aQuery("a").age)  //18
+        //console.log(aQuery("b").age)  //undefined
         //console.log(aQuery("a").name())  //Uncaught TypeError: Object [object Object] has no method 'name' 
         //很明显。 这样得到的对象是真正的init函数的实例， 
 
 
         //所以， 还需要最后一句话， 让init的实例返回对象发生偏移
-        aQuery.prototype.init.prototype = aQuery.prototype;
+        //aQuery.prototype.init.prototype = aQuery.prototype;
 
 
         //完整版本
@@ -114,12 +114,13 @@
                     this.age = 18
                 return this;
             },
+            age: 20,
             name: function () {
-                return age;
-            },
-            age: 20
+                return this.age;
+            }
+            //注: aQuery的prototype被重新赋值了. 所以prototype下的constructor没有了. 
         }
-        aQuery.prototype.init.prototype = aQuery.prototype;
+        aQuery.prototype.init.prototype = aQuery.prototype;//同样, aQuery.prototype.init.prototype.constructor也没有了. 
 
         console.log(aQuery("a").age)  //18
         console.log(aQuery("b").age)  //20
