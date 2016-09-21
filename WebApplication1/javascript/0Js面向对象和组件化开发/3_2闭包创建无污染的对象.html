@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+        /*
+        在javascript中，如果一个对象不再被引用，那么这个对象就会被GC回收，否则这个对象一直会保存在内存中。
+
+        在上述例子中，B定义在A中，因此B依赖于A,而外部变量 c 又引用了B, 所以A间接的被 c 引用，
+
+        也就是说，A不会被GC回收，会一直保存在内存中。
+
+        A中的count一直保存在内存中。
+
+        这就是闭包的作用，有时候我们需要一个模块中定义这样一个变量：
+        希望这个变量一直保存在内存中但又不会“污染”全局的变量，这个时候，我们就可以用闭包来定义这个模块
+        */
+        function NeverGC() {
+            var count = 0;
+            function B() {
+                count++;
+                console.log(count);
+            }
+            return B;
+        }
+        var ngc = NeverGC();
+        ngc();// 1
+        ngc();// 2
+        ngc();// 3 
+    </script>
+</head>
+<body>
+
+</body>
+</html>

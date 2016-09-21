@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+        var aQuery = function () {
+            //构造函数
+            this.property1 = 1;
+        }
+        aQuery.prototype = {
+            name: function () { console.log('name...') },
+            age: function () { console.log('age...') }
+        }
+        var a1 = new aQuery();
+        a1.name();
+
+        //上面这是传统的面向对象最佳实践， 但是jquery给人的感觉不是这样的。
+        // $(document).html()， 这才是jquery的玩法。
+        // 那么 $()， 必然是返回一个实例..所以把代码改一下：
+        //开始改造。。。。
+        var aQuery = function (selector, context) {
+            return new aQuery();
+        }
+        aQuery.prototype = {
+            name: function () { },
+            age: function () { }
+        }
+        //aQuery() 死循环中。。。。
+
+
+
+        var aQuery = function(selector, context) {
+            return  aQuery.prototype.init(selector);
+        }
+        aQuery.prototype = {
+            init: function (selector) {
+                //根据this指向调用者的原则， 得到 this==aQuery.prototype ==》true, 也就是说this变相等于aQuery类的实例
+                
+                return this;
+            },
+            name: function () { },
+            age: function () { }
+        }
+        aQuery();
+        //这样还会有最后一个问题。 aQuery得到的是正确的实例了。 
+        //不过， 这更像是一个单例模式， 永远都是一个实例， 因为this指向的实际上是aQuery的prototype对象
+        /*
+        function bb(){}
+        var b1=new bb(); var b2=new bb()
+        b1==b2   ==》false       b1===b2   ==》false
+        而aQuery（）==aQuery()就返回true了， 造成的危害见下面
+        */
+
+        var aQuery = function(selector, context) {
+            return  aQuery.prototype.init(selector);
+        }
+        aQuery.prototype = {
+            init: function(selector) {
+                if(selector=="a")
+                    this.age = 18
+                return this;
+            },
+            name: function() {},
+            age: 20
+        }
+        console.log( aQuery("a").age)  //18
+        console.log(aQuery("b").age);//18
+ 
+         /*
+        当我调用 传入"a"的时候，修改age=18，及aQuery("a").age 的值为18
+
+        但是当我  传入"b"的时候 并没又修改 age的值，我也希望得到默认age的值20，但是aQuery("b").age 的值为18.
+
+        因为在 调用aQuery("a").age 的时候age被修改了。
+
+        这样的情况下就出错了，所以需要设计出独立的作用域才行。
+        */
+
+        
+        //我们修改一下代码：
+
+        var aQuery = function (selector, context) {
+            //在这里增加new关键字， 试图每次调用aQuery的时候都获得新的实例。
+            return  new aQuery.prototype.init(selector);
+        }
+        aQuery.prototype = {
+            init: function(selector) {
+                if(selector=="a")
+                    this.age = 18
+                return this;//this instanceof aQuery.prototype.init ==>true
+            },
+            name: function() {},
+            age: 20
+        }
+        console.log(aQuery("a").age)  //18
+        console.log(aQuery("b").age)  //undefined
+        //console.log(aQuery("a").name())  //Uncaught TypeError: Object [object Object] has no method 'name' 
+        //很明显。 这样得到的对象是真正的init函数的实例， 
+
+
+        //所以， 还需要最后一句话， 让init的实例返回对象发生偏移
+        aQuery.prototype.init.prototype = aQuery.prototype;
+
+
+        //完整版本
+        var aQuery = function (selector, context) {
+            return new aQuery.prototype.init(selector);
+        }
+        aQuery.prototype = {
+            init: function (selector) {
+                if (selector == "a")
+                    this.age = 18
+                return this;
+            },
+            name: function () {
+                return age;
+            },
+            age: 20
+        }
+        aQuery.prototype.init.prototype = aQuery.prototype;
+
+        console.log(aQuery("a").age)  //18
+        console.log(aQuery("b").age)  //20
+        console.log(aQuery("a").name())   //20
+    </script>
+</head>
+<body>
+
+</body>
+</html>

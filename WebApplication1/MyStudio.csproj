@@ -103,6 +103,8 @@
     <Content Include="html\html基础备忘\宽高等属性详解.gif" />
     <Content Include="html\html基础备忘\浏览器理解offset.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\10继承-类式继承和原型继承.html" />
+    <Content Include="javascript\0Js面向对象和组件化开发\3_2闭包创建无污染的对象.html" />
+    <Content Include="javascript\0Js面向对象和组件化开发\3_3实现无new构建.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\4实践-面向对象-拖拽 完整版.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\4实践-面向对象-拖拽.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\1工厂和函数式.html" />
