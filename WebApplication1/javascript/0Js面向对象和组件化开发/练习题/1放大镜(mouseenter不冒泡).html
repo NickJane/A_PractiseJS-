@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style type="text/css">
+        #divpic {
+            
+        }
+        #pick {
+            
+        }
+        .left {
+            float:left; position:relative; top:50px; left:50px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var p = {
+                smallpic: document.getElementById('divpic'),
+                glass: document.getElementById('pick'),
+                bigpic: document.getElementById('bigpic')
+            };
+            (new Glass(p)).init();
+        }
+
+        function Glass(p) {
+            this.params = {
+                smallpic: null,
+                glass: null,
+                bigpic:null
+            };
+            for (var key in p) {
+                this.params[key] = p[key];
+            }
+        }
+        Glass.prototype.init = function () {
+            var This=this;
+            var gl=This.params.glass;
+            this.params.smallpic.onmouseenter = function (e) {
+                gl.style.display = 'block';
+            }
+            this.params.smallpic.onmouseleave = function () { gl.style.display = 'none'; }
+
+            this.params.smallpic.onmousemove = function (e) {
+                e = window.event || e;
+                //如果是拖拽。 那么left用 e.clientX - This.params.smallpic.offsetLeft 得到距离上一个relative对象的距离。 这里还要再拿到目标的一半宽度
+                var l = e.clientX - This.params.smallpic.offsetLeft - This.params.glass.offsetWidth / 2;
+                if (l < 0)
+                    l = 0;
+                if (l > This.params.smallpic.offsetWidth - gl.offsetWidth)
+                    l = This.params.smallpic.offsetWidth - gl.offsetWidth;
+
+                var t = e.clientY - This.params.smallpic.offsetTop - This.params.glass.offsetHeight / 2;
+                if (t < 0)
+                    t = 0;
+                if (t > This.params.smallpic.offsetHeight - gl.offsetHeight)
+                    t = This.params.smallpic.offsetHeight - gl.offsetHeight;
+
+                console.log(e.clientX + ' - ' + This.params.smallpic.offsetLeft);
+                gl.style.left = l + 'px';
+                gl.style.top = t + 'px';
+
+                var ratio = This.params.bigpic.offsetWidth / This.params.smallpic.offsetWidth;
+                This.params.bigpic.style.backgroundPosition = "-" + l * ratio + "px " + "-" + t * ratio + "px";
+            }
+        }
+    </script>
+</head>
+<body style="">
+    <div id="divpic" class="left">
+        <img src="imgs/b2.jpg" />
+        <div id="pick" style="width:100px; height:100px; opacity:0.5; background-color:yellow; position:absolute; top:0;left:0; display:none"></div>
+    </div>
+
+    <div id="bigpic" style="width:500px; height:500px; position:relative; float:left; left:300px; background:url(imgs/b1.jpg) no-repeat 0 0;">
+       
+    </div>
+</body>
+</html>
