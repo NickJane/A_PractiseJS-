@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,29 @@ namespace Test
     class Program测试访问登录接口
     {
         static void Main(string[] args)
+        {
+
+
+            using (var client = new HttpClient())
+            {
+                using (var content = new MultipartFormDataContent())
+                {
+                    client.BaseAddress = new Uri("http://192.168.1.225:9090/");
+                    var fileContent = new ByteArrayContent(File.ReadAllBytes(@"c:\1.jpg"));
+                    fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                    {
+                        FileName = "1.jpg"
+                    };
+                    content.Add(fileContent);
+                    var result = client.PostAsync("/api/V3ImageUploadApi/post", content).Result;
+                    Console.WriteLine(result.Content.ReadAsStringAsync().Result);
+                }
+            }
+
+
+
+        }
+        static void Main3(string[] args)
         {
             //FlipCloud();
             SsologinForMail();
