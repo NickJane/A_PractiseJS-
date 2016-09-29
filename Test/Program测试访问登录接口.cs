@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -16,23 +17,77 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            //System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(
+            //   @"^\w*[_0-9a-zA-Z\u4e00-\u9fa5]+\w*$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            //Console.WriteLine( r.IsMatch("zz2[_1.img_]fewjklnm78763728[_1.img_]43fx"));
+            //Console.WriteLine( r.IsMatch("田园新城精装_276万2室明厅南北向"));
+            //Console.WriteLine( r.IsMatch("田园新城精装_276.万2室明厅南北向"));
+            //Console.WriteLine( r.IsMatch(".田园新城精装_276万2室明厅南北向"));
+            //Console.WriteLine( r.IsMatch("田园新城精装_276万2室明厅南北向."));
+            //Console.WriteLine(r.IsMatch("_田园新城精装_276万2室明厅南北向"));
+            //Console.WriteLine((new System.Text.RegularExpressions.Regex(
+            //   @"^\w*[_0-9a-zA-Z\u4e00-\u9fa5]+\w*$", System.Text.RegularExpressions.RegexOptions.IgnoreCase)).IsMatch("_田园新城精装_276万2室明厅南北向")
+            //   );
+            System.Web.Script.Serialization.JavaScriptSerializer json = new System.Web.Script.Serialization.JavaScriptSerializer();
 
-
-            using (var client = new HttpClient())
+            using (WebClient webclient = new WebClient())
             {
-                using (var content = new MultipartFormDataContent())
+
+                string apiurl = "http://192.168.1.222:9090/api/V3ImageUploadApi/posttestform2";
+
+                webclient.Encoding = UTF8Encoding.UTF8;
+                webclient.Headers.Add("Custom-Auth-Key", "11");
+                webclient.Headers.Add("Content-Type", "application/x-www-form-urlencoded");//x-www-form-urlencoded
+                //如果webapi的接收参数对象是dynamic, 则请求的头是json, 如果是用实体接收, 那么则是上面这个
+
+
+                var re = webclient.UploadData(apiurl,
+                   System.Text.Encoding.UTF8.GetBytes(json.Serialize(new { email = "123456@qq.com", password = "111111" })));
+
+                Console.Write(System.Text.Encoding.UTF8.GetString(re));
+            }
+
+            using (var client = new HttpClient())//httpclient的post方式, 需要被实体接收..
+            {
+                //var title=System.Web.HttpUtility.UrlEncode( "<img src='www.baidu.com' />");
+                var title = "<img src='www.baidu.com' />" ;
+                string apiurl = "http://localhost:9090/api/V3NewsApi/CreateNews";
+                //3个枚举, stringContent,ByteArrayContent,和FormUrlContent, 一般的post用StringContent就可以了
+                NameValueCollection nvc = new NameValueCollection();
+                nvc.Add("title", title);
+                nvc.Add("short", title);
+                nvc.Add("full", title);
+                var token = GetToken(nvc, "fYWANh5p6MJyyOVNg6y5CIWYCihX2iVpxxOkPvJ0CLcpoGLJu1UpS8ey8Ya4mTUq");
+                using (var content = new StringContent(
+                    "title=" + title + "&token=" + token, Encoding.UTF8, "application/x-www-form-urlencoded"))
                 {
-                    client.BaseAddress = new Uri("http://192.168.1.225:9090/");
-                    var fileContent = new ByteArrayContent(File.ReadAllBytes(@"c:\1.jpg"));
-                    fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-                    {
-                        FileName = "1.jpg"
-                    };
-                    content.Add(fileContent);
-                    var result = client.PostAsync("/api/V3ImageUploadApi/post", content).Result;
-                    Console.WriteLine(result.Content.ReadAsStringAsync().Result);
+
+                    var result = client.PostAsync(apiurl, content).Result;
+                    Console.WriteLine(result);
                 }
             }
+
+
+            using (WebClient webclient = new WebClient())
+            {
+
+                string apiurl = "http://192.168.1.225:9090/api/v3productsapi/GetStatisticInfo";
+
+                webclient.Encoding = UTF8Encoding.UTF8;
+                //调试的时候下面这个3可以适当写大, 表示此token有效期
+                TimeSpan ts = DateTime.UtcNow.AddMinutes(3) - new DateTime(1970, 1, 1);
+                string randomStr = System.Guid.NewGuid().ToString();
+                List<string> queryKeyValues = new List<string>();
+                queryKeyValues.Add(ts.TotalSeconds.ToString());
+                queryKeyValues.Add(randomStr);
+                queryKeyValues.Add("yunmengapp123");//别改
+                var token = GetToken(queryKeyValues);
+                string auth_key = string.Format("{0}:{1}:{2}", ts.TotalSeconds, randomStr, token);
+                webclient.Headers.Add("Custom-Auth-Key", auth_key);
+
+                Console.Write(webclient.DownloadString(apiurl));
+            }
+
 
 
 
@@ -217,7 +272,7 @@ namespace Test
         }
         public static string HttpGet(string url, Encoding encoding = null)
         {
-            WebClient wc = new WebClient();
+            WebClient wc = new WebClient(); 
             wc.Encoding = encoding ?? Encoding.UTF8;
             //if (encoding != null)
             //{
@@ -294,6 +349,34 @@ namespace Test
 
             return parameters;
         }
+
+        public static string GetToken(NameValueCollection queryString, string securityKey)
+        {
+            StringBuilder keyBuilder = new StringBuilder();
+            foreach (string key in queryString.AllKeys.OrderBy(k => k))
+            {
+                if (key.ToLower() != "token")
+                {
+                    keyBuilder.AppendFormat("{0}={1}", key, queryString[key]);
+                    keyBuilder.Append("&");
+                }
+            }
+            string keyString = keyBuilder.ToString();
+            keyString = keyString + "key=" + securityKey;
+            MD5 md5 = new MD5CryptoServiceProvider();
+            md5.ComputeHash(Encoding.UTF8.GetBytes(keyString));
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
+        }
+
+
         // 对称加密帮助类
         public class CryptoHelper
         {
@@ -383,6 +466,8 @@ namespace Test
                 CryptoHelper helper = new CryptoHelper(key);
                 return helper.Decrypt(encryptedText);
             }
+
+            
         }
 
         #region 返回的 models

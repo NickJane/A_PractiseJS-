@@ -36,21 +36,20 @@
         }
         aQuery.prototype = {
             init: function (selector) {
-                //根据this指向调用者的原则， 得到 this==aQuery.prototype ==》true, 也就是说this变相等于aQuery类的实例
-                
+                //根据this指向调用者的原则， 得到 this==aQuery.prototype ==》true, 也就是说this等于aQuery类的prototype
+                //从而可以用this.age, this.name访问aQuery的实例方法, 看起来像是aquery的实例, 实际上, 更类似于一个Aquery的单例
+                //因为this指向的实际上是aQuery的prototype对象
                 return this;
             },
             name: function () { },
             age: function () { }
         }
-        //aQuery();
-        //这样还会有最后一个问题。 aQuery得到的是正确的实例了。 
-        //不过， 这更像是一个单例模式， 永远都是一个实例， 因为this指向的实际上是aQuery的prototype对象
+        //aQuery()调用会有问题
         /*
         function bb(){}
         var b1=new bb(); var b2=new bb()
         b1==b2   ==》false       b1===b2   ==》false
-        而aQuery（）==aQuery()就返回true了， 造成的危害见下面
+        而aQuery（）==aQuery()就返回true了(指向aQuery.prototype对象)， 造成的危害见下面
         */
 
         var aQuery = function(selector, context) {
@@ -65,7 +64,7 @@
             name: function() {},
             age: 20
         }
-        //console.log( aQuery("a").age)  //18
+        console.log( aQuery("a").age)  //18
         //console.log(aQuery("b").age);//18
  
          /*
