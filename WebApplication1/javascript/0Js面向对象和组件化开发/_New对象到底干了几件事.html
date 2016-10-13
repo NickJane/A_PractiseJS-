@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //一个函数有哪些组成部分
+        function fn(newage) {
+            var a = 0;//私有的局部变量. 只在fn里面能调用
+
+            this.age = 1;//实例的私有变量, 只要是new出来的都可以访问, 而且是新的
+            if (newage)
+                this.age = newage;
+            this.fn1 = function () {
+                console.log("实例的私有方法, 只要是new出来的都可以访问, 而且是新的, 实例的私有变量是" + this.age);
+            }
+        }
+        fn.staticFn = function () {//静态方法
+
+        }
+        fn.prototype = {
+            publicVar: 1,//值变量因为每次使用都会分配新的, 所以和实例的私有变量一致
+            publicObject: { v: 1 },//引用变量,publicOject实际上指向的是一个地址, 所以所有的实例都引用一个公共的对象, 一出被修改了, 其他的地方都会被修改
+            publicVarFn : function (newvar) {
+                if(newvar)
+                    this.publicVar = newvar;
+                console.log("所有的实例共享的公共实例值变量是" + this.publicVar);
+            },
+            publicObjectFn: function (newvar) {
+                if (newvar)
+                    this.publicObject.v = newvar;
+                console.log("所有的实例共享的公共实例对象变量是" + this.publicObject.v);
+            }
+        }
+        //fn.prototype.publicVar = 1;
+        //fn.prototype.publicVarFn = function (newvar) {
+        //    if(newvar)
+        //        this.publicVar = newvar;
+        //    console.log("所有的实例共享的公共实例变量是" + this.publicVar);
+        //}
+
+        var f1 = new fn();
+        f1.publicVarFn();//1
+        f1.publicObjectFn();//1
+        f1.fn1();//1
+
+        var f2 = new fn(2);
+        f2.publicVarFn(100);//100
+        f2.publicObjectFn(100);//100这里修改了实例的公共对象, f1里面的对象就会被改掉
+        f2.fn1(2);//2
+
+        f1.publicVarFn();//1
+        f1.publicObjectFn();//100
+        f1.fn1();//1
+    </script>
+</head>
+<body>
+    题主可能是不明白new的机制,其实是做了几件事
+    1.创建一个新对象var obj = {};
+    2.把这个对象obj作为this去调用构造函数
+    3.把这个对象的__ptoto__属性设置为构造函数的prototype
+    4.返回obj.（如果构造函数有显式返回对象类型的，则是构造函数返回的这个对象）
+
+    作者：钟懒
+    链接：https://www.zhihu.com/question/28885326/answer/42433611
+    来源：知乎
+    著作权归作者所有，转载请联系作者获得授权。
+
+
+</body>
+</html>

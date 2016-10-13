@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        (function () {
+            var setting = { id: "" };
+
+            var aQuery = function (selector, context) {
+                return new temp.init(selector);
+            }
+            var temp = {
+                init: function (opt) {
+                    for (var i in opt) {
+                        setting[i] = opt[i]
+                    }
+                    return this;
+                },
+                render: function () {
+                    console.log(setting.id);
+                }
+            }
+            temp.init.prototype = temp;//同样, aQuery.prototype.init.prototype.constructor也没有了. 
+
+            var a = aQuery({ id: 1 })
+            var b = aQuery({ id: 2 })
+
+            //a.render();
+        })();
+
+        
+        (function () {
+            var aQuery = function (selector, context) {
+                return new aQuery.prototype.init(selector);
+            }
+            aQuery.prototype = {
+                setting: { id: "" },
+                init: function (opt) {
+                    for (var i in opt) {
+                        this.setting[i] = opt[i]
+                    }
+                    return this;
+                },
+                render: function () {
+                    console.log(this.setting.id);
+                },
+                constructor: aQuery
+            }
+            aQuery.prototype.init.prototype = aQuery.prototype;
+
+            var a = aQuery({ id: 1 })
+            a.render();//在这是1
+            var b = aQuery({ id: 2 })//改为2
+            aQuery({ id: 3 })//改为3
+            a.render();//变成3了.
+            //思考: render方法不是实例所属类的真正的方法, 而是在_proto_原型链上找到的方法. 所以setting呢, 也是原型链上的. 实例会共享原型链
+            /*附著
+            题主可能是不明白new的机制,其实是做了几件事
+            1.创建一个新对象var obj = {};
+            2.把这个对象obj作为this去调用构造函数
+            3.把这个对象的__ptoto__属性设置为构造函数的prototype
+            4.返回obj.（如果构造函数有显式返回对象类型的，则是构造函数返回的这个对象）
+
+            作者：钟懒
+            链接：https://www.zhihu.com/question/28885326/answer/42433611
+            来源：知乎
+            著作权归作者所有，转载请联系作者获得授权。
+            */
+        })();
+
+        (function () {
+            //完整版本
+            var aQuery = function (selector, context) {
+                return new aQuery.prototype.init(selector);
+            }
+            aQuery.prototype = {
+                setting: { id: "" },
+                init: function (opt) {
+                    for (var i in opt) {
+                        this.setting[i] = opt[i]
+                    }
+                    return this;
+                },
+                render: function () {
+                    console.log(this.setting.id);
+                }
+                //注: aQuery的prototype被重新赋值了. 所以prototype下的constructor没有了. 
+            }
+            aQuery.prototype.init.prototype = aQuery.prototype;//同样, aQuery.prototype.init.prototype.constructor也没有了. 
+
+            var a = aQuery({ id: 1 })
+            var b = aQuery({ id: 2 })
+            aQuery({ id: 3 });
+            //a.render();
+        })();
+
+
+        (function () {
+            function fn(newid) {
+                
+                if (newid)
+                    this.setting.id = newid;
+                this.show = function () {
+                    console.log(this.setting.id)
+                }
+            }
+
+            fn.prototype = {
+                setting:{ id: "1s" }
+            };
+
+            var f = new fn();
+            var f2 = new fn(33333);
+            f.show();
+
+        })()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

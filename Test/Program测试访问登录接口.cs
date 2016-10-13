@@ -17,6 +17,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            SsologinFlipCloud();
             //System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(
             //   @"^\w*[_0-9a-zA-Z\u4e00-\u9fa5]+\w*$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             //Console.WriteLine( r.IsMatch("zz2[_1.img_]fewjklnm78763728[_1.img_]43fx"));
@@ -98,7 +99,22 @@ namespace Test
             SsologinForMail();
             Console.Read();
         }
+        public static void SsologinFlipCloud() {
+            string url2 = "http://localhost:9090/customer/SSOLogin?";
 
+            string _securityKey = "yunmeng123";
+            TimeSpan ts = DateTime.Now.AddMinutes(30) - new DateTime(1970, 1, 1);
+            //生成Token的数据
+            List<string> queryKeyValues = new List<string>();
+            queryKeyValues.Add(ts.TotalSeconds.ToString());
+            queryKeyValues.Add(_securityKey);
+            queryKeyValues.Add("vvsdfwefd");
+            var token = GetToken(queryKeyValues);
+
+            string url = url2 + "username=vvsdfwefd&" + "timestamp=" + ts.TotalSeconds + "&token=" + token;
+            Console.WriteLine(url);
+            Console.Read();
+        }
         public static void SsologinForMail() {
             string username = "zengjw@andni.cn";//"xuna@clouddream.net";"123456@qq.com";
             string url2 = "http://localhost:9090/customer/ssologin?username=" + username;
