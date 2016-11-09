@@ -5,18 +5,33 @@
     <title></title>
     <script type="text/javascript">
         var arr = [1, 2, 3];
+        //栈方法, 让数组后进先出 push(推入数组并返回长度), 和pop(取出数组最后一位并返回,数组长度减一)
         //增加 push尾部增加  unshift 头部增加, 并且返回数组长度
-        arr.push(4);console.log(arr);//[1,2,3,4]
-        arr.unshift(0);//[0,1,2,3,4]  unshift(1,2,3) 一次插入多条
+        console.log( arr.push(4));//插入4并输出4
+        console.log(arr);//[1,2,3,4]
+        console.log(arr.pop());//输出4, 数组变成[1,2,3]
 
-        //删除 pop删除最后一位并返回, shift删除第一位并返回
-        arr.pop();//[0,1,2,3]
-        arr.shift()//[1,2,3]
+        //队列方法先进先出
+        arr = ["a", "b"];
+        arr.push(1);
+        console.log(arr.shift());//输出"a", 数组变成["b"]
+        console.log(arr.unshift("1", 2));//输出数组长度, 数组变成["1",2,"b"], unshift和shift都是操作数组第一位
 
-        //splice 方法
+
+        //slice切片方法, 两参数, 切片的起始位置. 返回新的数组, 且原数组不变.  
+        /*
+        var a=[1,2,3,4,5]
+        console.log( a.slice(3))   =>[4, 5]
+        console.log(a)  ==>[1, 2, 3, 4, 5]
+        */
+
+        //splice 拼接方法, 最强大的数组方法 始终返回被删除元素的数组, 如果未删除, 返回空数组
+        //1 删除(起始位, 长度)
         //从一个数组中移除一个或多个元素，如果必要，在所移除元素的位置上插入新元素，返回所移除的元素。
-        arr.splice(0, 2, 100, 101, 102);// 从arr的位置0开始, 删除2个, 并插入100,101,102三个
-        arr.splice(0, 2, 100, 101, 102) //返回[1, 2]   arr数组为[100,101,102,3]
+        var b = [1, 2, 3, 4, 5];
+        console.log(b.splice(2, 2));//=>输出[3,4]. 剩余[1,2,5]
+        console.log(b.splice(2, 0, "a", "b"));//输出[], 剩余[1,2,"a","b",5]
+        console.log(b.splice(2, 1, "100", "101"));//输出["a"], 剩余[1,2,"100","101","b",5]
 
 
         //数组去重复

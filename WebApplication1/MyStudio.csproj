@@ -105,6 +105,7 @@
     <Content Include="javascript\0Js面向对象和组件化开发\10继承-类式继承和原型继承.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\3_2闭包创建无污染的对象.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\3_3实现无new构建.html" />
+    <Content Include="javascript\0Js面向对象和组件化开发\3_3无new继承bug重现之_proto_的共享.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\4实践-面向对象-拖拽 完整版.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\4实践-面向对象-拖拽.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\1工厂和函数式.html" />
@@ -120,6 +121,8 @@
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\1放大镜%28mouseenter不冒泡%29.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\imgs\b1.jpg" />
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\imgs\b2.jpg" />
+    <Content Include="javascript\0Js面向对象和组件化开发\_New对象到底干了几件事.html" />
+    <Content Include="javascript\1JS基础\数组\sort排序.html" />
     <Content Include="javascript\2JS中级知识点\事件和委托event.Target指向谁.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\4碰撞.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\3磁性吸附.html" />
@@ -362,7 +365,7 @@
     <Content Include="javascript\1JS基础\js日期对象\js日期对象.html" />
     <Content Include="javascript\1JS基础\字符串操作\task1.html" />
     <Content Include="javascript\1JS基础\字符串操作\替换.html" />
-    <Content Include="javascript\1JS基础\数组\HtmlPage1.html" />
+    <Content Include="javascript\1JS基础\数组\数组基础方法.html" />
     <Content Include="javascript\3正则表达式\1test方法.html" />
     <Content Include="javascript\js作用域预编译和执行.html" />
     <Content Include="javascript\Js兼容性.html" />
@@ -589,7 +592,6 @@
     <Content Include="jquery\插件\plupload-2.1.8\examples\upload.php" />
     <Content Include="jquery\插件\plupload-2.1.8\readme.md" />
     <Content Include="javascript\1JS基础\微软JavaScript手册js.chm" />
-    <Content Include="移动端开发\0入门\1媒体查询器用法总结.html" />
     <None Include="Properties\PublishProfiles\1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
