@@ -592,6 +592,7 @@
     <Content Include="jquery\插件\plupload-2.1.8\examples\upload.php" />
     <Content Include="jquery\插件\plupload-2.1.8\readme.md" />
     <Content Include="javascript\1JS基础\微软JavaScript手册js.chm" />
+    <Content Include="移动端开发\0入门\1媒体查询器用法总结.html" />
     <None Include="Properties\PublishProfiles\1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
