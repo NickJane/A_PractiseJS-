@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+(function(){
+	var w = window.screen.width;
+	var targetW = 320; //注意。 以320横向设计为基准。
+	var scale = w/targetW; //当前尺寸/目标尺寸
+	var meta = document.createElement("meta");
+	meta.name = "viewport";
+	meta.content = "user-scalable=no,initial-scale="+scale+",minimum-scale="+scale+",maximum-scale="+scale+""
+	//console.log(scale);
+	document.head.appendChild(meta);
+})();
+    </script>
+    <!--
+    <meta name="viewport" content="user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    -->
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+
+        div {
+            width: 80px;
+            height: 100px;
+            float: left;
+        }
+
+        .box1 {
+            background: red;
+        }
+
+        .box2 {
+            background: blue;
+        }
+
+        .box3 {
+            background: green;
+        }
+
+        .box4 {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <p>
+        作者：王佳欣
+        链接：https://www.zhihu.com/question/21504656/answer/85135845
+        来源：知乎
+        著作权归作者所有，转载请联系作者获得授权。
+
+        在rem概念没引入前我们的做法是，以最小的屏幕（iPhone）做一版数据出来，然后通过js去控制
+        viewport 的 initial-scale （网页缩放比例）。
+        如：iPhone4下：
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0  />
+        那么对应的到了iPhone6需要调整缩放比例 initial-scale=375/320 =1.18
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.18  />
+        同理到了iPhone6 Plus对应的应该是 initial-scale=414/320 =1.30
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=3.0  />
+        早期【天猫】移动端也是用用这样的方法实现的。能满足我们的需求。
+        缺点是：这样做会使得，因为initial-scale越来越大，相当于拉伸网页，而使得在大屏幕的移动端设备下，文字、图片会变模糊。
+
+    </p>
+</body>
+</html>
