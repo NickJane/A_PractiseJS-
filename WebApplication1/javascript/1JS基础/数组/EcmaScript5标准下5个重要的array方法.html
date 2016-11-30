@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //1. indexOf 方法. 
+        (function () {
+            var arr = [1, 2, 3, 4, 5];
+            console.log(arr.indexOf(1));//0
+            console.log(arr.indexOf(8));//-1
+        }());
+
+        //2. filter 方法
+        (function () {
+            var arr = [1, 2, 3, 'a', 'b', 'c', 4, 5];
+            var newarr = arr.filter(function (item) {
+                if (Object.prototype.toString.call(item) == "[object String]")
+                    return true;
+            });
+            console.log('filter过滤后是' + newarr);//filter过滤后是a,b,c
+        }());
+
+        //3. forEach
+        (function () {
+            var arr = [1, 2, 3, 'a', 'b', 'c', 4, 5];
+            arr.forEach(function (item, index) {
+                //console.log(index + " : " + item);
+            })
+        }());
+
+        //4. mao map()对数组的每个元素进行一定操作（映射）后，会返回一个新的数组
+        (function () {
+            var oldArr = [{ first_name: "Colin", last_name: "Toh" }, { first_name: "Addy", last_name: "Osmani" }, { first_name: "Yehuda", last_name: "Katz" }];
+
+            function getNewArr() {
+                var newArr = [];
+                for (var i = 0, l = oldArr.length; i < l; i++) {
+                    var item = oldArr[i];
+                    item.full_name = [item.first_name, item.last_name].join(" ");
+                    newArr[i] = item;
+                }
+                return newArr;
+            }
+            console.log(getNewArr());
+
+            var oldArr2 = [{ first_name: "Colin", last_name: "Toh" }, { first_name: "Addy", last_name: "Osmani" }, { first_name: "Yehuda", last_name: "Katz" }];
+
+            //使用新的map方法之后
+            var newarr = oldArr2.map(function (item, index) {
+                item.full_name = item.last_name + " " + item.first_name;
+                return item;
+            });
+            console.log(oldArr2);
+        }());
+
+
+        //5.Some(func) , 只要在函数中找到一个,就可以了
+        (function () {
+            var arr = [1, 2, 3, 'a', 'b', 'c', 4, 5];
+            var arr2 = [ 'a', 'b', 'c' ];
+            var someFunc = function (item,index) {
+                if (Object.prototype.toString.call(item) == "[object Number]")
+                    return true;
+            }
+            if(arr.some(someFunc))
+                console.log('some : 找到了数字')
+            if (!arr2.some(someFunc))
+                console.log('some : 没找到数字')
+        }());
+
+        //6. every(func), 必须每个都符合函数要求, 才可以
+        (function () {
+            var arr = [1, 2, 3, 'a', 'b', 'c', 4, 5];
+            var arr2 = ['a', 'b', 'c'];
+            var everyFunc = function (item, index) {
+                if (Object.prototype.toString.call(item) == "[object String]")
+                    return true;
+            }
+            if (!arr.every(everyFunc))
+                console.log('some : 找到了数字,数组不全是字母')
+            if (arr2.every(everyFunc))
+                console.log('some : 数组全是字母')
+
+        }());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

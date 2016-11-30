@@ -122,6 +122,7 @@
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\imgs\b1.jpg" />
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\imgs\b2.jpg" />
     <Content Include="javascript\0Js面向对象和组件化开发\_New对象到底干了几件事.html" />
+    <Content Include="javascript\1JS基础\数组\EcmaScript5标准下5个重要的array方法.html" />
     <Content Include="javascript\1JS基础\数组\sort排序.html" />
     <Content Include="javascript\2JS中级知识点\事件和委托event.Target指向谁.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\4碰撞.html" />
