@@ -454,9 +454,15 @@
     <Content Include="JS类库\插件\plupload-2.1.8\js\plupload.full.min.js" />
     <Content Include="JS类库\插件\plupload-2.1.8\js\plupload.min.js" />
     <Content Include="JS类库\插件\plupload-2.1.8\license.txt" />
-    <Content Include="JS类库\插件\superslider\HtmlPage1.html" />
-    <Content Include="JS类库\插件\superslider\jquery.min.js" />
-    <Content Include="JS类库\插件\superslider\jquery.SuperSlide.2.1.1.js" />
+    <Content Include="JS类库\插件\superslider\images\1.jpg" />
+    <Content Include="JS类库\插件\superslider\images\2.jpg" />
+    <Content Include="JS类库\插件\superslider\images\3.jpg" />
+    <Content Include="JS类库\插件\superslider\images\4.jpg" />
+    <Content Include="JS类库\插件\superslider\images\5.jpg" />
+    <Content Include="JS类库\插件\superslider\images\slider-arrow.png" />
+    <Content Include="JS类库\插件\superslider\index.html" />
+    <Content Include="JS类库\插件\superslider\js\jquery.js" />
+    <Content Include="JS类库\插件\superslider\js\superslide.2.1.js" />
     <Content Include="JS类库\插件\validate\additional-methods.js" />
     <Content Include="JS类库\插件\validate\additional-methods.min.js" />
     <Content Include="JS类库\插件\validate\else.js" />
@@ -596,6 +602,7 @@
     <Content Include="移动端开发\0入门\1移动开发起手式.html" />
     <Content Include="移动端开发\0入门\布局-viewport计算scale布局.html" />
     <Content Include="移动端开发\0入门\布局-演变历史.html" />
+    <Content Include="JS类库\插件\superslider\images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
