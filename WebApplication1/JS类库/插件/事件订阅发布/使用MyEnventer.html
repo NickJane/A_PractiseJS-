@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //function Eventer(object) {
+        //    for (var i in object) { console.log(i) }
+        //    if (!(this instanceof Eventer)) {//由于调用方法是Evnenter(obj), 所以第一次的this是window对象, if生效
+        //        console.log('1111')
+        //        return new Eventer(object);//再次调用本身
+        //    }
+        //}
+
+        //var e = Eventer({});
+        //console.log(e instanceof Eventer)
+
+
+        (function () {
+            window.bb= function bar1() {
+
+            }
+        }());
+
+        window.bb();
+
+        
+        var obj = {};
+
+        function fn1() {
+            console.log('this is fn1');
+            return true;
+        }
+
+        console.log("apply有返回值吗?" + fn1.apply(obj));
+        
+    </script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="MyEventer.js"></script>
+    <script type="text/javascript">
+        var j = {
+            Name: 'jjl',
+            Age: '100',
+            Gender:'male'
+        }
+        Eventer(j);// 这样J有了事件模型.
+
+        j.on("wakeup", function () {
+            console.log('j醒来了')
+        }).on("gotowork", function () {
+            console.log('j去上班了')
+        }).on("lunch", function () {
+            console.log('j吃午饭了')
+        })
+
+        j.trigger("wakeup");
+
+
+
+    </script>
+
+    <script type="text/javascript"> 
+        var Buying = {};
+        Eventer(Buying);
+
+        //订阅事件: 全选:true
+        Buying.on("selectall:true", function () {
+            $(".ckb_single").prop("checked", true);
+            //触发"selectItem:true"事件
+            Buying.trigger("selectitem:true","all");
+        });
+
+        //订阅事件: 全选:false
+        Buying.on("selectall:false", function () {
+            $(".ckb_single").prop("checked", false);
+            //触发"selectItem:true"事件
+            Buying.trigger("selectitem:false",'all');
+        });
+
+        //订阅事件: 子选:true
+        Buying.on("selectitem:true", function (type) {
+            if(type=='all')
+                $(".in_productNum").prop('disabled', false).val(1);//数量输入框可用
+            else
+                $(".in_productNum", $(arguments[0]).parent().parent()).prop('disabled', false).val(1);
+            Buying.trigger("productnumberchange");
+        });
+
+         
+        //订阅事件: 子选:false
+        Buying.on("selectitem:false", function (type) {
+            if (type == 'all')
+                $(".in_productNum").prop('disabled',true).val(0);
+            else
+                $(".in_productNum", $(arguments[0]).parent().parent()).prop('disabled', true).val(0);
+            Buying.trigger("productnumberchange");
+        })
+
+        Buying.on("productnumberchange", function () {
+            Buying.trigger("calculate");
+        })
+
+        //计算事件
+        Buying.on("calculate", function () {
+            $('#span_NumOfProductKind').html($(".ckb_single:checked").length);
+            var total=0;
+            $(".in_productNum:enabled").each(function () {
+                total += parseInt(this.value);
+            })
+            $('#sp_TotalNum').html(total);
+
+        })
+
+    </script>
+    <script type="text/javascript">
+        //程序各种用例入口
+        $(function () {
+            //全选按钮的触发, 需要触发子选择按钮的点击事件
+            $('#ckb_checkAll').click(function () {
+                var activeEvent = this.checked ? "selectall:true" : "selectall:false";
+                Buying.trigger(activeEvent);
+            });
+
+            //单选按钮的触发
+            $('.ckb_single').click(function () {
+                var activeEvent = this.checked ? "selectitem:true" : "selectitem:false";
+                Buying.trigger(activeEvent, this);
+            });
+
+
+            $('.a_plus').click(function () {
+                var input = $(".in_productNum", $(this).parent());
+                if (input.prop('disabled') == false) {
+                    input.val(parseInt(input.val()) + 1);
+                    Buying.trigger("calculate");
+                }
+            });
+
+            $('.a_minus').click(function () {
+                var input = $(".in_productNum", $(this).parent());
+                if (input.prop('disabled') == false && parseInt(input.val()) > 0) {
+                    input.val(parseInt(input.val()) - 1);
+                    Buying.trigger("calculate");
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <style>
+        
+        #tb { width: 800px; text-align: center; }
+            #tb td { height: 35px; }
+            #tb tr > td:last-child { width: 30%; }
+                #tb tr > td:last-child a { cursor: pointer; }
+
+        #divTbHeader { height: 40px; line-height: 40px; }
+        #divTbHeader  span{ color: red; font-weight: bold; font-size: 20px; padding: 0 5px; }
+        .in_productNum { width: 40px; text-align: center; }
+    </style>
+    <div id="divTbHeader">您选择了<span id="span_NumOfProductKind">0</span>种商品，共有<span id="sp_TotalNum">0</span>个商品</div>
+    <table id="tb" width="200" border="1" cellpadding="0" cellspacing="0" onselectstart="return false">
+        <tr>
+            <td>店铺序列</td>
+            <td>店铺名称</td>
+            <td>商品</td>
+            <td><input id="ckb_checkAll" type="checkbox" />全选</td>
+            <td>数量</td>
+        </tr>
+
+
+        <tr>
+            <td rowspan="5">201604192587</td>
+            <td rowspan="5">陈先生的店</td>
+            <td>产品1</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td>
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品2</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td>
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品3</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td class="cfs">
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品4</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td class="cfs">
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品5</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td class="cfs">
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+        #tb { width: 800px; text-align: center; }
+            #tb td { height: 35px; }
+            #tb tr > td:last-child { width: 30%; }
+                #tb tr > td:last-child a { cursor: pointer; }
+
+        #divTbHeader { height: 40px; line-height: 40px; }
+            #divTbHeader span { color: red; font-weight: bold; font-size: 20px; padding: 0 5px; }
+        .in_productNum { width: 40px; text-align: center; }
+    </style>
+    <div id="divTbHeader">您选择了<span id="span_NumOfProductKind">0</span>种商品，共有<span id="sp_TotalNum">0</span>个商品</div>
+    <table id="tb" width="200" border="1" cellpadding="0" cellspacing="0" onselectstart="return false">
+        <tr>
+            <td>店铺序列</td>
+            <td>店铺名称</td>
+            <td>商品</td>
+            <td><input id="ckb_checkAll" type="checkbox" />全选</td>
+            <td>数量</td>
+        </tr>
+
+
+        <tr>
+            <td rowspan="5">201604192587</td>
+            <td rowspan="5">陈先生的店</td>
+            <td>产品1</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td>
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品2</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td>
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品3</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td class="cfs">
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品4</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td class="cfs">
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+        <tr>
+            <td>产品5</td>
+            <td><input class="ckb_single" type="checkbox" value="choose" />选择</td>
+            <td class="cfs">
+                <a class="a_minus">-</a>
+                <input class="in_productNum" disabled="disabled" type="text" value="0" />
+                <a class="a_plus">+</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

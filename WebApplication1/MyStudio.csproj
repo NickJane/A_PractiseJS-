@@ -583,6 +583,10 @@
     <Content Include="JS类库\插件\validate\localization\methods_nl.min.js" />
     <Content Include="JS类库\插件\validate\localization\methods_pt.js" />
     <Content Include="JS类库\插件\validate\localization\methods_pt.min.js" />
+    <Content Include="JS类库\插件\事件订阅发布\MyEventer.js" />
+    <Content Include="JS类库\插件\事件订阅发布\使用jquery的事件模块.html" />
+    <Content Include="JS类库\插件\事件订阅发布\使用MyEnventer.html" />
+    <Content Include="JS类库\插件\事件订阅发布\原始例子.html" />
     <Content Include="JS类库\插件\合并table的列\HtmlPage1.html" />
     <Content Include="packages.config" />
     <Content Include="前端每日一练\目录.txt" />
