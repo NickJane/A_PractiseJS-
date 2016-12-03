@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+        /*css起手式*/
+        a,
+        input,
+        button {
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        input,
+        button {
+          -webkit-appearance: none;
+          border-radius: 0;
+        }
+        body {
+          margin: 0;
+          -webkit-user-select: none;
+        }
+        body * {
+          -webkit-user-select: none;
+          font-family: Helvetica;
+        }
+        body {
+          -webkit-text-size-adjust: 100%;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+    </style>
+    <link href="css/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/css/css.css" rel="stylesheet" />
+    <script>
+        //假设， 我们的设计稿是宽度（iphone6逻辑宽度375）
+
+
+        //第一步， 动态设置每个rem的宽度。 这个习题的设计稿是750px宽度。 所以这里每个rem就是（屏幕宽度/15）*2. 一个rem是html的字体两倍。
+		    (function(){
+		    	var html = document.documentElement;
+		    	var hWidth = html.getBoundingClientRect().width;//iphone6下是375px；
+				html.style.fontSize = hWidth/15 + "px"; //iphone6下就是rem=25px； 屏幕分成15份， 每份25px；
+		    })()
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <a id="task" href="javascript:;"><span class="glyphicon glyphicon-tasks"></span></a>
+        </div>
+        <div>
+            <label><span class="glyphicon glyphicon-lock"></span>标题</label>
+        </div>
+        <div>
+            <a id="task" href="javascript:;"><span class="glyphicon glyphicon-refresh"></span>&nbsp;</a>
+        </div>
+    </div>
+</body>
+</html>

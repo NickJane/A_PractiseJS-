@@ -593,6 +593,11 @@
     <Content Include="jquery\插件\plupload-2.1.8\readme.md" />
     <Content Include="javascript\1JS基础\微软JavaScript手册js.chm" />
     <Content Include="移动端开发\0入门\1移动开发起手式.html" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\css\bootstrap.css" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\css\css.css" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="移动端开发\0入门\使用rem的例子\example1.html" />
+    <Content Include="移动端开发\0入门\使用rem的例子\img\img.png" />
     <Content Include="移动端开发\0入门\布局-viewport计算scale布局.html" />
     <Content Include="移动端开发\0入门\布局-演变历史.html" />
     <None Include="Properties\PublishProfiles\1.pubxml" />
@@ -602,6 +607,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\css\css.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html5Css3\1_html布局\1_html_flex布局\1flex移动布局.html" />
