@@ -1,0 +1,168 @@
+﻿<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+    .cfs { width: 30%; }
+        .cfs a { cursor: pointer; }
+    #cxsdd { width: 800px; text-align: center; }
+        #cxsdd td { height: 35px; }
+    #xianss { height: 40px; line-height: 40px; }
+    #in_num, #sp_num { color: red; font-weight: bold; font-size: 20px; padding: 0 5px; }
+    .lskdo { width: 40px; text-align: center; }
+</style>
+<div id="xianss">您选择了<span id="in_num">0</span>种商品，共有<span id="sp_num">0</span>个商品</div>
+<table id="cxsdd" width="200" border="1" cellpadding="0" cellspacing="0" onselectstart="return false">
+    <tr>
+        <td>店铺序列</td>
+        <td>店铺名称</td>
+        <td>商品</td>
+        <td><input id="checkAll" type="checkbox" />全选</td>
+        <td class="cfs">数量</td>
+    </tr>
+    <tr>
+        <td rowspan="5">201604192587</td>
+        <td rowspan="5">陈先生的店</td>
+        <td>产品1</td>
+        <td><input class="choo" type="checkbox" value="choose" />选择</td>
+        <td class="cfs">
+            <a class="jian">-</a>
+            <input class="lskdo" disabled="disabled" type="text" value="0" />
+            <a class="jia">+</a>
+        </td>
+    </tr>
+    <tr>
+        <td>产品2</td>
+        <td><input class="choo" type="checkbox" value="choose" />选择</td>
+        <td class="cfs">
+            <a class="jian">-</a>
+            <input class="lskdo" disabled="disabled" type="text" value="0" />
+            <a class="jia">+</a>
+        </td>
+    </tr>
+    <tr>
+        <td>产品3</td>
+        <td><input class="choo" type="checkbox" value="choose" />选择</td>
+        <td class="cfs">
+            <a class="jian">-</a>
+            <input class="lskdo" disabled="disabled" type="text" value="0" />
+            <a class="jia">+</a>
+        </td>
+    </tr>
+    <tr>
+        <td>产品4</td>
+        <td><input class="choo" type="checkbox" value="choose" />选择</td>
+        <td class="cfs">
+            <a class="jian">-</a>
+            <input class="lskdo" disabled="disabled" type="text" value="0" />
+            <a class="jia">+</a>
+        </td>
+    </tr>
+    <tr>
+        <td>产品5</td>
+        <td><input class="choo" type="checkbox" value="choose" />选择</td>
+        <td class="cfs">
+            <a class="jian">-</a>
+            <input class="lskdo" disabled="disabled" type="text" value="0" />
+            <a class="jia">+</a>
+        </td>
+    </tr>
+</table>
+<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    // 发布订阅实现
+    (function ($) {
+        var o = $({});
+        $.subscribe = function () {
+            o.on.apply(o, arguments);
+        };
+        $.publish = function () {
+            o.trigger.apply(o, arguments);
+        };
+        $.unSubscribe = function () {
+            o.off.apply(o, arguments);
+        };
+    })(jQuery);
+</script>
+<script>
+    /*************客户端**************/
+
+    // 全选与其他选择按钮之间的联动
+    $.subscribe('selectAll:true', function () {
+        $(".choo").not(':checked').prop("checked", true).trigger('change');
+    });
+    $.subscribe('selectAll:false', function () {
+        $(".choo").prop("checked", false).trigger('change');
+    });
+
+
+
+    // 选择按钮与数量框之间的联动
+    $.subscribe('selectItem:true', function (e, $checkbox) {
+        $checkbox.parent().siblings('.cfs').find('.lskdo')
+            .prop("disabled", false).val(1).trigger('propertychange');
+        $.publish('typeNumberChange');
+    });
+    $.subscribe('selectItem:false', function (e, $checkbox) {
+        $checkbox.parent().siblings('.cfs').find('.lskdo')
+            .prop("disabled", true).val(0).trigger('propertychange');
+        $.publish('typeNumberChange');
+    });
+
+    // 种类个数变化事件
+    $.subscribe('typeNumberChange', function (e, $checkbox) {
+        $("#in_num").text($('.choo:checked').length);
+    });
+
+    // 商品总数变化事件
+    $.subscribe('totalNumberChange', function (e, $checkbox) {
+        var total = 0;
+        $('.lskdo').each(function () {
+            total += +this.value;//+表示转化为数字
+        });
+        $("#sp_num").text(total);
+    });
+
+
+
+    // 全选按钮change事件
+    $("#checkAll").change(function () {
+        var topic = 'selectAll:' + $(this).is(':checked');
+        $.publish(topic);
+    });
+    // 选择按钮chang事件
+    $('.choo').change(function () {
+        var $this = $(this);
+        var topic = 'selectItem:' + $this.is(':checked');
+        $.publish(topic, [$this]);
+    });
+
+    // 加减按钮事件
+    $(".jian").click(function () {
+        var active = $(this).parent().parent().find(".choo").is(":checked");
+        var input = $(this).parent().find(".lskdo");
+        var value = +input.val();
+        if (active && value > 1) {
+            input.val(value - 1).trigger('propertychange');
+        }
+
+    });
+    $(".jia").click(function () {
+        var active = $(this).parent().parent().find(".choo").is(":checked");
+        var input = $(this).siblings(".lskdo");
+        var value = +input.val();
+        if (active) {
+            input.val(value + 1).trigger('propertychange');
+        }
+    });
+
+    // input框change事件
+    $(".lskdo").on('input propertychange', function () {
+        var value = $(this).val();
+        if (isNaN(value)) {
+            alert("您好,请输入您想购买的数量!");
+            $(this).val(1);
+        }
+        $.publish('totalNumberChange');
+    }).focus(function () {
+        $(this).select();
+    });
+</script>
