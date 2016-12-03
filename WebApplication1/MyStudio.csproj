@@ -647,6 +647,16 @@
   <ItemGroup>
     <Folder Include="javascript\0Js面向对象和组件化开发\练习题\imgs\images\" />
     <Folder Include="javascript\0Js面向对象和组件化开发\练习题\imgs\photo\" />
+    <Folder Include="jquery\0源码分析\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\examples\jquery\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\i18n\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\css\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\css\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\img\" />
+    <Folder Include="jquery\插件\superslider\" />
+    <Folder Include="jquery\插件\validate\localization\" />
+    <Folder Include="jquery\插件\合并table的列\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
