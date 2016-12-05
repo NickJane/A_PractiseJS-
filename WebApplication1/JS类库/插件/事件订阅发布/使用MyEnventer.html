@@ -43,7 +43,7 @@
             Age: '100',
             Gender:'male'
         }
-        Eventer(j);// 这样J有了事件模型.
+        var evt= Eventer(j);// 这样J有了事件模型.
 
         j.on("wakeup", function () {
             console.log('j醒来了')
@@ -55,7 +55,7 @@
 
         j.trigger("wakeup");
 
-
+        
 
     </script>
 

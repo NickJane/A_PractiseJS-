@@ -377,6 +377,8 @@
     <Content Include="javascript\2JS中级知识点\跨域\jsonp.js" />
     <Content Include="javascript\z面试题\0较高难度基础题.html" />
     <Content Include="JS类库\0源码分析\1jquery功能目录.html" />
+    <Content Include="JS类库\0源码分析\underscore\1miniUnderscoreJs.html" />
+    <Content Include="JS类库\0源码分析\underscore\2我的underscore.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\custom.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\events.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\jquery\all_runtimes.html" />

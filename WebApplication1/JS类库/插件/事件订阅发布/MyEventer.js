@@ -48,14 +48,6 @@ Eventer(obj_margox);
     }
 
     /**
-     * 用于获取传入的对象, 主要是为了智能感知
-     * @return {object} 返回绑定事件模块之后的对象
-     */
-    Eventer.prototype.getObject = function () {
-        return this.__object;
-    }
-
-    /**
      *
      * 用来订阅事件，可单个或者多个
      * @param  {string | object} eventName 事件名，订阅单个事件时为一个字符串，订阅多个事件则需要传入一个包含事件名/函数的键值对

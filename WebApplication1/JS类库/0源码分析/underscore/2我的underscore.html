@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        (function () {
+            "use strick";
+
+            var _ = function (obj) { return new wrapper(obj); };
+
+            window._ = _;
+
+        })();
+
+
+        // 结果测试 步骤：将数组[1,2,3]进行链式包装，然后将其用val * 2来map，紧接着用filter进行val < 5过滤,
+        // 然后pop,concat最后获取其值value
+        var re = _([1, 2, 3]).chain().map(function (val) {
+            return val * 2;
+        }).filter(function (val) {
+            return val < 5;
+        }).pop().concat(['5']).value();
+
+        alert(re);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
