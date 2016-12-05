@@ -4,6 +4,102 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+    // 发布订阅实现
+    (function ($) {
+        var o = $({});
+        $.subscribe = function () {
+            o.on.apply(o, arguments);
+        };
+        $.publish = function () {
+            o.trigger.apply(o, arguments);
+        };
+        $.unSubscribe = function () {
+            o.off.apply(o, arguments);
+        };
+    })(jQuery);
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+
+
+            //开始订阅一些事件
+            /*
+            分析， 这个页面有哪些操作流程？
+            全选按钮-》单选按钮-》计算价格
+            单选按钮-》计算价格
+            数量变化-》计算价格
+
+            selectall:true, selectall:false全选的两个事件
+            */
+
+            $.subscribe("selectall:true", function () {
+                $(".ckb_single").prop("checked", true);
+                $.publish("selectitem:true", "all");
+            });
+            $.subscribe("selectall:false", function () {
+                $(".ckb_single").prop("checked", false);
+                $.publish("selectitem:false", "all");
+            });
+
+            $.subscribe("selectitem:true", function (jQueryEvent,type) {
+                if (type == 'all')
+                    $(".in_productNum").prop('disabled', false).val(1);//数量输入框可用
+                else
+                    $(".in_productNum", $(arguments[1]).parent().parent()).prop('disabled', false).val(1);
+                $.publish("calculate");
+            });
+
+            $.subscribe("selectitem:false", function (jQueryEvent, type) {
+                if (type == 'all')
+                    $(".in_productNum").prop('disabled', true).val(0);//数量输入框可用
+                else
+                    $(".in_productNum", $(arguments[1]).parent().parent()).prop('disabled', true).val(0);
+                $.publish("calculate");
+            });
+
+            $.subscribe("calculate", function () {
+                $('#span_NumOfProductKind').html($(".ckb_single:checked").length);
+                var total = 0;
+                $(".in_productNum:enabled").each(function () {
+                    total += parseInt(this.value);
+                })
+                $('#sp_TotalNum').html(total);
+            });
+
+
+
+
+            $('#ckb_checkAll').click(function () {
+                $.publish(this.checked ? "selectall:true" : "selectall:false");
+            });
+            //单选按钮的触发
+            $('.ckb_single').click(function () {
+                var activeEvent = this.checked ? "selectitem:true" : "selectitem:false";
+                $.publish(activeEvent, this);
+            });
+
+
+            $('.a_plus').click(function () {
+                var input = $(".in_productNum", $(this).parent());
+                if (input.prop('disabled') == false) {
+                    input.val(parseInt(input.val()) + 1);
+                    $.publish("calculate");
+                }
+            });
+
+            $('.a_minus').click(function () {
+                var input = $(".in_productNum", $(this).parent());
+                if (input.prop('disabled') == false && parseInt(input.val()) > 0) {
+                    input.val(parseInt(input.val()) - 1);
+                    $.publish("calculate");
+                }
+            });
+        })
+
+    </script>
+
 </head>
 <body>
     <style>

@@ -606,6 +606,11 @@
     <Content Include="JS类库\插件\plupload-2.1.8\readme.md" />
     <Content Include="javascript\1JS基础\微软JavaScript手册js.chm" />
     <Content Include="移动端开发\0入门\1移动开发起手式.html" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\css\bootstrap.css" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\css\css.css" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="移动端开发\0入门\使用rem的例子\example1.html" />
+    <Content Include="移动端开发\0入门\使用rem的例子\img\img.png" />
     <Content Include="移动端开发\0入门\布局-viewport计算scale布局.html" />
     <Content Include="移动端开发\0入门\布局-演变历史.html" />
     <Content Include="JS类库\插件\superslider\images\Thumbs.db" />
@@ -616,6 +621,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="移动端开发\0入门\使用rem的例子\css\css\css.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html5Css3\1_html布局\1_html_flex布局\1flex移动布局.html" />
@@ -640,6 +649,16 @@
   <ItemGroup>
     <Folder Include="javascript\0Js面向对象和组件化开发\练习题\imgs\images\" />
     <Folder Include="javascript\0Js面向对象和组件化开发\练习题\imgs\photo\" />
+    <Folder Include="jquery\0源码分析\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\examples\jquery\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\i18n\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\css\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.plupload.queue\img\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\css\" />
+    <Folder Include="jquery\插件\plupload-2.1.8\js\jquery.ui.plupload\img\" />
+    <Folder Include="jquery\插件\superslider\" />
+    <Folder Include="jquery\插件\validate\localization\" />
+    <Folder Include="jquery\插件\合并table的列\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
