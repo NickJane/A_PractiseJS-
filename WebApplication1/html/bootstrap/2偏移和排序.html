@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>v4</title>
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" /> 
+    <style type="text/css">
+        div[class^="col-lg"] { background-color: lightgray; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4 col-md-6">col-lg-4</div>
+        </div>
+    </div>
+
+    <br /><br />偏移<br />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4 col-md-6">col-lg-4</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">偏移</div>
+        </div>
+    </div>
+
+    <br /><br />列排序, push 向右推, pull 向左边拉<br />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4 col-lg-push-4">col-lg-4推了四个单元</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-lg-push-6">col-lg-6推了6个单元</div>
+            <div class="col-lg-6 col-lg-pull-6">col-lg-6拉了6个单元</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ">上面一行的两列交换了位置</div>
+        </div>
+    </div>
+
+    <br /><br />偏移和排序的区别<br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div><div class="col-lg-4">col-lg-4</div><div class="col-lg-4">col-lg-4</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4 col-lg-offset-5">col-lg-4 offset 偏移了五个个单元, 本行放不下了, 只能另起一行</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">col-lg-4 </div>
+            <div class="col-lg-4 col-lg-push-5">col-lg-64 push了5个单元, 超出规范, 不换行</div>
+        </div>
+    </div>
+</body>
+</html>

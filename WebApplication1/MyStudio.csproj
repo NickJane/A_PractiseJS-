@@ -75,6 +75,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Html5Css3\0Css3\1选择器\css3选择器.html" />
     <Content Include="Html5Css3\0Css3\1选择器\direction文字排版.html" />
     <Content Include="Html5Css3\0Css3\1选择器\prev ~ siblings选择器模拟单选框.html" />
@@ -91,6 +95,8 @@
     <Content Include="Html5Css3\0Css3\变形和动画transform\translate位移居中.html" />
     <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-alignitem.html" />
     <Content Include="Html5Css3\1_html布局\1_html_flex布局\flex-grow-shrink-basis.html" />
+    <Content Include="html\bootstrap\1预览.html" />
+    <Content Include="html\bootstrap\2偏移和排序.html" />
     <Content Include="html\html基础备忘\7其他常用\10_盒模型的怪异模式.html" />
     <Content Include="html\html基础备忘\7其他常用\11_隐藏元素.html" />
     <Content Include="html\html基础备忘\7其他常用\14_未知宽高的img如何在容器里水平垂直居中.html" />
@@ -591,6 +597,16 @@
     <Content Include="JS类库\插件\事件订阅发布\原始例子.html" />
     <Content Include="JS类库\插件\合并table的列\HtmlPage1.html" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="前端每日一练\目录.txt" />
     <Content Include="html\html基础备忘\1常用标签解析\常见标签（下）.ppt" />
     <Content Include="html\html基础备忘\2浮动\css3—浮动.ppt" />
@@ -614,7 +630,12 @@
     <Content Include="移动端开发\0入门\布局-viewport计算scale布局.html" />
     <Content Include="移动端开发\0入门\布局-演变历史.html" />
     <Content Include="JS类库\插件\superslider\images\Thumbs.db" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\1.pubxml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
