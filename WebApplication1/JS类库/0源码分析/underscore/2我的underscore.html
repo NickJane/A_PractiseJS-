@@ -24,6 +24,52 @@
 
         alert(re);
     </script>
+
+    <script type="text/javascript">
+        var json =
+            {
+                'Id': '0', 'Name': '全部', 'PId': '0', 'Img': '', 'Children':
+                  [
+                      { 'Id': '3397', 'Name': '硒鼓', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '3398', 'Name': '墨粉', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '3399', 'Name': '墨水', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '3400', 'Name': '碳带', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1199369', 'Name': '打印机租赁', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200064', 'Name': '复印机租赁', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200065', 'Name': '验钞机', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200075', 'Name': '装订机', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200077', 'Name': '考勤机', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200080', 'Name': '监控设备', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200082', 'Name': '文件夹', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200083', 'Name': '订书机', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1200084', 'Name': '纸张', 'PId': '1200087', 'Img': '', 'Children': [] },
+                      {
+                          'Id': '1200085', 'Name': '笔墨', 'PId': '0', 'Img': '', 'Children': [
+                            { 'Id': '1200086', 'Name': '打印机', 'PId': '1200085', 'Img': '', 'Children': [] },
+                            { 'Id': '1200087', 'Name': '复印机', 'PId': '1200085', 'Img': '', 'Children': [] }]
+                      },
+                      { 'Id': '1200086', 'Name': '打印机', 'PId': '1200085', 'Img': '', 'Children': [] },
+                      {
+                          'Id': '1200087', 'Name': '复印机', 'PId': '1200085', 'Img': '', 'Children': [
+                            { 'Id': '1200084', 'Name': '纸张', 'PId': '1200087', 'Img': '', 'Children': [] }
+                          ]
+                      },
+                      {
+                          'Id': '1200088', 'Name': '电脑', 'PId': '0', 'Img': '', 'Children': [
+                              { 'Id': '1200231', 'Name': '电脑租赁', 'PId': '1200088', 'Img': '', 'Children': [] }]
+                      }, {
+                          'Id': '1200231', 'Name': '电脑租赁', 'PId': '1200088', 'Img': '', 'Children':
+                              [
+                                  { 'Id': '1204762', 'Name': '笔记本租赁', 'PId': '1200231', 'Img': '', 'Children': [] },
+                                  { 'Id': '1204763', 'Name': '台式机租赁', 'PId': '1200231', 'Img': '', 'Children': [] }
+                              ]
+                      }, { 'Id': '1204761', 'Name': '热销产品展示', 'PId': '0', 'Img': '', 'Children': [] },
+                      { 'Id': '1204762', 'Name': '笔记本租赁', 'PId': '1200231', 'Img': '', 'Children': [] },
+                      { 'Id': '1204763', 'Name': '台式机租赁', 'PId': '1200231', 'Img': '', 'Children': [] }]
+            };
+        
+        var json2 = { 'Id': '0', 'Name': '全部', 'PId': '0', 'Img': '', 'Children': [{ 'Id': '3397', 'Name': '硒鼓', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '3398', 'Name': '墨粉', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '3399', 'Name': '墨水', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '3400', 'Name': '碳带', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1199369', 'Name': '打印机租赁', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200064', 'Name': '复印机租赁', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200065', 'Name': '验钞机', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200075', 'Name': '装订机', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200077', 'Name': '考勤机', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200080', 'Name': '监控设备', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200082', 'Name': '文件夹', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200083', 'Name': '订书机', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1200084', 'Name': '纸张', 'PId': '1200087', 'Img': '', 'Children': [] }, { 'Id': '1200085', 'Name': '笔墨', 'PId': '0', 'Img': '', 'Children': [{ 'Id': '1200086', 'Name': '打印机', 'PId': '1200085', 'Img': '', 'Children': [] }, { 'Id': '1200087', 'Name': '复印机', 'PId': '1200085', 'Img': '', 'Children': [] }] }, { 'Id': '1200086', 'Name': '打印机', 'PId': '1200085', 'Img': '', 'Children': [] }, { 'Id': '1200087', 'Name': '复印机', 'PId': '1200085', 'Img': '', 'Children': [{ 'Id': '1200084', 'Name': '纸张', 'PId': '1200087', 'Img': '', 'Children': [] }] }, { 'Id': '1200088', 'Name': '电脑', 'PId': '0', 'Img': '', 'Children': [{ 'Id': '1200231', 'Name': '电脑租赁', 'PId': '1200088', 'Img': '', 'Children': [] }] }, { 'Id': '1200231', 'Name': '电脑租赁', 'PId': '1200088', 'Img': '', 'Children': [{ 'Id': '1204762', 'Name': '笔记本租赁', 'PId': '1200231', 'Img': '', 'Children': [] }, { 'Id': '1204763', 'Name': '台式机租赁', 'PId': '1200231', 'Img': '', 'Children': [] }] }, { 'Id': '1204761', 'Name': '热销产品展示', 'PId': '0', 'Img': '', 'Children': [] }, { 'Id': '1204762', 'Name': '笔记本租赁', 'PId': '1200231', 'Img': '', 'Children': [] }, { 'Id': '1204763', 'Name': '台式机租赁', 'PId': '1200231', 'Img': '', 'Children': [] }] };
+    </script>
 </head>
 <body>
 
