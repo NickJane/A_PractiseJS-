@@ -44,13 +44,13 @@
         f1.publicObjectFn();//1
         f1.fn1();//1
 
-        var f2 = new fn(2);
-        f2.publicVarFn(100);//100
+        var f2 = new fn(2); //实例变量age=2
+        f2.publicVarFn(100);//链上值变量publicVar= 100
         f2.publicObjectFn(100);//100这里修改了实例的公共对象, f1里面的对象就会被改掉
-        f2.fn1(2);//2
+        f2.fn1(2);//输出age2
 
-        f1.publicVarFn();//1
-        f1.publicObjectFn();//100
+        f1.publicVarFn();//1 值变量, 非共享
+        f1.publicObjectFn();//100 链上的引用变量是共享的, 在f2被改掉了
         f1.fn1();//1
     </script>
 </head>

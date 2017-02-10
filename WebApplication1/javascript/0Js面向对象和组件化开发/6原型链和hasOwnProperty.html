@@ -35,7 +35,7 @@
         arr.num = 10;//为arr实例单独增加属性num，并赋值为10
         Array.prototype.num2 = 20;//全局数组增加num2
         //alert(  arr.hasOwnProperty('num')  );  //true arr对象有独占属性num
-        alert(  arr.hasOwnProperty('num2')  );  //false
+        alert(  arr.hasOwnProperty('num2')  );  //false num2是继承链上的, 不属于本身
 
     </script>
 </head>

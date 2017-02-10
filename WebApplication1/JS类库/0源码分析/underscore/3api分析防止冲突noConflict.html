@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var a = 1;
+        console.log("当前的windows.$已经是jquery对象了")
+    </script>
+    <script>
+        (function (window) {
+            var otherName = window.$;// 1. window.$是jquery, 用otherName暂存
+            var $ = function () { };// 2. 定义局部变量$为空函数
+            $.myMethod = function () {
+                console.log("模拟自定义静态方法实现")
+            }
+            $.noConflict = function () {
+                window.$ = otherName;//把window.$重写为jquery
+                return this;//返回的是局部变量$函数
+            }
+            //...
+            window.$ = $;//window.$赋值为局部变量函数
+
+        })(window);//闭包处理, 把jquery对象保存到闭包里面的otherName;
+        console.log("当前的windows.$被修改为内部申明的$函数")
+    </script>
+    <script>
+        //调用
+        var myPluginNewName = $.noConflict();//调用方法. 把window.$重置为jquery对象, 并且把闭包里面申明的$函数对象给返回出来了!
+        myPluginNewName.myMethod();//可以调用自己实现的方法了.
+
+        //jquery照常使用....
+        $(function () {
+            alert(111);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

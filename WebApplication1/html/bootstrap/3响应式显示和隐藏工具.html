@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <style type="text/css">
+        div[class^="col-lg"] { background-color: lightgray; }
+        .tips1 { width:30px; height:300px; background-color:black;}
+    </style>
+</head>
+<body style=" height:2000px;">
+    <!-- 可见类 visible-lg-block -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 visible-lg-block">col-lg-4</div>
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4 col-md-6">col-lg-4</div>
+        </div>
+    </div>
+
+    <p></p><p></p><p></p>
+
+    <div class="container-fluid">
+        <div class="tips1 pull-right"></div>
+        <div class="row">
+            <div class="tips1 pull-left visible-lg"></div>
+        </div>
+    </div>
+    <!-- 可见类 固定类  affix  -->
+    <div class="tips1 affix visible-lg" style=" left:0;top:0; "></div>
+</body>
+</html>

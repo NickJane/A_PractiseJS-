@@ -5,7 +5,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        // Underscore骨骼
+        //博客园文章 Underscore骨骼
         (function () {
             var root = this;
 
@@ -162,4 +162,28 @@
 
         alert(re);
     </script>
-</body> < /html>
+
+
+    <script type="text/javascript">
+        (function () {
+            "use strick";
+
+            var _ = function (obj) { return new wrapper(obj); };
+
+            window._ = _;
+
+        })();
+
+
+        // 结果测试 步骤：将数组[1,2,3]进行链式包装，然后将其用val * 2来map，紧接着用filter进行val < 5过滤,
+        // 然后pop,concat最后获取其值value
+        var re = _([1, 2, 3]).chain().map(function (val) {
+            return val * 2;
+        }).filter(function (val) {
+            return val < 5;
+        }).pop().concat(['5']).value();
+
+        alert(re);
+    </script>
+</body> 
+</html>

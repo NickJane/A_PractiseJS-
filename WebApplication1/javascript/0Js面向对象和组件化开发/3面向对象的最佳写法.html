@@ -4,13 +4,78 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <script type="text/javascript">
-        function 构造函数(参数) {
-            this.属性 = 参数;
-        }
-        构造函数.prototype.方法 = function () { alert(this.属性); };
-        构造函数.prototype.属性 = 0;
-        var 对象1 = new 构造函数(3);
-        对象1.方法();
+        (function () {
+            function 构造函数(参数) {
+                var a = 0;//私有变量.只能在函数内部访问. 
+
+                this.实例属性 = 参数;
+            }
+            构造函数.prototype.公共方法 = function () { console.log(this.实例属性); };
+            构造函数.prototype.公共属性 = 0;
+
+
+            var 对象1 = new 构造函数(3);
+            对象1.公共方法();
+        })();
+    </script>
+
+    <script type="text/javascript">
+        //underscore的写法   //见underscore大概框架分析
+        (function () {
+
+            //缓存this，浏览器的window或者服务端的exports
+            var root = this;
+
+            //下划线库的局部变量_,注意是个函数
+            var _ = function (obj) {
+                if (obj instanceof _) return obj;
+                if (!(this instanceof _)) return new _(obj);
+                this._wrapped = obj;
+            };
+
+            //暴露给export或者window
+            if (typeof exports !== 'undefined') {
+                if (typeof module !== 'undefined' && module.exports) {
+                    exports = module.exports = _;
+                }
+                exports._ = _;
+            } else {
+                root._ = _;
+            }
+
+            _.VERSION = '1.8.2';
+
+            /*各种内部变量、函数*/
+            //...
+
+            /*各种公开的静态api,如：*/
+            _.each = function () {
+                //TODO
+            };
+            _.first = function () {
+                //TODO
+            };
+            _.bind = function () {
+                //TODO
+            };
+            _.keys = function () {
+                //TODO
+            };
+            _.noConfict = function () {
+                //TODO
+            };
+            _.chain = function () {
+                //TODO
+            };
+            //...
+
+            //实例方法
+            _.prototype.value = function () {
+                //TODO
+            };
+            //...
+             
+        }).call(this);
     </script>
 </head>
 <body>
