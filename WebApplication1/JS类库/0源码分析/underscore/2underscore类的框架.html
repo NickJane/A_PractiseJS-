@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        (function () {
+            //缓存this，浏览器的window或者服务端的exports
+            var root = this;
+
+            //下划线库的局部变量_,注意是个函数. 如果是 new _()调用则直接放回
+            var _ = function (obj) {
+                if (obj instanceof _)//new _()调用
+                    return obj;
+                if (!(this instanceof _))//_()jquery调用方式, 内部帮忙 new _()一个实例返回
+                    return new _(obj);
+                this._wrapped = obj;
+            };
+
+            //暴露给export或者window
+            if (typeof exports !== 'undefined') {
+                if (typeof module !== 'undefined' && module.exports) {
+                    exports = module.exports = _;
+                }
+                exports._ = _;
+            } else {
+                root._ = _;
+            }
+
+            _.VERSION = '1.8.2';
+
+            /*各种内部变量、函数*/
+            //...
+
+            /*各种公开的静态api,如：*/
+            _.each = function () {
+                //TODO
+            };
+            _.first = function () {
+                //TODO
+            };
+            _.bind = function () {
+                //TODO
+            };
+            _.keys = function () {
+                //TODO
+            };
+            _.noConfict = function () {
+                //TODO
+            };
+            _.chain = function () {
+                //TODO
+            };
+            //...
+
+            //实例方法
+            _.prototype.value = function () {
+                //TODO
+            };
+            //...
+        }).call(this);
+
+        //解读.
+        /*
+        1. 强制执行匿名函数, 将window对象传入
+        2. 申明一个局部函数 _
+        3. 将 _ 暴露给外部(window) root._=_ ;
+        4. 调用, 比如 _([1,2])
+        */
+    </script>
+
+    <script type="text/javascript">
+        console.log('开始解读局部函数 _ 写法\n');
+
+        var Person = function (name) {
+            if (!(this instanceof Person)) {
+                return new Person(name);
+            }
+            this.name = name;
+        }
+
+        var p = new Person('laoyao');
+        console.log(p.name);
+
+        var p = Person('xxx');
+        console.log(p.name);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
