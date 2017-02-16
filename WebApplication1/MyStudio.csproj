@@ -138,6 +138,7 @@
     <Content Include="javascript\1JS基础\数据类型\typeof.html" />
     <Content Include="javascript\1JS基础\数组\EcmaScript5标准下5个重要的array方法.html" />
     <Content Include="javascript\1JS基础\数组\sort排序.html" />
+    <Content Include="javascript\2JS中级知识点\function_prototype_bind.html" />
     <Content Include="javascript\2JS中级知识点\事件和委托event.Target指向谁.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\4碰撞.html" />
     <Content Include="javascript\2JS中级知识点\拖拽\3磁性吸附.html" />
@@ -394,6 +395,7 @@
     <Content Include="JS类库\0源码分析\underscore\1博客园underscore骨骼.html" />
     <Content Include="JS类库\0源码分析\underscore\2underscore类的框架.html" />
     <Content Include="JS类库\0源码分析\underscore\3api分析防止冲突noConflict.html" />
+    <Content Include="JS类库\0源码分析\underscore\4.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\custom.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\events.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\jquery\all_runtimes.html" />
