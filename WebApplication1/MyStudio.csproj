@@ -130,7 +130,7 @@
     <Content Include="javascript\0Js面向对象和组件化开发\6原型链和hasOwnProperty.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\7constructor和原型链复习.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\8神奇的toString.html" />
-    <Content Include="javascript\0Js面向对象和组件化开发\9继承.html" />
+    <Content Include="javascript\0Js面向对象和组件化开发\9继承的实现.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\1放大镜%28mouseenter不冒泡%29.html" />
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\imgs\b1.jpg" />
     <Content Include="javascript\0Js面向对象和组件化开发\练习题\imgs\b2.jpg" />
@@ -392,10 +392,15 @@
     <Content Include="javascript\2JS中级知识点\跨域\jsonp.js" />
     <Content Include="javascript\z面试题\0较高难度基础题.html" />
     <Content Include="JS类库\0源码分析\1jquery功能目录.html" />
+    <Content Include="JS类库\0源码分析\underscore\0underscore的各种类型判断.html" />
+    <Content Include="JS类库\0源码分析\underscore\1underscore测试.html" />
     <Content Include="JS类库\0源码分析\underscore\1博客园underscore骨骼.html" />
     <Content Include="JS类库\0源码分析\underscore\2underscore类的框架.html" />
     <Content Include="JS类库\0源码分析\underscore\3api分析防止冲突noConflict.html" />
-    <Content Include="JS类库\0源码分析\underscore\4.html" />
+    <Content Include="JS类库\0源码分析\underscore\4keys_allkeys_values.html" />
+    <Content Include="JS类库\0源码分析\underscore\5isMatch_tap_invert_contains_paris.html" />
+    <Content Include="JS类库\0源码分析\underscore\6extend, extendown, defaults的设计.html" />
+    <Content Include="JS类库\0源码分析\underscore\7create对象创建继承和拷贝.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\custom.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\events.html" />
     <Content Include="JS类库\插件\plupload-2.1.8\examples\jquery\all_runtimes.html" />

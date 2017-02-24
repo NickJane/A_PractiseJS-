@@ -25,7 +25,7 @@
         <!--是否开启删除旧的新闻日志等数据: on|off-->
         <add key="DeleteOldDataTask" value="on" />
         <add key="BackUpPath" value="D:\wezhan\Web\" />
-        <add key="SiteDomain" value=".wezhan.cn" />
+        <add key="SiteDomain" value=".bj.wezhan.cn" />
         <add key="webpages:Version" value="2.0.0.0" />
         <add key="webpages:Enabled" value="false" />
         <add key="PreserveLoginUrl" value="true" />
@@ -59,11 +59,8 @@
         <add key="aliIpaddress" value="http://api.hichina.com/wwwnetcn.aspx" />
         <add key="IsvSecurityKey" value="fYWANh5p6MJyyOVNg6y5CIWYCihX2iVpxxOkPvJ0CLcpoGLJu1UpS8ey8Ya4mTUq" />
         <add key="skuIds" value="50011,pujiban" />
-        <add key="advHost" value="zhuce.wezhan.cn" />
-        <add key="canActionHost" value="clouddreams.wezhan.cn,lxy.wezhan.cn,zhuce.wezhan.cn" />
+        <add key="advHost" value="zhuce.bj.wezhan.cn" />
         <add key="isUseToken" value="true" />
-        <add key="LogServiceUrl" value="http://clouddreams.wezhan.cn/PageVisit/Index" />
-        <add key="VmIdc" value="qdabtn" />
         <add key="FlipUrl" value="http://bc.clouddream.net/admin/unlogin/add" />
         <add key="isTestStateForPushMessage" value="false" />
         <add key="LogLevel" value="Information" />
@@ -74,24 +71,18 @@
         <add key="FlipCloudUrl" value="http://bc.clouddream.net" />
         <add key="logpath" value="D:/wezhan/logger" />
         <!--账户体系微站和邮箱各自api的地址-->
-        <add key="SynchronizeWezhanAPI" value="http://clouddreams.wezhan.cn/api/membermanagerapi/" />
+        <add key="SynchronizeWezhanAPI" value="http://zhuce.bj.wezhan.cn/api/membermanagerapi/" />
         <add key="SynchronizeMailAPI" value="http://mail.api.wezhan.cn/api/Wezhan/" />
         <!--发生短信账号-->
         <add key="SendMsgAccount" value="yunmeng" />
         <add key="SendMsgPsw" value="Yunmeng123" />
-        <!--续费提醒开关: on|fff-->
-        <add key="RenewRemindTaskStatus" value="on" />
-
 
         <!--需要同步图库的地址, 用逗号分割 -->
-        <add key="SynchronizePictureMaterialsAPI" value="http://822918027.bj.wezhan.cn/api/picturematerialsapi/,http://975655330.bwezhan.cn/api/picturematerialsapi/,http://hk-you2.wezhan.hk/api/picturematerialsapi/,http://122229813.wezhan.us/api/picturematerialsapi/," />
-        <add key="SynchronizePictureMaterials" value="on" />
-
-        <add key="NotLoginTaskStartDatetime" value="2017-02-17" />
+        <add key="SynchronizePictureMaterialsAPI" value="http://clouddreams.wezhan.cn/api/picturematerialsapi/" />
+        <add key="SynchronizePictureMaterials" value="off" />
     </appsettings>
     <connectionstrings>
         <add name="DefaultConnection" providername="System.Data.SqlClient" connectionstring="Data Source=.;Initial Catalog=nopapp;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=123456;MultipleActiveResultSets=True" />
-        <add name="Nop.Redis.Cache" connectionstring="10.46.70.38:6379,connectTimeout=10000,password=yunredis123,abortConnect=false" />
     </connectionstrings>
     <entityframework>
         <defaultconnectionfactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">

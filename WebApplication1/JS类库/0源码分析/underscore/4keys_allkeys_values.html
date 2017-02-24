@@ -37,6 +37,13 @@
             }
 
             _.keys = function (obj) { return nativeKeys(obj); }
+            _.allKeys = function (obj) {
+                var _tempArr = [];
+                for (var i in obj) {
+                    _tempArr.push(obj[i])
+                }
+                return _tempArr;
+            }
 
             //拿到obj中的所有值
             //根据键数组生成一个等长值数组。然后把obj的值拷贝数组进去。返回值数组。
@@ -45,8 +52,9 @@
                 var length = keys.length;
                 var valuesArr = new Array(length);
                 for (var i = 0; i < length; i++) {
-
+                    valuesArr[i] = obj[keys[i]]
                 }
+                return valuesArr;
             }
 
             //判断一个集合obj里面是否有target这个值
@@ -56,6 +64,40 @@
             }
 
         })(window);
+    </script>
+
+    <script type="text/javascript">
+        /*
+        var o1 = Object.create({ name: 1 });
+        var o2 = Object.create(o1);
+        o2.age = 2;
+        var o3 = Object.create(o2);
+        o3.sex = 3;
+        for (var key in o3) console.dir(key);
+        */
+
+        Object.prototype.Age = 30;
+        var person = {name:'jjl'};
+
+        var fieldsArr = Object.keys(person)
+        for (var i = 0; i < fieldsArr.length; i++) {
+            console.log("使用object.Keys得到的自带属性 : " + fieldsArr[i]);
+        }
+        //打印出 使用object.Keys得到的自带属性 : name
+
+        console.log('---------------------------------')
+        for (var i in person) {
+            console.log("forin : " + person[i]);
+        }
+        //forin : jjl
+        //forin : 30
+        //打印出所有
+        console.log("")
+        console.log('---------------------------------')
+        for (var i in person) {
+            if(person.hasOwnProperty(i))//判断一下是否是本地属性, 排除原型链上的属性
+                console.log("forin : " + person[i]);
+        }
     </script>
 </head>
 <body>

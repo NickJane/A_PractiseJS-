@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+
+
+
+        (function () {
+            var root = this;
+
+            var _ = function (object) {
+                if (object instanceof _)
+                    return object;
+                if (!(object instanceof _))
+                    return new _(object);
+            }
+
+            root._ = _;//暴露出去
+
+            var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
+            var push = ArrayProto.push,
+                slice = ArrayProto.slice,
+                toString = ObjProto.toString,
+                hasOwnProperty = ObjProto.hasOwnProperty;
+
+            var nativeIsArray = Array.isArray,
+                nativeKeys = Object.keys,
+                nativeBind = FuncProto.bind,
+                nativeCreate = Object.create;
+
+            var isArrayLike = function (collection) {
+                //判断一个对象是不是数组类似类型的, 判断有没有length
+                var length = collection != null && collection.length;
+                return typeof length == "number" && length > 0;
+            }
+
+            _.isObject = function (obj) {
+                var type = typeof obj;
+                return type === 'function' || type === 'object' && !!obj;// !!obj是防止null的. !!null输出false
+            }; 
+
+            //返回的是字符串数组  var a={"a":"3", b:function(){}, 3:4}  _.keys(a)==>["3", "a", "b"]    _.values(a)==>[4, "3",function b()]
+            _.keys = function (obj) { 
+                if(!_.isObject(obj)) 
+                    return [];
+                return nativeKeys(obj); 
+            }
+            _.allKeys = function (obj) {
+                if(!_.isObject(obj)) 
+                    return [];
+                var _tempArr = [];
+                for (var i in obj) {
+                    _tempArr.push(i)
+                }
+                return _tempArr;
+            }
+
+            //拿到obj中的所有值
+            //根据键数组生成一个等长值数组。然后把obj的值拷贝数组进去。返回值数组。
+            _.values = function (obj) {
+                if(!_.isObject(obj)) 
+                    return [];
+                var keys = _.keys(obj);
+                var length = keys.length;
+                var valuesArr = new Array(length);
+                for (var i = 0; i < length; i++) {
+                    valuesArr[i] = obj[keys[i]]
+                }
+                return valuesArr;
+            }
+
+            //判断一个集合obj里面是否有target这个值
+            _.contains = _.includes = _.include = function (obj, target, fromIndex) {
+                if (isArrayLike(obj) == false) return false;
+                //未完成/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+
+            //把对象转变为一个[key,value]形式的数组
+            _.pairs = function (obj) {
+                var keys = _.keys(obj); 
+                var arr = Array(keys.length);
+                for (var i = 0; i < keys.length; i++) {
+                    arr[i] = [keys[i], obj[keys[i]]];
+                }
+                return arr;
+            }
+
+            //对象反转, 键是原来的值, 值是原来的键
+            _.invert = function (obj) {
+                var result = {};
+                var keys = _.keys(obj);
+                for (var i = 0; i < keys.length; i++) {
+                    result[obj[keys[i]]] = keys[i];
+                }
+                return result;
+            }
+
+            //找到对象里所有的函数, 组装成一个数组, 然后排序好(按名称默认)返回
+            _.functions = _.methods = function (obj) {
+                var keys = _.keys(obj);
+
+                var arr = [];
+                for (var i = 0; i < keys.length; i++) {
+                    if (typeof obj[keys[i]] == "function")
+                        arr.push(keys[i]);
+                }
+                return arr.sort();
+            }
+
+            //对对象进行一次操作, 并且保留链式调用. interceptor是拦截器函数, 外部传入, 可以干任何事情
+            _.tap = function (obj, interceptor) {
+                interceptor(obj);
+                return obj;
+            };
+
+
+            //判断前者的属性是否全在后者的属性中(包括原型链)
+            //_.isMatch({ a: 1, b: 2, c: 3 }, { a: 1, c: 3 });//true
+            //_.isMatch(null, {});//true
+            //_.isMatch(null, { a: 1 });//false
+
+            //var a = { name: 1, age: 2 };
+            //var b = Object.create(a);
+            //_.isMatch(b, { name: 1 });//true
+            /*
+            首先判断object是否为空或undefined，
+            如果是，看attr是否是空对象，
+            length为0，表示空，返回true，length非0，表示有，返回false。
+            Object(object)以此防止object不是对象。
+            然后遍历attrs判断其键值对是否都能在object中找到。
+            */
+            _.isMatch = function (object, attrs) {
+                var keys = _.keys(attrs),
+                    length = keys.length;
+                if (object == null) return !length;//特殊处理_.isMatch(null, {});//true
+                var obj = Object(object);//对象化,防止传入的object不是对象. 比如传入数字1等基础类型
+                for (var i = 0; i < length; i++) {
+                    var key = keys[i]; 
+                    //value不等或者不在obj中，就返回false
+                    if (attrs[key] !== obj[key] || !(key in obj))
+                        return false;
+                }
+                return true;
+            };
+
+            
+
+        })(window);
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

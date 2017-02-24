@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        
+
+        //对象的创建克隆见 9继承的实现.html
+
+        //克隆, 如果不是对象. 就直接返回.
+        //如果是数组, 就用slice.  如果不是, 就用extend深拷贝到一个空对象返回即可.
+        _.clone = function (obj) {
+            if (!_.isObject(obj)) return obj;
+            return _.isArray(obj) ? obj.slice() : _.extend({}, obj);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

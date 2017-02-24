@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        // 什么东西会在underscore被认为是对象? ==>Object, Array, Function
+        _.isObject = function (obj) {
+            var type = typeof obj;
+            return type === 'function' || type === 'object' && !!obj;// !!obj是防止null的. !!null输出false
+        }; 
+        //复习一下
+        //基础类型：Number, String, Boolean, Undefined
+        //对象类型：Object, Array, Function, null ==> typeof输出object
+        
+
+
+        _.isArray = Array.isArray || function (obj) {
+            return toString.call(obj) === '[object Array]';
+        };
+
+        // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError.
+        _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], function (name) {
+            _['is' + name] = function (obj) {
+                return toString.call(obj) === '[object ' + name + ']';
+            };
+        });
+
+
+        /*
+            代码也比较清晰，
+            如果undefined和null为空
+            有length(类数组, 数组, 字符串, arguments)的, length为0就是空
+            其余获取其keys。看看keys数组是否为空。
+            */
+        _.isEmpty = function (obj) {
+            if (obj == null || obj == undefined) return true;
+
+            if (isArrayLike(obj) && (_.isArray(obj) || _.isString(obj) || _.isArguments(obj))) return obj.length === 0;
+
+            return _.keys(obj).length === 0;
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>
