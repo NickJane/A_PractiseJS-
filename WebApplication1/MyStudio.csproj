@@ -611,6 +611,7 @@
     <Content Include="JS类库\插件\事件订阅发布\使用jquery的事件模块.html" />
     <Content Include="JS类库\插件\事件订阅发布\使用MyEnventer.html" />
     <Content Include="JS类库\插件\事件订阅发布\原始例子.html" />
+    <Content Include="JS类库\插件\判断浏览器版本\HtmlPage1.html" />
     <Content Include="JS类库\插件\合并table的列\HtmlPage1.html" />
     <Content Include="JS类库\插件\笛卡尔乘积\HtmlPage1.html" />
     <Content Include="packages.config" />
@@ -713,7 +714,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3933</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
