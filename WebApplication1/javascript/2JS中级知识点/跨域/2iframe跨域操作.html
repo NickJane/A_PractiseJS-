@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    http://bbs.csdn.net/topics/390769785
+
+    举个例子：我这个应用是在A域名下的一个页面a.html中有个iframe，src为B域名下的b.html，因为b.html的内容高度会比a.html中初始设置的iframe高度要高一些，所以希望在b.html加载完毕后能自动调节iframe的高度。
+
+    实现方法：http://www.b.com/B.html 加载完毕后，计算高度同时通过hash传给http://www.a.com/setHeight.html
+    ,完后在http://www.a.com/setHeight.html中通过parent.parent.document.getElementById去控制http://www.a.com/a.html里的iframe的高度
+
+    <!-- A.html
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta content="text/html; charset=gb2312" http-equiv="Content-Type">
+        </head>
+        <body>
+            <iframe height='200px' id='iframe1' src="http://www.b.com/B.html"></iframe>
+        </body>
+    </html>
+        -->
+
+
+    <!-- A.html
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+        </head>
+        <body style="background-color:#ccc">
+            <div style="height:600px;">sdfsfsssfsfs</div>
+            <script>
+                window.onload = function()
+		    {
+                            //先判断iframe是否存在，存在的话，删除掉先
+			    if(document.getElementById("sheight"))
+			    {
+				    document.body.removeChild(document.getElementById("sheight"));
+			    }
+			    var iframe = document.createElement("iframe");
+			    iframe.width='0px';
+			    iframe.height='0px';
+			    iframe.id='sheight';
+			    var currentheight = document.body.scrollHeight;
+			    iframe.src='http://www.a.com/setHeight.html#'+currentheight;
+			    document.body.appendChild(iframe);
+		    }
+            </script>
+        </body>
+    </html>
+        -->
+ 
+
+    <!-- setHeight.html是和a.html同一个域名下的  www.a.com
+        
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+        <html xmlns="http://www.w3.org/1999/xhtml">  
+            <head>  
+                <meta content="text/html; charset=gb2312" http-equiv="Content-Type">  
+            </head>  
+            <body>  
+                <div></div>  
+                <script type="text/javascript">  
+                    window.onload = function()  
+                    {  
+                        var b_iframe = parent.parent.document.getElementById("iframe1");  
+                        var hash_url = window.location.hash.split("#");  
+                        var hash_height = hash_url[1]+"px";  
+                        b_iframe.style.height = hash_height;  
+                    }  
+                </script>  
+            </body>  
+        </html> 
+
+        -->
+</body>
+</html>
