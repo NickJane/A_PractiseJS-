@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        //请先复习js作用域编译和执行
+
+        if (true) {
+            //console.log(foo);//输出 undefined
+            var foo = 2;//这里使用var声明了foo， 导致foo发生了”变量提升“
+
+            //console.log(fff);//报错 ReferenceError
+
+        }
+
+        if (1) {
+            var tmp = new Date();
+
+            function f() {//函数内出现了var 关键字， 所以预解析为var tmp=undefined. 
+                console.log(tmp);//undefined
+                if (false) {
+                    var tmp = 'hello world';
+                }
+            }
+
+            f();
+        }
+        if (1) {
+            var tmp2 = new Date();
+
+            function f2() {
+                console.log(tmp); 
+                var tmp = 1;
+            }
+
+            f2();
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
