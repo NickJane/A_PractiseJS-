@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //转自https://segmentfault.com/a/1190000000766541
+
+        /*
+        var StrA = {
+            name: '小明'
+        };
+
+        var StrB = StrA;//这里由于a是引用类型， 所以等于b指针指向a。 a和b是同一个对象
+        StrB.name = '小强';
+        console.log("zz" + StrA.name);//a被改变了
+        */
+
+        //正确的对象复制， 用深拷贝
+        /*
+        var a = {
+            name : '小明'
+        };
+        var b = {};
+        extend( b , a );
+        b.name = '小强';
+        alert( a.name );
+        function extend(obj1,obj2){
+            for(var attr in obj2){
+                obj1[attr] = obj2[attr];
+            }
+        }*/
+
+        //继承 : 子类不影响父类，子类可以继承父类的一些功能 ( 代码复用 )
+
+        //属性的继承 : 调用父类的构造函数 call
+
+        //方法的继承 : for in :  拷贝继承 (jquery也是采用拷贝继承extend)
+
+        function CreatePerson(name, sex) {   //父类
+            this.name = name;
+            this.sex = sex;
+            this.innerFuction = function () { console.log('CreatePerson实例方法'); }
+        }
+        CreatePerson.prototype.showName = function () {
+            console.log("原型showName" + this.name);
+        };
+
+        var p1 = new CreatePerson('人', '男');
+        //p1.showName();
+
+
+        function CreateStar(name, sex, job) {  //子类
+            //借用父类构造函数减轻工作量
+            CreatePerson.call(this, name, sex);//第一个参数改变调用方法的this对象，得到父类的实例属性和方法
+            this.job = job;
+            this.innerFuction();
+        }
+        CreateStar.prototype = CreatePerson.prototype;
+        CreateStar.prototype.showJob = function () {//扩展自己的原型方法
+        }; 
+
+        //var p2 = new CreateStar('黄晓明', '男', '演员');//明星继承了人的方法
+        //p2.showName();
+
+
+        function extend(obj1, obj2) {
+            for (var attr in obj2) {
+                obj1[attr] = obj2[attr];//赋值操作
+            }
+        }
+
+        function extendOwn(obj1, obj2) {
+            for (var attr in obj2) {
+                if (obj2.hasOwnProperty(attr))
+                    obj1[attr] = obj2[attr];//赋值操作
+            }
+        }
+    </script>
+
+    <!--underscore创建对象的玩法-->
+    <script type="text/javascript">
+        //使用
+        var createObject = function (prototype, props) {
+            //如果prototype参数不是对象, result直接设置为null. 这里判断略
+            var result = Object.create(prototype);
+            if (props) extendOwn(result, props);
+            return result;
+        }
+
+        var star1 = createObject(CreateStar.prototype, { name: "赵薇" });
+        star1.showName();
+         
+        var Ctor = function () { };
+        var createObject2 = function (prototype, props) {
+            //如果prototype参数不是对象, result直接设置为null. 这里判断略
+
+            Ctor.prototype = prototype;
+            var result = new Ctor();
+
+            //为了下一次用，用我就清空
+            Ctor.prototype = null;
+
+            if (props) extendOwn(result, props);
+            return result;
+        }
+        var star2 = createObject(CreateStar.prototype, { name: "球霸柳岩" });
+        star2.showName();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
